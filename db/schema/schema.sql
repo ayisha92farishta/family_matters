@@ -1,0 +1,105 @@
+DROP TABLE IF EXISTS accounts CASCADE;
+
+CREATE TABLE accounts (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS users CASCADE;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  date TIMESTAMP NOT NULL,
+  is_primary boolean NOT NULL,
+  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS lists CASCADE;
+
+CREATE TABLE lists (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  is_private boolean NOT NULL,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS items CASCADE;
+
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  list_id INTEGER REFERENCES lists(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS user_lists CASCADE;
+
+CREATE TABLE user_lists(
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE,
+  list_id INTEGER REFERENCES lists(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS events CASCADE;
+
+CREATE TABLE events (
+  id SERIAL PRIMARY KEY NOT NULL,
+  event_name VARCHAR(255) NOT NULL,
+  description TEXT,
+  date TIMESTAMP NOT NULL,
+  is_private boolean NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  reminder boolean NOT NULL DEFAULT FALSE,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS user_events CASCADE;
+
+CREATE TABLE user_events(
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE,
+  event_id INTEGER REFERENCES events(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS contacts CASCADE;
+
+CREATE TABLE contacts (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(255),
+  email VARCHAR(255),
+  address VARCHAR(255) NOT NULL,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS meals CASCADE;
+
+CREATE TABLE meals (
+  id SERIAL PRIMARY KEY NOT NULL,
+  day VARCHAR(255) NOT NULL,
+  meal_type VARCHAR(255),
+  description TEXT,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS recipes CASCADE;
+
+CREATE TABLE recipes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  preparation_time INTEGER NOT NULL,
+  cooking_time INTEGER NOT NULL,
+  serving INTEGER NOT NULL,
+  ingredients TEXT NOT NULL,
+  instructions TEXT NOT NULL,
+  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+);
+
+
+
+
+
+
+
