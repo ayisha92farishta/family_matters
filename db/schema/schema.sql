@@ -12,7 +12,7 @@ CREATE TABLE users (
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  date TIMESTAMP NOT NULL,
+  date TIMESTAMP NOT NULL DEFAULT Now(),
   is_primary boolean NOT NULL,
   account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
 );
