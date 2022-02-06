@@ -22,8 +22,7 @@ DROP TABLE IF EXISTS lists CASCADE;
 CREATE TABLE lists (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  is_private boolean NOT NULL,
-  user_id NOT NULL INTEGER REFERENCES users(id) on DELETE CASCADE
+  is_private boolean NOT NULL
 );
 
 DROP TABLE IF EXISTS items CASCADE;
@@ -51,8 +50,7 @@ CREATE TABLE events (
   date TIMESTAMP NOT NULL,
   is_private boolean NOT NULL,
   address VARCHAR(255) NOT NULL,
-  reminder boolean NOT NULL DEFAULT FALSE,
-  user_id NOT NULL INTEGER REFERENCES users(id) on DELETE CASCADE
+  reminder boolean NOT NULL DEFAULT FALSE
 );
 
 DROP TABLE IF EXISTS user_events CASCADE;
