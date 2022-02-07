@@ -16,7 +16,7 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT Now(),
   is_primary boolean NOT NULL,
-  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS lists CASCADE;
@@ -24,25 +24,25 @@ DROP TABLE IF EXISTS lists CASCADE;
 CREATE TABLE lists (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  is_private boolean NOT NULL DEFAULT FALSE,
-  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
+  is_private boolean NOT NULL DEFAULT FALSE
 );
 
-DROP TABLE IF EXISTS items CASCADE;
+DROP TABLE IF EXISTS list_items CASCADE;
 
 CREATE TABLE list_items (
   id SERIAL PRIMARY KEY NOT NULL,
   item_name VARCHAR(255) NOT NULL,
-  list_id INTEGER REFERENCES lists(id) on DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+  list_id INTEGER NOT NULL REFERENCES lists(id) on DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS user_lists CASCADE;
 
 CREATE TABLE user_lists(
   id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) on DELETE CASCADE,
-  list_id INTEGER REFERENCES lists(id) on DELETE CASCADE
+  user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE,
+  list_id INTEGER NOT NULL REFERENCES lists(id) on DELETE CASCADE,
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS events CASCADE;
@@ -58,7 +58,7 @@ CREATE TABLE events (
   is_private boolean NOT NULL DEFAULT FALSE,
   address VARCHAR(255),
   reminder boolean NOT NULL DEFAULT FALSE,
-  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS user_events CASCADE;
@@ -66,7 +66,7 @@ DROP TABLE IF EXISTS user_events CASCADE;
 CREATE TABLE user_events(
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) on DELETE CASCADE,
-  event_id INTEGER REFERENCES events(id) on DELETE CASCADE
+  event_id INTEGER NOT NULL REFERENCES events(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS contacts CASCADE;
@@ -77,8 +77,8 @@ CREATE TABLE contacts (
   phone_number VARCHAR(255),
   email VARCHAR(255),
   address VARCHAR(255),
-  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS meals CASCADE;
@@ -88,8 +88,8 @@ CREATE TABLE meals (
   day VARCHAR(255) NOT NULL,
   meal_type VARCHAR(255),
   description TEXT,
-  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS recipes CASCADE;
@@ -102,6 +102,6 @@ CREATE TABLE recipes (
   serving INTEGER NOT NULL,
   ingredients TEXT NOT NULL,
   instructions TEXT NOT NULL,
-  account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE,
-  user_id INTEGER REFERENCES users(id) on DELETE CASCADE
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );
