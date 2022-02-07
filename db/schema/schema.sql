@@ -97,9 +97,9 @@ DROP TABLE IF EXISTS recipes CASCADE;
 CREATE TABLE recipes (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  preparation_time INTEGER NOT NULL,
-  cooking_time INTEGER NOT NULL,
-  serving INTEGER NOT NULL,
+  preparation_time INTEGER,
+  cooking_time INTEGER,
+  serving INTEGER,
   ingredients TEXT NOT NULL,
   instructions TEXT NOT NULL,
   account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
