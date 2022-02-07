@@ -57,8 +57,7 @@ CREATE TABLE events (
   end_time TIME,
   is_private boolean NOT NULL DEFAULT FALSE,
   address VARCHAR(255),
-  reminder boolean NOT NULL DEFAULT FALSE,
-  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE
+  reminder boolean NOT NULL DEFAULT FALSE  
 );
 
 DROP TABLE IF EXISTS user_events CASCADE;
@@ -66,7 +65,8 @@ DROP TABLE IF EXISTS user_events CASCADE;
 CREATE TABLE user_events(
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) on DELETE CASCADE,
-  event_id INTEGER NOT NULL REFERENCES events(id) on DELETE CASCADE
+  event_id INTEGER NOT NULL REFERENCES events(id) on DELETE CASCADE,
+  account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS contacts CASCADE;
