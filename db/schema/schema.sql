@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS lists CASCADE;
 CREATE TABLE lists (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  is_private boolean NOT NULL,
+  is_private boolean NOT NULL DEFAULT FALSE,
   account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
 );
 
@@ -52,11 +52,11 @@ CREATE TABLE events (
   event_name VARCHAR(255) NOT NULL,
   description TEXT,
   event_date TIMESTAMP NOT NULL,
-  all_day boolean DEFAULT FALSE,
-  start_time TIME NOT NULL,
-  end_time TIME NOT NULL,
-  is_private boolean NOT NULL,
-  address VARCHAR(255) NOT NULL,
+  all_day boolean DEFAULT TRUE,
+  start_time TIME,
+  end_time TIME,
+  is_private boolean NOT NULL DEFAULT FALSE,
+  address VARCHAR(255),
   reminder boolean NOT NULL DEFAULT FALSE,
   account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE
 );
@@ -76,7 +76,7 @@ CREATE TABLE contacts (
   name VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255),
   email VARCHAR(255),
-  address VARCHAR(255) NOT NULL,
+  address VARCHAR(255),
   account_id INTEGER REFERENCES accounts(id) on DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) on DELETE CASCADE
 );
