@@ -3,7 +3,7 @@ INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Pasta', 1, 1);
 INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Bread', 1, 1);
 INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Eggs', 1, 1);
 INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Yogurt', 1, 1);
-INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Butter', 1, 1;
+INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Butter', 1, 1);
 INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Cooking Oil', 1, 1);
 
 INSERT INTO list_items (item_name, list_id, user_id) VALUES ('Milk', 1, 2);
