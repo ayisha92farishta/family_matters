@@ -50,13 +50,13 @@ DROP TABLE IF EXISTS events CASCADE;
 CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
   event_name VARCHAR(255) NOT NULL,
-  description TEXT,
-  event_date TIMESTAMP NOT NULL,
+  event_description VARCHAR(255),
+  event_date TIMESTAMP NOT NULL DEFAULT Now(),
   all_day boolean DEFAULT TRUE,
   start_time TIME,
   end_time TIME,
   is_private boolean NOT NULL DEFAULT FALSE,
-  address VARCHAR(255),
+  event_address VARCHAR(255),
   reminder boolean NOT NULL DEFAULT FALSE  
 );
 
