@@ -89,7 +89,7 @@ CREATE TABLE meals (
   meal_type VARCHAR(255),
   description TEXT,
   account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
-  user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
+  -- user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS recipes CASCADE;
