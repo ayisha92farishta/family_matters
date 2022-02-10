@@ -38,13 +38,8 @@ app.use(express.urlencoded({ extended: true }));//??
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-<<<<<<< HEAD:server.js
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
-=======
-const usersRoutes = require("../routes/users");
-//const widgetsRoutes = require("./routes/widgets");
->>>>>>> 7d04389d2f8d625f6de05159643062fd2ad5af9d:server/src/server.js
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your owna
