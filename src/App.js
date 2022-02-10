@@ -5,7 +5,7 @@ import Paperbase from './components/Homepage/Paperbase';
 
 function App() {
   return (    
-    <Paperbase />    
+    <SignInSide />  
   );
 }
 
