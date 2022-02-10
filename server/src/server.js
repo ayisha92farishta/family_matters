@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8001;
 //const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
-const dbParams = require("lib/db.js");
+const dbParams = require("./lib/db");
 const db = new Pool(dbParams);
 db.connect();
 
