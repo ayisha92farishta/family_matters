@@ -16,12 +16,8 @@ module.exports = (db) => {
       if (!bcrypt.compareSync(password, dbPass)) {
         return res.send('Invalid user! Please enter a valid email and password')
       } 
-
-      // req.session.user_id = data.rows[0].id;
-      // req.session.name = first_name;
       const login_data = {
-        user_id : data.rows[0].id,
-        // email : data.rows[0].email
+        user_id : data.rows[0].id
       };
       res.json( login_data )
     })
@@ -30,6 +26,11 @@ module.exports = (db) => {
       console.log(err);
       
     });
-  })
+  });
+
+  router.post('/register', (req, res) => {
+    console.log(req.body);
+
+  });
   return router;
 }
