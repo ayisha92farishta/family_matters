@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import  { Redirect } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 // function Copyright(props) {
 //   return (
@@ -30,6 +32,7 @@ import axios from 'axios';
 const theme = createTheme();
 
 export default function SignInSide() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,6 +49,8 @@ export default function SignInSide() {
       .then(res => {
         console.log(res);
         localStorage.setItem('user_id', res.data.user_id)
+        navigate('/home');
+        //return <Navigate to='/home'/>
       });
   };
 
@@ -113,6 +118,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onSubmit={handleSubmit}
               >
                 Sign In
               </Button>
