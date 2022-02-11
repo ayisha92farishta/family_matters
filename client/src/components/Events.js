@@ -1,10 +1,10 @@
 import React from 'react';
 import '../App.css';
 
-function Calender() {
+function Events() {
   return (    
     <h1>This is the Calender page</h1> 
   );
 }
 
-export default Calender;
+export default Events;
