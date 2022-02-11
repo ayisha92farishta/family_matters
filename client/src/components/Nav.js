@@ -22,7 +22,7 @@ function Nav() {
         <Link to='/'>
           <li>Sign in</li>
         </Link>
-        <Link to='/'>
+        <Link to='/signup'>
           <li>Add a member</li>
         </Link>
       </ul> 

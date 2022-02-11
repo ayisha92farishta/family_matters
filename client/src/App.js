@@ -1,6 +1,7 @@
 
 import './App.css';
 import SignInSide from './components/SignInSide';
+import SignUp from './components/SignUp';
 import Nav from './components/Nav';
 import About from './components/About';
 import Home from './components/Home';
@@ -21,6 +22,7 @@ function App() {
          <Route path='/events' element={<Events />} />
          <Route path='/to_do' element={<To_do />} />
          <Route path='/' element={<SignInSide />} />
+         <Route path='/signup' element={<SignUp />} />
          </Routes>
       </div>
         
