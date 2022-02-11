@@ -12,8 +12,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (    
-    <Router> 
-   
+    <Router>    
       <div className='App'>
          <Nav />
          <Routes>
@@ -21,6 +20,7 @@ function App() {
          <Route path='/home' element={<Home />} />
          <Route path='/events' element={<Events />} />
          <Route path='/to_do' element={<To_do />} />
+         <Route path='/' element={<SignInSide />} />
          </Routes>
       </div>
         

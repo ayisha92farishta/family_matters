@@ -19,6 +19,12 @@ function Nav() {
         <Link to='/to_do'>
           <li>To do Lists</li>
         </Link>
+        <Link to='/'>
+          <li>Sign in</li>
+        </Link>
+        <Link to='/'>
+          <li>Add a member</li>
+        </Link>
       </ul> 
       
     </nav>     
