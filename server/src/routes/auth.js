@@ -16,12 +16,8 @@ module.exports = (db) => {
       if (!bcrypt.compareSync(password, dbPass)) {
         return res.send('Invalid user! Please enter a valid email and password')
       } 
-
-      // req.session.user_id = data.rows[0].id;
-      // req.session.name = first_name;
       const login_data = {
-        user_id : data.rows[0].id,
-        // email : data.rows[0].email
+        user_id : data.rows[0].id
       };
       res.json( login_data )
     })
@@ -30,6 +26,49 @@ module.exports = (db) => {
       console.log(err);
       
     });
-  })
+  });
+
+  router.post('/register', (req, res) => {
+    console.log(req.body);
+    const firstName = req.body.first_name;
+    const lastName = req.body.last_name;
+    const email = req.body.email;
+    let is_primary = true;
+    const name = req.body.last_name; 
+    const value = [name];
+    const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+
+    if (req.body.name === '' || req.body.email === '' || req.body.password === '') {
+      res.statusCode = 400;
+      return res.send('Error : Invalid username or email or password.');
+    }
+    db.query(`INSERT INTO accounts (name) VALUES ($1) RETURNING *;`,value )
+      .then((data) => {
+        console.log(data.rows[0]);
+        const account_id = data.rows[0].id;
+        const values = [firstName, lastName, email, hashedPassword, is_primary, account_id];
+        console.log(values);
+        db.query(`INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`, values)
+          .then((data) => {
+            console.log(data.rows[0]);
+            const newUser = {
+              firstName: data.rows[0].first_name,
+              lastName: data.rows[0].last_name
+            }
+            res.json( newUser );
+          })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+        })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    
+  });
   return router;
 }
