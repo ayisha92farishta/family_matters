@@ -6,6 +6,7 @@ import About from './components/About';
 import Home from './components/Home';
 import Events from './components/Events';
 import To_do from './components/To_do';
+import Sidebar from './Sidebar';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
