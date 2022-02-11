@@ -1,6 +1,5 @@
 import React from 'react'
-import './Sidebar.css'
-import './Sidebar.html'
+import '../Sidebar.css'
 
 
 
