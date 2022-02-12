@@ -8,6 +8,8 @@ import Home from './components/Home';
 import Events from './components/Events';
 import Lists from './components/Lists';
 import Sidebar from './components/Sidebar';
+import Recipe from './components/Recipe';
+import Contacts from './components/Contacts';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
@@ -25,6 +27,8 @@ function App() {
          <Route path='/home' element={<Home />} />
          <Route path='/events' element={<Events />} />
          <Route path='/lists' element={<Lists />} />
+         <Route path='/recipe' element={<Recipe />} />
+         <Route path='/contacts' element={<Contacts />} />
          <Route path='/' element={<SignIn />} />
          <Route path='/signup' element={<SignUp />} />
          </Routes>
