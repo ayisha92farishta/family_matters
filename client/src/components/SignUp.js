@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 // function Copyright(props) {
 //   return (
@@ -30,6 +31,7 @@ import axios from 'axios';
 const theme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -49,6 +51,7 @@ export default function SignUp() {
     axios.post('/api/auth/register', body)
       .then(res => {
         console.log(res);
+        navigate('/home');
       });
   };
 
@@ -126,6 +129,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onSubmit={handleSubmit}
             >
               Sign Up
             </Button>
