@@ -1,9 +1,10 @@
 import React from 'react';
+import List_form from './List_form'
 import '../App.css';
 
 function Lists() {
   return (    
-    <h1>This is the List page</h1> 
+    < List_form /> 
   );
 }
 

@@ -18,6 +18,8 @@ code {
 }
 
 
+/* top-nav styling */
+
 .top_nav {
   display: flex;
   justify-content: space-around;
@@ -36,6 +38,7 @@ code {
   color: white;
 }
 
+/* sidebar styling */
 
 *, :before, :after {
   box-sizing: border-box;
