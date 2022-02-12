@@ -9,7 +9,7 @@ function Home() {
     <div className='home-icons'>
         <Link to='/lists'> 
           <img
-          src="icons/lists.png"
+          src="icons/list.png"
           />
         </Link>
         <Link to='/events'> 
