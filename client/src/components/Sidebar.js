@@ -14,7 +14,11 @@ function Sidebar() {
         <li><a href="/home">Home</a></li>
         <li><a href="/events">Events</a></li>
         <li><a href="/lists">Lists</a></li>
-        <li><a href="/signup">Add a member</a></li>      
+        <li><a href="/meals">Meals</a></li>
+        <li><a href="/recipes">Recipes</a></li>
+        <li><a href="/contacts">Contacts</a></li>
+        <li><a href="/signup">Add a member</a></li>  
+
       </ul>
     </nav>
     {/* <ul class="social-links list-inline unstyled list-hover-slide">
