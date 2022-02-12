@@ -12,21 +12,35 @@ function Home() {
           src="icons/lists.png"
           />
         </Link>
+        <Link to='/events'> 
           <img
-        src="icons/meal.png"
-        />
+          src="icons/events.png"
+          />
+        </Link>
           
     </div>
     
     <div className='home-icons'>
-
+        <Link to='/contacts'> 
           <img
-        src="icons/recipe.png"
-        />
+          src="icons/contact.png"
+          />
+        </Link>
+                  
+    </div>
+    <div className='home-icons'>
+        <Link to='/meals'> 
           <img
-        src="icons/contact.png"
-        />
-        </div>
+          src="icons/meal.png"
+          />
+        </Link>
+        <Link to='/recipes'> 
+          <img
+          src="icons/recipe.png"
+          />
+        </Link>
+          
+    </div>
     </>
   );
 }
