@@ -73,8 +73,9 @@ module.exports = (db) => {
     //Update a list
     router.put("/:id", (req, res) => {
       console.log(req.body);
-      const { list } = req.body;
-      db.query(`INSERT INTO lists (name, is_private) VALUES ($1, $2) RETURNING *;`, [ list, false ] )
+      const listId = req.params.id;
+      const { name, is_private } = req.body;
+      db.query(`UPDATE lists SET name = $1, is_private = $2 WHERE id = $3 ;`, [ name, is_private, listId ] )
       .then(data => {
         const newListName = data.rows[0].name;
         res.json( {newListName} );
@@ -88,10 +89,10 @@ module.exports = (db) => {
     //Update an item inside a list
     router.put("/item/:id", (req, res) => {
       console.log(req.body);
-      const item = req.body.item;
-      const listId = req.body.list_id;
+      const itemId = req.params.id;
+      const { name, listId } = req.body;
       const userId = 1; //How to get userId ? 
-      db.query(`INSERT INTO list_items (item_name, list_id, user_id ) VALUES ($1, $2, $3) RETURNING *;`, [ item, listId, userId ] )
+      db.query(`UPDATE list_items SET item_name = $1 WHERE list_id = $2 AND user_id = $3 AND id = $4;`, [ name, listId, userId, itemId ] )
       .then(data => {
         const newItemName = data.rows[0].item_name;
         res.json( {newItemName} );
@@ -105,7 +106,7 @@ module.exports = (db) => {
     //Delete a list
     router.delete("/:id", (req, res) => {
       console.log(req.params);
-      db.query(`DELETE FROM lists WHERE list_id = $1`, req.params.id)
+      db.query(`DELETE FROM lists WHERE id = $1`, req.params.id)
         .then(data => {
           console.log(data.rows[0]);
         })
