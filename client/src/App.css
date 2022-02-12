@@ -5,6 +5,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(90deg, #91a3d8 0%, #ffffff 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -25,7 +26,7 @@ code {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background-color: #91a3d8b6;
+  background-color: #13161fb6;
   color: white;
 }
 
@@ -62,6 +63,7 @@ code {
 
 .header {
   position: fixed;
+  padding-top: 80px;
   left: 0;
   top: 0;
   bottom: 0;
@@ -110,27 +112,6 @@ code {
 .main-nav a:hover {
   color: #fff;
 }
-/* 
-.social-links {
-  border-bottom: solid 1px #1a1c20;
-}
-.social-links li {
-  width: 25%;
-  border-left: solid 1px #ebe6e4;
-}
-.social-links li:first-child {
-  border: none;
-}
-.social-links a {
-  display: block;
-  height: 5.5em;
-  text-align: center;
-  color: #3C3735;
-  font: 0.75em/5.5em "Source Sans Pro", Helvetica, Arial, sans-serif;
-}
-.social-links a:hover {
-  color: #fff;
-} */
 
 .list-hover-slide li {
   position: relative;
@@ -167,4 +148,90 @@ code {
 .home-icons img{
   height: 20rem;
   width: 20rem;
+}
+
+
+
+/* list form styling */
+
+.list_form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list_form input,
+.list_form button {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  background: white;
+}
+.list_form button {
+  color: #ff6f47;
+  background: #f7fffe;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.list_form button:hover {
+  background: #ff6f47;
+  color: white;
+}
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  min-width: 30%;
+  list-style: none;
+}
+
+.todo {
+  margin: 0.5rem;
+  background: white;
+  font-size: 1.5rem;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 1s ease;
+}
+.filter-todo {
+  padding: 1rem;
+}
+.todo li {
+  flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+  background: #ff6f47;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.complete-btn {
+  background: rgb(11, 212, 162);
+}
+.todo-item {
+  padding: 0rem 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.fall {
+  transform: translateY(10rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
 }

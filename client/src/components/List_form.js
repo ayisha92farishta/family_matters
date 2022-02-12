@@ -2,7 +2,7 @@ import React from 'react'
 
 const List_form = () => {
   return(
-    <form>
+    <form className='list_form'>
       <input type="text" class="todo-input" />
       <button class="todo-button" type="submit">
         <i class="fas fa-plus-square"></i>
