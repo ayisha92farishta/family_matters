@@ -2,10 +2,10 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  //Get all recipes 
+  //Get all public and user recipes 
   router.get("/", (req, res) => {
-    const userId = 3; 
-    db.query(`SELECT * FROM recipes WHERE user_id = $1;`, [ userId])
+    const accountId = 4; 
+    db.query(`SELECT * FROM recipes WHERE account_id = $1;`, [ accountId])
       .then(data => {
         const recipes = data.rows;
         res.json({ recipes });
@@ -37,7 +37,7 @@ module.exports = (db) => {
     const { name, preparation_time, cooking_time, serving, ingredients, instructions } = req.body;
     const userId = 1;
     const account_id = 1;
-    db.query(`INSERT INTO recipes (name , preparation_time, cooking_time, serving, ingredients, instructions, user_id, account_id ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [ name, preparation_time, cooking_time, serving, ingredients, instructions, userId, account_id ])
+    db.query(`INSERT INTO recipes (name , preparation_time, cooking_time, serving, ingredients, instructions, account_id, user_id ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [ name, preparation_time, cooking_time, serving, ingredients, instructions, account_id, userId ])
       .then(data => {
         console.log(data.rows[0]);
         const newRecipe = {
@@ -81,7 +81,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   })
-  //Delete a contact for a user
+  //Delete a recipe for a user
   router.delete("/:id", (req, res) =>{
     const recipeId = req.params.id;
     db.query(`DELETE FROM recipes WHERE id = $1`, [recipeId])
