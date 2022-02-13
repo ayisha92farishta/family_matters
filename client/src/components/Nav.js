@@ -6,6 +6,8 @@ function Nav() {
   return (    
     <nav className='top_nav'>  
 
+    <h1>Welcome Back [user]!</h1>
+
       <ul className='nav-links'>
        
         <Link to='/'>
