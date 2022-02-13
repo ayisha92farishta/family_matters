@@ -48,11 +48,13 @@ app.use(express.urlencoded({ extended: true }));//??
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
+const recipeRoutes = require("./routes/recipes");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your owna
 app.use("/", usersRoutes(db));
 app.use("/api/auth", authRoutes(db));
+app.use("/api/recipes", recipeRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
