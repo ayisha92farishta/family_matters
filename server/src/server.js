@@ -30,9 +30,9 @@ const eventsRoutes = require("./routes/events");
 
 // Mount all resource routes
 //app.use("/", usersRoutes(db));
-app.use("/", eventsRoutes(db));
+app.use("/", usersRoutes(db));
 app.use("/api/auth", authRoutes(db));
-app.use("/api/events", authRoutes(db));
+app.use("/api/events", eventsRoutes(db));
 
 // Home page
 app.get("/", (req, res) => {
