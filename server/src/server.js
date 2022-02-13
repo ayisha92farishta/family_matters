@@ -26,12 +26,15 @@ app.use(express.urlencoded({ extended: true }));//??
 // Separated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
+const listRoutes = require("./routes/lists");
 const eventsRoutes = require("./routes/events");
 
 // Mount all resource routes
 //app.use("/", usersRoutes(db));
 app.use("/", usersRoutes(db));
 app.use("/api/auth", authRoutes(db));
+app.use("/api/lists", listRoutes(db));
+// Note: mount other resources here, using the same pattern above
 app.use("/api/events", eventsRoutes(db));
 
 // Home page
