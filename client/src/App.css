@@ -37,8 +37,6 @@ code {
 }
 
 
-
-
 *, :before, :after {
   box-sizing: border-box;
 }
@@ -158,3 +156,12 @@ code {
   left: 0;
 }
 
+.home-icons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home-icons img{
+  height: 15em;
+  width: 15em;
+}
