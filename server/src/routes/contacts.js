@@ -36,7 +36,8 @@ module.exports = (db) => {
     console.log(req.body);
     const { name, phone_number, email, address } = req.body;
     const userId = 1;
-    db.query(`INSERT INTO contacts (name, phone_number, email, address) VALUES ($1, $2, $3, $4)`, [ name, phone_number, email, address])
+    const accountId = 1;
+    db.query(`INSERT INTO contacts (name, phone_number, email, address, account_id, user_id) VALUES ($1, $2, $3, $4, $5, $6)`, [ name, phone_number, email, address, accountId, userId])
       .then(data => {
         console.log(data.rows[0]);
         const newContact = {
