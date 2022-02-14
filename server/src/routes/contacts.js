@@ -4,8 +4,8 @@ const router  = express.Router();
 module.exports = (db) => {
   //Get all contacts for a user
   router.get("/", (req, res) => {
-    const userId = 1;
-    db.query(`SELECT * FROM contacts WHERE user_id = $1;`, [ userId])
+    // const userId = 1;
+    db.query(`SELECT * FROM contacts ;`)
       .then(data => {
         const contacts = data.rows;
         res.json({ contacts });
@@ -35,11 +35,14 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     console.log(req.body);
     const { name, phone_number, email, address } = req.body;
+    console.log('name = ', name)
     const userId = 1;
     const accountId = 1;
-    db.query(`INSERT INTO contacts (name, phone_number, email, address, account_id, user_id) VALUES ($1, $2, $3, $4, $5, $6)`, [ name, phone_number, email, address, accountId, userId])
+    const values = [ name, phone_number, email, address, accountId, userId];
+    console.log('values = ', values);
+    db.query(`INSERT INTO contacts (name, phone_number, email, address, account_id, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`, values )
       .then(data => {
-        console.log(data.rows[0]);
+        console.log('data = ', data.rows[0]);
         const newContact = {
           name : data.rows[0].name,
           phone_number : data.rows[0].phone_number,
