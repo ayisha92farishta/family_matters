@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 8080;
 //const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));//??
 // Separated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
+const recipeRoutes = require("./routes/recipes");
 const contactRoutes = require("./routes/contacts");
 const listRoutes = require("./routes/lists");
 const eventsRoutes = require("./routes/events");
@@ -34,6 +35,7 @@ const eventsRoutes = require("./routes/events");
 //app.use("/", usersRoutes(db));
 app.use("/", usersRoutes(db));
 app.use("/api/auth", authRoutes(db));
+app.use("/api/recipes", recipeRoutes(db));
 app.use("/api/contacts", contactRoutes(db));
 app.use("/api/lists", listRoutes(db));
 // Note: mount other resources here, using the same pattern above
