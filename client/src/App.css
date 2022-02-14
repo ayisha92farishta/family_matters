@@ -152,7 +152,7 @@ code {
 }
 
 
-.lists{
+.list-container{
   display: flex;
   justify-content: space-evenly;
   padding-left: 100px ;
