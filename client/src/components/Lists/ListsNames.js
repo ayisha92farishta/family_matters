@@ -42,11 +42,16 @@ console.log("List names----------------------",listNames);
             <td>Shoes</td>
           </tr> */}
           
-         {listNames.map(name => (
-            <tr>
-            <td>{name.list}</td>
+         {listNames.map(list => (
+            <tr key={list.list_id}>
+            <td>{list.list}</td>
             <td>Edit</td>
-            <td>Delete</td>
+            <td>
+              <button 
+              className='btn btn-danger'
+              onClick={() => deleteList(list.list_id)}
+              >Delete</button>
+            </td>
           </tr>
           )) 
        }
