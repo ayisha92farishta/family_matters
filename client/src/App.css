@@ -2,9 +2,11 @@
   text-align: center;
 }
 
+
 body {
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(90deg, #91a3d8 0%, #ffffff 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -18,12 +20,14 @@ code {
 }
 
 
+/* top-nav styling */
+
 .top_nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background-color: #91a3d8b6;
+  background-color: #13161fb6;
   color: white;
 }
 
@@ -36,6 +40,7 @@ code {
   color: white;
 }
 
+/* sidebar styling */
 
 *, :before, :after {
   box-sizing: border-box;
@@ -59,6 +64,7 @@ code {
 
 .header {
   position: fixed;
+  padding-top: 80px;
   left: 0;
   top: 0;
   bottom: 0;
@@ -107,27 +113,6 @@ code {
 .main-nav a:hover {
   color: #fff;
 }
-/* 
-.social-links {
-  border-bottom: solid 1px #1a1c20;
-}
-.social-links li {
-  width: 25%;
-  border-left: solid 1px #ebe6e4;
-}
-.social-links li:first-child {
-  border: none;
-}
-.social-links a {
-  display: block;
-  height: 5.5em;
-  text-align: center;
-  color: #3C3735;
-  font: 0.75em/5.5em "Source Sans Pro", Helvetica, Arial, sans-serif;
-}
-.social-links a:hover {
-  color: #fff;
-} */
 
 .list-hover-slide li {
   position: relative;
@@ -164,4 +149,28 @@ code {
 .home-icons img{
   height: 15em;
   width: 15em;
+}
+
+
+.list-container{
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 100px ;
+}
+
+
+.list-form {
+  padding-left: 100px;
+}
+
+.event_modal{
+  position: absolute;
+  background: rgba(0, 0, 0, 0.726);
+  height: 33%;
+  width: 33%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
