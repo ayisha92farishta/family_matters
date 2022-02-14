@@ -4,8 +4,8 @@ function ListTodos() {
   return (
     <> 
     
-    <table class="table  my-5">
-  <thead class="thead-dark">
+    <table className="table  my-5">
+  <thead className="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Description</th>
