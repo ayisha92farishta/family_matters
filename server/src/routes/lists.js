@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
   //Get all lists for a user private and public
   router.get("/", (req, res) => {
-    const userId = 4; //How to get user_id
+    const userId = 3; //How to get user_id
     const accountId = 3; //How to get account_id
     db.query(`SELECT DISTINCT lists.name as list, list_items.item_name as item
               FROM lists
@@ -43,7 +43,7 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     console.log(req.body); //Will items be grouped together in an array for one specific list? 
     const listName = req.body.description; // req.body.list;
-    const items = ['Clean the room', 'Clean the dishes']; //req.body.items; Will this be an array ? 
+    const items = [req.body.listItem]; //req.body.items; Will this be an array ? 
     const userId = 1; //How to get userId ?
     const accountId = 1; //How to get accountId ?
     db.query(`INSERT INTO lists (name, is_private) VALUES ($1, $2) RETURNING *;`, [ listName, false ] )
