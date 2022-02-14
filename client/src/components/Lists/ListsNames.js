@@ -34,17 +34,10 @@ console.log("List names----------------------",listNames);
             <th scope="col">Delete</th>
           </tr>
         </thead>
-        <tbody>
-          {/* <tr>
-            <th scope="row">1</th>
-            <td>Bags</td>
-            <td>Dresses</td>
-            <td>Shoes</td>
-          </tr> */}
-          
+        <tbody>          
          {listNames.map(list => (
-            <tr key={list.list_id}>
-            <td>{list.list}</td>
+            <tr key={list.id}>
+            <td>{list.name}</td>
             <td>Edit</td>
             <td>
               <button 
@@ -54,7 +47,7 @@ console.log("List names----------------------",listNames);
             </td>
           </tr>
           )) 
-       }
+         }
 
         </tbody>
       </table>

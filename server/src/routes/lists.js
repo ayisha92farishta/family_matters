@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
   //Get all lists for a user private and public
   router.get("/", (req, res) => {
-    const userId = 3; //How to get user_id
+    const userId = 4; //How to get user_id
     const accountId = 3; //How to get account_id
     db.query(`SELECT DISTINCT lists.id as id, lists.name as name
               FROM lists

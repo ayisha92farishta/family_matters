@@ -27,13 +27,6 @@ function ListsInput () {
         <h1 className='text-center'>Shopping List</h1>
         <form className='list-form d-flex my-5' >   
 
-          <input           
-          type="text" 
-          placeholder='Add list name' 
-          className="form-control" 
-          value={description}
-          onChange={e => setDescription(e.target.value)} 
-          />
            <input           
           type="text" 
           placeholder='Add item' 
