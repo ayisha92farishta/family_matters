@@ -1,8 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import ListEdit from './ListEdit';
 
 function ListsNames() {
   const [listNames, setListNames] = useState([])
+
+
+  const deleteListName = (id) => {
+
+    axios.delete('/api/lists/${id}')
+    .then(res => {
+
+    })
+  }
 
   const getListNames = () => {
     //const body = ({description, listItem});
@@ -21,7 +31,7 @@ function ListsNames() {
     getListNames();
   }, [])
   
-console.log("List names----------------------",listNames);
+//console.log("List names----------------------",listNames);
   return (
     
     <>
@@ -38,11 +48,13 @@ console.log("List names----------------------",listNames);
          {listNames.map(list => (
             <tr key={list.id}>
             <td>{list.name}</td>
-            <td>Edit</td>
+            <td>
+              <ListEdit />
+            </td>
             <td>
               <button 
               className='btn btn-danger'
-              
+              onClick={() => {deleteListName(list.id)}}
               >Delete</button>
             </td>
           </tr>
