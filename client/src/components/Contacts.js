@@ -55,13 +55,13 @@ export default function Contacts() {
             <td>{contact.email}</td>
             <td>{contact.address}</td>
             <td>
-              <button type="button" class="btn btn-outline-primary" 
+              <button type="button" class="btn btn-warning" 
                 onClick={() => editContact(contact.id)}>
                 Edit
               </button>
             </td>
             <td>
-              <button type="button" class="btn btn-outline-danger" 
+              <button type="button" class="btn btn-danger" 
                 onClick={() => deleteContact(contact.id)}>
                   Delete
               </button>
@@ -72,7 +72,7 @@ export default function Contacts() {
     </table>
     <div>
       <Link to="/contactsForm">
-        <button type="button">
+        <button type="button" class="btn btn-info">
           New Contact
         </button>
       </Link>
