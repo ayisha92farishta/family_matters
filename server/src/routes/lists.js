@@ -41,7 +41,7 @@ module.exports = (db) => {
   //Create a new list
   router.post("/", (req, res) => {
     console.log(req.body);
-    const listName = req.body.list;
+    const listName = req.body.newList;
     const item = req.body.item; 
     const userId = 1; //How to get userId ?
     const accountId = 1; //How to get accountId ?
