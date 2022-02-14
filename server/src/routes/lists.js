@@ -42,46 +42,47 @@ module.exports = (db) => {
   //Create a new list
   router.post("/", (req, res) => {
     console.log(req.body); //Will items be grouped together in an array for one specific list? 
-    // const listName = 'Chores'; // req.body.list;
-    // const items = ['Clean the room', 'Clean the dishes']; //req.body.items; Will this be an array ? 
-    // const userId = 1; //How to get userId ?
-    // const accountId = 1; //How to get accountId ?
-    // db.query(`INSERT INTO lists (name, is_private) VALUES ($1, $2) RETURNING *;`, [ listName, false ] )
-    //   .then(data => {
-    //     const listId = data.rows[0].id;
-    //     db.query(`INSERT INTO user_lists (user_id, list_id, account_id) VALUES ($1, $2, $3) RETURNING *;`, [ userId, listId, accountId])
-    //       .then(data => {
-    //         console.log(data.rows[0]);
-    //         items.forEach((item) => {
-    //           db.query(`INSERT INTO list_items (item_name, list_id, user_id) VALUES ($1, $2, $3) RETURNING *;`, [ item, listId, userId ])
-    //             .then(data => {
-    //               console.log(data.rows[0]);
-    //               const listId = data.rows[0].list_id;
-    //               const newList = {
-    //                 list : listId, //how to get list name instead ?
-    //                 items : data.rows[0].items //will this be an array ? 
-    //               }
-    //               res.json( {newList} );
-    //             })
-    //             .catch(err => {
-    //               res
-    //                 .status(500)
-    //                 .json({ error: err.message });
-    //             });
-    //         })
+    const listName = req.body.description; // req.body.list;
+    const items = ['Clean the room', 'Clean the dishes']; //req.body.items; Will this be an array ? 
+    const userId = 1; //How to get userId ?
+    const accountId = 1; //How to get accountId ?
+    db.query(`INSERT INTO lists (name, is_private) VALUES ($1, $2) RETURNING *;`, [ listName, false ] )
+      .then(data => {
+        const listId = data.rows[0].id;
+        console.log(listId)
+      //   db.query(`INSERT INTO user_lists (user_id, list_id, account_id) VALUES ($1, $2, $3) RETURNING *;`, [ userId, listId, accountId])
+          .then(data => {
+            console.log(data.rows[0]);
+             
+              db.query(`INSERT INTO list_items (item_name, list_id, user_id) VALUES ($1, $2, $3) RETURNING *;`, [ item, listId, userId ])
+                .then(data => {
+                  console.log(data.rows[0]);
+                  const listId = data.rows[0].list_id;
+                  const newList = {
+                    list : listId, //how to get list name instead ?
+                    items : data.rows[0].items //will this be an array ? 
+                  }
+                  res.json( {newList} );
+                })
+                .catch(err => {
+                  res
+                    .status(500)
+                    .json({ error: err.message });
+                });
+              })
             
-    //       })
-    //       .catch(err => {
-    //         res
-    //           .status(500)
-    //           .json({ error: err.message });
-    //       });
-    //   })
-    //   .catch(err => {
-    //     res
-    //       .status(500)
-    //       .json({ error: err.message });
-    //   });
+      //     })
+      //     .catch(err => {
+      //       res
+      //         .status(500)
+      //         .json({ error: err.message });
+      //     });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
     });
     //Update a list
     router.put("/:id", (req, res) => {

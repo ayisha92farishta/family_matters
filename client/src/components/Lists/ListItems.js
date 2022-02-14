@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 
-function ListTodos() {
+function ListItems() {
   return (
     <> 
     
@@ -27,4 +27,4 @@ function ListTodos() {
   )
 }
 
-export default ListTodos
+export default ListItems

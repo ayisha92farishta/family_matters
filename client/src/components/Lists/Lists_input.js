@@ -4,12 +4,14 @@ import React, {useState} from 'react';
 function ListsInput () {
   //useState
   const [description, setDescription] = useState("");
-  console.log(description);
+  //console.log(description);
+  const [listItem, setListItem] = useState("");
 
   const onSubmitForm = (e) => {
-    e.PreventDefault();
-    
-    const body = {description};
+    e.preventDefault();
+    //console.log({description});
+
+    const body = ({description, listItem});
 
     axios.post('/api/lists', body)
     .then(res => {
@@ -23,16 +25,23 @@ function ListsInput () {
       
       <div className='list'>
         <h1 className='text-center'>Shopping List</h1>
-        <form className='list-form d-flex my-5' onSubmit={onSubmitForm}>   
+        <form className='list-form d-flex my-5' >   
 
           <input           
           type="text" 
-          placeholder='Add item' 
+          placeholder='Add list name' 
           className="form-control" 
           value={description}
           onChange={e => setDescription(e.target.value)} 
           />
-          <button className="btn btn-success" type="submit">
+           <input           
+          type="text" 
+          placeholder='Add item' 
+          className="form-control" 
+          value={listItem}
+          onChange={e => setListItem(e.target.value)} 
+          />
+          <button className="btn btn-success" type="submit" onClick={onSubmitForm}>
             Add
           </button>
         </form>
