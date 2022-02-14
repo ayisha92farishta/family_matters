@@ -147,8 +147,8 @@ code {
 }
 
 .home-icons img{
-  height: 20rem;
-  width: 20rem;
+  height: 15em;
+  width: 15em;
 }
 
 
@@ -161,4 +161,16 @@ code {
 
 .list-form {
   padding-left: 100px;
+}
+
+.event_modal{
+  position: absolute;
+  background: rgba(0, 0, 0, 0.726);
+  height: 33%;
+  width: 33%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }

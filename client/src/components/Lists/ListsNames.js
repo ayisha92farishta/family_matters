@@ -49,7 +49,7 @@ console.log("List names----------------------",listNames);
             <td>
               <button 
               className='btn btn-danger'
-              onClick={() => deleteList(list.list_id)}
+              
               >Delete</button>
             </td>
           </tr>
