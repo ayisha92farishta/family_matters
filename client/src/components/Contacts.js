@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import EditContact from './EditContact';
 import "./Contacts.css";
-import { SpaTwoTone } from '@mui/icons-material';
 
 export default function Contacts() {
   const [contacts, setContact] = useState([])
@@ -21,21 +20,14 @@ export default function Contacts() {
     const delContact = axios.delete(`/api/contacts/${id}`)
     setContact(contacts.filter(contact => contact.id !== id))
   }
-  const editContact = (id) => {
-    const editContact = axios.put(`/api/contacts/${id}`)
-    .then(res => {
-      console.log(res.data);
-      
-    })
-
-  }
+  
   useEffect(() => {
     getContacts();
   }, [])
   console.log('c =', contacts)
   return (
     
-    <div class="container"><h2 id='title'>Contacts</h2>
+    <div class="container"><h2 id='title'>My Contacts</h2>
              
     <table class="table table-bordered" id='contacts'>
       <thead class="thead-dark">
@@ -55,10 +47,7 @@ export default function Contacts() {
             <td>{contact.email}</td>
             <td>{contact.address}</td>
             <td>
-              <button type="button" class="btn btn-warning" 
-                onClick={() => editContact(contact.id)}>
-                Edit
-              </button>
+              <EditContact contact={contact}/>
             </td>
             <td>
               <button type="button" class="btn btn-danger" 
