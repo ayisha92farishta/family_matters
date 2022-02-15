@@ -46,9 +46,10 @@ export default function Contacts() {
   console.log('allContacts =', contacts)
   return (
     
-    <div class="container"><h2 id='title'>My Contacts</h2>
+    <div class="container" >
+      <h2 id='title'>My Contacts</h2>
              
-    <table class="table table-bordered" id='contacts'>
+    <table class="table table-bordered" id='contacts' >
       <thead class="thead-dark">
         <tr>
           <th>Name</th>
