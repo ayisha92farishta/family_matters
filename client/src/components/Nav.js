@@ -3,21 +3,19 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 
 function Nav() {
+
+  const username = localStorage.getItem("first_name");
+
+  console.log(username)
+
   return (    
-    <nav className='top_nav'>  
 
-    <h1>Welcome Back [user]!</h1>
+    <nav className='top_nav'>     
 
-      <ul className='nav-links'>
-       
-        <Link to='/'>
-          <li>Sign in</li>
-        </Link>
-        <Link to='/signup'>
-          <li>Signout</li>
-        </Link>
-      </ul> 
-      
+    <h1>Welcome Back {username} !</h1>
+      <ul className='nav-links'>        
+        <li ><a href="/signup">Sign up</a></li>
+      </ul>       
     </nav>     
   );
 }
