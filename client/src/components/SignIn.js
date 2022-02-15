@@ -50,6 +50,7 @@ export default function SignInSide() {
         console.log("RESULT______>", res);
         localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('account_id', res.data.account_id);
+        localStorage.setItem('first_name', res.data.first_name);
         navigate('/home');
         //return <Navigate to='/home'/>
       });

@@ -5,12 +5,10 @@ const router = express.Router();
 module.exports = (db) => {
   
   router.post('/login', (req, res) => {
-    console.log("HERE I AM!!!")
     console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
-    db.query(`SELECT id, first_name, password, account_id FROM users WHERE email = $1`, [email])
-    
+    db.query(`SELECT id, first_name, password, account_id FROM users WHERE email = $1`, [email])    
       
     .then((data) => {
       
@@ -22,6 +20,7 @@ module.exports = (db) => {
         return res.send('Invalid user! Please enter a valid email and password')
       } 
       const login_data = {
+        first_name : data.rows[0].first_name,
         user_id : data.rows[0].id, 
         account_id : data.rows[0].account_id
       };
