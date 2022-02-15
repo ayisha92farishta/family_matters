@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditContact from './EditContact';
 import "./Contacts.css";
@@ -10,12 +9,32 @@ export default function Contacts() {
   const [contacts, setContact] = useState([])
   const navigate = useNavigate();
   const getContacts = () => {
-    const listContacts = axios.get('/api/contacts')
+    return axios.get('/api/contacts')
       .then(response => {
         console.log(response.data.contacts);
         setContact(response.data.contacts)
       })
   }
+  
+  const updateContact = (body) => {
+    return axios.put(`/api/contacts/${body.id}`, body, {
+      headers: {
+      'Content-Type': 'application/json'
+      }})
+    .then(res => {
+      console.log('response = ', res.data);
+      const newContacts = contacts.map(contact => {
+        if (contact.id === res.data.updatedContact.id) {
+          return { ...res.data.updatedContact }
+        } else {
+          return { ...contact }
+        }
+      })
+      setContact([...newContacts])
+      navigate('/contacts');
+    })
+  }
+
   const deleteContact = (id) => {
     const delContact = axios.delete(`/api/contacts/${id}`)
     setContact(contacts.filter(contact => contact.id !== id))
@@ -24,7 +43,7 @@ export default function Contacts() {
   useEffect(() => {
     getContacts();
   }, [])
-  console.log('c =', contacts)
+  console.log('allContacts =', contacts)
   return (
     
     <div class="container"><h2 id='title'>My Contacts</h2>
@@ -47,7 +66,7 @@ export default function Contacts() {
             <td>{contact.email}</td>
             <td>{contact.address}</td>
             <td>
-              <EditContact contact={contact}/>
+              <EditContact contact={contact} updateContact={updateContact} />
             </td>
             <td>
               <button type="button" class="btn btn-danger" 
