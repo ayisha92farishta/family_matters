@@ -4,8 +4,10 @@ const router = express.Router();
 module.exports = (db) => {
   //Get all lists for a user private and public
   router.get("/", (req, res) => {
-    const userId = 1; //How to get user_id
-    const accountId = 1; //How to get account_id
+    const userId = req.query.userId; //How to get user_id
+    console.log("Server-----", userId)
+    const accountId = req.query.accountId;; //How to get account_id
+    console.log("Server-----",accountId)
     db.query(`SELECT DISTINCT lists.id as id, lists.name as name
               FROM lists
               JOIN user_lists ON lists.id = user_lists.list_id 
@@ -20,6 +22,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   //Get specific list and its items for a user
   router.get("/:id", (req, res) => {
     userId = 1; 

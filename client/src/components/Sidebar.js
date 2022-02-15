@@ -17,7 +17,7 @@ function Sidebar() {
         <li><a href="/meals">Meals</a></li>
         <li><a href="/recipes">Recipes</a></li>
         <li><a href="/contacts">Contacts</a></li>
-        <li><a href="/signup">Add a member</a></li>  
+        <li><a href="/">SignIn</a></li>  
 
       </ul>
     </nav>

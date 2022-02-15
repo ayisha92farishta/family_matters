@@ -6,8 +6,9 @@ function ListsNames() {
   const [listNames, setListNames] = useState([])
   
   const userId = localStorage.getItem('user_id');
+  const accountId = localStorage.getItem('account_id');
 
-  console.log('userid------>', userId)
+  console.log('userid------>', userId, 'Account id', accountId)
 
   const deleteListName = (id) => {
 
@@ -20,7 +21,7 @@ function ListsNames() {
   const getListNames = () => {
     //const body = ({description, listItem});
 
-    axios.get('/api/lists')
+    axios.get(`/api/lists/?userId=${userId}&accountId=${accountId}`)
     .then(res => {
       const listNameArray = res.data.lists;
       //console.log(listNameArray);
