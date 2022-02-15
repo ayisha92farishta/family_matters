@@ -58,9 +58,8 @@ module.exports = (db) => {
 
 
     router.delete("/:id", (req, res) => {
-      console.log("DELETE LIST")
-      console.log(req.params);
-      db.query(`DELETE FROM lists WHERE id = $1`, req.params.id)
+      const list_id = req.params.id
+      db.query(`DELETE FROM lists WHERE id = $1`, [list_id])
         .then(data => {
           console.log("SERVER line 65",data.rows[0]);
         })
@@ -127,7 +126,7 @@ module.exports = (db) => {
     //Update an item inside a list
 
 
-    router.put("/item/:id", (req, res) => {
+    router.put("/items/:id", (req, res) => {
       console.log(req.body);
       const itemId = req.params.id;
       const { name, listId } = req.body;
@@ -147,7 +146,7 @@ module.exports = (db) => {
     //Delete an item from the list
 
 
-    router.delete("/item/:id", (req, res) => {
+    router.delete("/items/:id", (req, res) => {
       console.log(req.params.id);
       db.query(`DELETE FROM list_items WHERE id = $1`, req.params.id)
         .then(data => {

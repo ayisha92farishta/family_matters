@@ -12,8 +12,8 @@ function ListsNames() {
   // console.log('userid------>', userId, 'Account id', accountId)
 
 //function to delete a list
-  const deleteListName = (id) => {
-   const deleteList = axios.delete(`/api/lists/${id}`)
+  const deleteList = (id) => {
+   const deleteListName = axios.delete(`/api/lists/${id}`)
    setListNames(listNames.filter(list => list.id !== id))    
   }
 
@@ -54,7 +54,7 @@ function ListsNames() {
             <td>
               <button 
               className='btn btn-danger'
-              onClick={() => {deleteListName(list.id)}}
+              onClick={() => deleteList(list.id)}
               >Delete</button>
             </td>
           </tr>

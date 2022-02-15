@@ -11,22 +11,29 @@ function ListItems() {
 
   const [itemNames, setItemNames] = useState([])
 
+//function to get items
   const getItemNames = () => {    
+    console.log("making api call to get list item")
     axios.get(`/api/lists/items/?userId=${userId}&listId=${listId}`)
     .then(res => {
-      // const itemNameArray = res;      
-      // setItemNames(itemNameArray)
-      console.log("item res---------", res);
-    });
-
-    
+       const itemNameArray = res.data.lists;      
+       setItemNames(itemNameArray)
+      //console.log("item res---------", itemNameArray);
+    });    
   };
 
-  // useEffect(() => {
-  //   getItemNames();
-  // }, [])
+  useEffect(() => {
+    getItemNames();
+  }, [])
+
+
+  //function to delete a list
+  const deleteItem = (id) => {
+    const deleteitem = axios.delete(`/api/lists/items/${id}`)
+    setItemNames(itemNames.filter(item => item.id !== id))    
+   }
   
-console.log("item names----------------------",itemNames);
+//console.log("item names----------------------",itemNames);
   return (
     <>     
     <table className="table  my-5">
@@ -34,23 +41,23 @@ console.log("item names----------------------",itemNames);
         <tr>
           <th scope="col">#</th>
           <th scope="col">Description</th>
-          <th scope="col">Edit</th>
           <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
-        {/* {itemNames.map(item => (
+         {itemNames.map(item => (
                 <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>Edit</td>
+                <td>{item.id}</td>
+                <td>{item.item}</td>
                 <td>
-                  <button 
-                  className='btn btn-danger'
-                  >Delete</button>
+                <button 
+              className='btn btn-danger'
+              onClick={() => deleteItem(item.id)}
+              >Delete</button>
                 </td>
               </tr>
               )) 
-            }  */}
+            }  
       </tbody>
     </table>
   
