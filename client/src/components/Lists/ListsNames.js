@@ -5,6 +5,7 @@ import ListEdit from './ListEdit';
 function ListsNames() {
   const [listNames, setListNames] = useState([])
   
+  //getting account and userid from local storage
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
 

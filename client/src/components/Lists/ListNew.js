@@ -3,20 +3,26 @@ import axios from 'axios';
 
 function ListNew() {
      //useState
+     
      const [newList, setNewList] = useState("");
      //console.log(description);
       
-     const onSubmitForm = (e) => {
+      //getting account and userid from local storage
+      const userId = localStorage.getItem('user_id');
+      const accountId = localStorage.getItem('account_id');
+
+      console.log('userid------>', userId, 'Account id', accountId)
+
+      const onSubmitForm = (e) => {
        e.preventDefault();
        //console.log({description});
    
        const body = ({newList});
    
-       axios.post('/api/lists', body)
+       axios.post(`/api/lists/?userId=${userId}&accountId=${accountId}`, body)
        .then(res => {
          console.log('newlists------------',res);
-       });
-   
+       });   
      };
   return (
     <>
