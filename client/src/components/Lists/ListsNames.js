@@ -9,14 +9,12 @@ function ListsNames() {
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
 
-  console.log('userid------>', userId, 'Account id', accountId)
+  // console.log('userid------>', userId, 'Account id', accountId)
 
 //function to delete a list
   const deleteListName = (id) => {
-    axios.delete(`/api/lists/${id}`)
-    .then(res => {
-      console.log('Delete res------->', res)
-    })
+   const deleteList = axios.delete(`/api/lists/${id}`)
+   setListNames(listNames.filter(list => list.id !== id))    
   }
 
 // function to get list names
@@ -56,7 +54,7 @@ function ListsNames() {
             <td>
               <button 
               className='btn btn-danger'
-              onClick={deleteListName(list.id)}
+              onClick={() => {deleteListName(list.id)}}
               >Delete</button>
             </td>
           </tr>

@@ -58,11 +58,11 @@ module.exports = (db) => {
 
 
     router.delete("/:id", (req, res) => {
-      
+      console.log("DELETE LIST")
       console.log(req.params);
       db.query(`DELETE FROM lists WHERE id = $1`, req.params.id)
         .then(data => {
-          console.log(data.rows[0]);
+          console.log("SERVER line 65",data.rows[0]);
         })
         .catch(err => {
           res
@@ -101,10 +101,10 @@ module.exports = (db) => {
   //Get specific list and its items for a user
 
 
-  router.get("/:id", (req, res) => {
-    userId = 1; 
-    listId = req.params.id;
-    db.query(`SELECT lists.name as name, item_name as item
+  router.get("/items", (req, res) => {
+    const userId = req.query.userId;  
+    const listId = req.query.listId;
+    db.query(`SELECT list_items.id as id, lists.name as name, item_name as item
               FROM list_items
               JOIN lists ON list_id = lists.id
               WHERE user_id = $1 AND list_id = $2;`, [ userId, listId ])
