@@ -1,9 +1,91 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import EditContact from './EditContact';
+import "./Contacts.css";
 
-function Contacts() {
+export default function Contacts() {
+  const [contacts, setContact] = useState([])
+  const navigate = useNavigate();
+  const getContacts = () => {
+    return axios.get('/api/contacts')
+      .then(response => {
+        console.log(response.data.contacts);
+        setContact(response.data.contacts)
+      })
+  }
+  
+  const updateContact = (body) => {
+    return axios.put(`/api/contacts/${body.id}`, body, {
+      headers: {
+      'Content-Type': 'application/json'
+      }})
+    .then(res => {
+      console.log('response = ', res.data);
+      const newContacts = contacts.map(contact => {
+        if (contact.id === res.data.updatedContact.id) {
+          return { ...res.data.updatedContact }
+        } else {
+          return { ...contact }
+        }
+      })
+      setContact([...newContacts])
+      navigate('/contacts');
+    })
+  }
+
+  const deleteContact = (id) => {
+    const delContact = axios.delete(`/api/contacts/${id}`)
+    setContact(contacts.filter(contact => contact.id !== id))
+  }
+  
+  useEffect(() => {
+    getContacts();
+  }, [])
+  console.log('allContacts =', contacts)
   return (
-    <h1>This is the Contacts Page</h1>
-  )
+    
+    <div class="container" >
+      <h2 id='title'>My Contacts</h2>
+             
+    <table class="table table-bordered" id='contacts' >
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th colspan='2'>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        { contacts.map(contact => (
+          <tr key={contact.id}>
+            <td>{contact.name}</td>
+            <td>{contact.phone_number}</td>
+            <td>{contact.email}</td>
+            <td>{contact.address}</td>
+            <td>
+              <EditContact contact={contact} updateContact={updateContact} />
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" 
+                onClick={() => deleteContact(contact.id)}>
+                  Delete
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <div>
+      <Link to="/contactsForm">
+        <button type="button" class="btn btn-info">
+          New Contact
+        </button>
+      </Link>
+    </div>
+    </div>
+);
 }
-
-export default Contacts

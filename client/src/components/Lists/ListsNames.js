@@ -4,7 +4,10 @@ import ListEdit from './ListEdit';
 
 function ListsNames() {
   const [listNames, setListNames] = useState([])
+  
+  const userId = localStorage.getItem('user_id');
 
+  console.log('userid------>', userId)
 
   const deleteListName = (id) => {
 
@@ -23,7 +26,6 @@ function ListsNames() {
       //console.log(listNameArray);
       setListNames(listNameArray)
     });
-
     
   };
 

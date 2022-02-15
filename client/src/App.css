@@ -26,6 +26,7 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-left: 100px;
   min-height: 10vh;
   background-color: #13161fb6;
   color: white;
@@ -37,6 +38,10 @@ code {
   justify-content: space-around;
   align-items: center;
   list-style-type: none;
+  color: white;
+  font-size:30px;
+}
+.nav-links a {
   color: white;
 }
 

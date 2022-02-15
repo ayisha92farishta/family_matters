@@ -8,16 +8,21 @@ module.exports = (db) => {
     console.log(req.body);
     const email = req.body.email;
     const password = req.body.password;
-    db.query(`SELECT id, first_name, password FROM users WHERE email = $1`, [email])
+    db.query(`SELECT id, first_name, password, account_id FROM users WHERE email = $1`, [email])    
+      
     .then((data) => {
+      
       const first_name = data.rows[0].first_name;
+      
       const dbPass = data.rows[0].password;
 
       if (!bcrypt.compareSync(password, dbPass)) {
         return res.send('Invalid user! Please enter a valid email and password')
       } 
       const login_data = {
-        user_id : data.rows[0].id
+        first_name : data.rows[0].first_name,
+        user_id : data.rows[0].id, 
+        account_id : data.rows[0].account_id
       };
       res.json( login_data )
     })
