@@ -3,6 +3,9 @@ import React, {useState} from 'react';
 
 function ListsInput () {
   //useState
+
+  // const [user, setUser] = 
+
   const [description, setDescription] = useState("");
   //console.log(description);
   const [listItem, setListItem] = useState("");
