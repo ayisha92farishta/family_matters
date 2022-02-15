@@ -34,7 +34,6 @@ module.exports = (db) => {
   //Create a new list
 
 
-
   router.post("/", (req, res) => {
     console.log(req.body);
     const listName = req.body.newList;
@@ -59,6 +58,7 @@ module.exports = (db) => {
 
 
     router.delete("/:id", (req, res) => {
+      
       console.log(req.params);
       db.query(`DELETE FROM lists WHERE id = $1`, req.params.id)
         .then(data => {
@@ -72,7 +72,35 @@ module.exports = (db) => {
     })
 
 
+    //Update a list
+
+
+    router.put("/:id", (req, res) => {
+      console.log(req.body);
+      const listId = req.params.id;
+      const { name } = req.body;
+      const is_private = false;
+      db.query(`UPDATE lists SET name = $1, is_private = $2 WHERE id = $3 ;`, [ name, is_private, listId ] )
+      .then(data => {
+        const newListName = data.rows[0].name;
+        res.json( {newListName} );
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    })
+
+
+
+    //================LIST ITEMS==================
+
+
+
   //Get specific list and its items for a user
+
+
   router.get("/:id", (req, res) => {
     userId = 1; 
     listId = req.params.id;
@@ -91,24 +119,14 @@ module.exports = (db) => {
       });
   });
 
-    //Update a list
-    router.put("/:id", (req, res) => {
-      console.log(req.body);
-      const listId = req.params.id;
-      const { name } = req.body;
-      const is_private = false;
-      db.query(`UPDATE lists SET name = $1, is_private = $2 WHERE id = $3 ;`, [ name, is_private, listId ] )
-      .then(data => {
-        const newListName = data.rows[0].name;
-        res.json( {newListName} );
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-    })
+
+  //Create a new list
+
+  //need a route for that
+
     //Update an item inside a list
+
+
     router.put("/item/:id", (req, res) => {
       console.log(req.body);
       const itemId = req.params.id;
@@ -127,6 +145,8 @@ module.exports = (db) => {
     })
     
     //Delete an item from the list
+
+
     router.delete("/item/:id", (req, res) => {
       console.log(req.params.id);
       db.query(`DELETE FROM list_items WHERE id = $1`, req.params.id)

@@ -4,31 +4,29 @@ import ListEdit from './ListEdit';
 
 function ListsNames() {
   const [listNames, setListNames] = useState([])
-  
-  //getting account and userid from local storage
+
+//getting account and userid from local storage
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
 
   console.log('userid------>', userId, 'Account id', accountId)
 
+//function to delete a list
   const deleteListName = (id) => {
-
-    axios.delete('/api/lists/${id}')
+    axios.delete(`/api/lists/${id}`)
     .then(res => {
-
+      console.log('Delete res------->', res)
     })
   }
 
+// function to get list names
   const getListNames = () => {
-    //const body = ({description, listItem});
-
     axios.get(`/api/lists/?userId=${userId}&accountId=${accountId}`)
     .then(res => {
       const listNameArray = res.data.lists;
       //console.log(listNameArray);
       setListNames(listNameArray)
-    });
-    
+    });    
   };
 
   useEffect(() => {
@@ -58,7 +56,7 @@ function ListsNames() {
             <td>
               <button 
               className='btn btn-danger'
-              onClick={() => {deleteListName(list.id)}}
+              onClick={deleteListName(list.id)}
               >Delete</button>
             </td>
           </tr>

@@ -6,7 +6,7 @@ function Nav() {
 
   const username = localStorage.getItem("first_name");
 
-  console.log(username)
+  // console.log(username)
 
   return (    
 
