@@ -39,7 +39,6 @@ function ListItems() {
     <table className="table  my-5">
       <thead className="thead-dark">
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Description</th>
           <th scope="col">Delete</th>
         </tr>
@@ -47,7 +46,6 @@ function ListItems() {
       <tbody>
          {itemNames.map(item => (
                 <tr key={item.id}>
-                <td>{item.id}</td>
                 <td>{item.item}</td>
                 <td>
                 <button 

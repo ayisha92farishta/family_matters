@@ -147,8 +147,8 @@ module.exports = (db) => {
 
 
     router.delete("/items/:id", (req, res) => {
-      console.log(req.params.id);
-      db.query(`DELETE FROM list_items WHERE id = $1`, req.params.id)
+      const item_id = req.params.id
+      db.query(`DELETE FROM list_items WHERE id = $1`, [item_id])
         .then(data => {
           console.log(data.rows[0]);
         })
