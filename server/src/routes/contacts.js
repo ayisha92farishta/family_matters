@@ -62,13 +62,14 @@ module.exports = (db) => {
     const contact_id = req.params.id;
     // const userId = 1;
     console.log('id = ', req.params.id);
-    console.log('body = ', req.body);
+    console.log('body =======+ ', req.body);
     const { name, phone_number, email, address } = req.body;
     const values = [name, phone_number, email, address, contact_id];
     db.query(`UPDATE contacts SET name = $1, phone_number = $2, email = $3, address = $4 WHERE id = $5 RETURNING *;`, values)
       .then(data => {
         console.log(data.rows[0]);
         const updatedContact = {
+          id: data.rows[0].id,
           name : data.rows[0].name,
           phone_number : data.rows[0].phone_number,
           email : data.rows[0].email,
