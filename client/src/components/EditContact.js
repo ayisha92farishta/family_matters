@@ -1,36 +1,23 @@
-import React, { Fragment, useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { Fragment, useState} from 'react';
 
-function EditContact({contact}) {
+function EditContact(props) {
+  const contact = props.contact;
+  const [name, setName] = useState(contact.name);
+  const [number, setNumber] = useState(contact.phone_number);
+  const [email, setEmail] = useState(contact.email);
+  const [address, setAddress] = useState(contact.address);
 
-  const [name, setName] = useState([contact.name]);
-  const [number, setNumber] = useState([contact.phone_number]);
-  const [email, setEmail] = useState([contact.email]);
-  const [address, setAddress] = useState([contact.address]);
-  
-  const navigate = useNavigate();
-  
   const updateContact = (event) => {
     event.preventDefault();
     const body = {
+      id: contact.id,
       name : name,
       phone_number : number,
       email : email,
       address : address
     };
-    return axios.put(`/api/contacts/${contact.id}`, body, {
-      headers: {
-      'Content-Type': 'application/json'
-      }})
-    .then(res => {
-      console.log(res.data);
-      setName(res.data.name);
-      setNumber(res.data.phone_number);
-      setEmail(res.data.email);
-      setAddress(res.data.address);
-      navigate('/contacts');
-    })
+
+    props.updateContact(body);
   }
   return (
     <Fragment>
@@ -67,16 +54,11 @@ function EditContact({contact}) {
             
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal" onClick={e => updateContact(e)}>Save</button>
-              {/* <button type="button" class="btn btn-secondary">Close</button> */}
+              <button type="button" class="btn btn-success" data-dismiss="modal" onClick={event => updateContact(event)}>Save</button>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
     </Fragment>
     
   )
