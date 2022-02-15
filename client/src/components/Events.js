@@ -19,8 +19,10 @@ const Events = () => {
         title: "Some title"
       }
     ],
-    event_modal:false
+    event_modal:false,
+    s_date: ""
   });
+
   // state = {
   //   events: [
   //     {
@@ -33,18 +35,27 @@ const Events = () => {
   //   ]
   // };
 
-  const createEvent = () => {
+  const createEvent = (e) => {
+    console.log(e.start);
     console.log("ABC");
     setState({
       ...state,
-      event_modal: true
+      event_modal: true,
+      s_date: e.start
+    })
+  }
+
+  const closeCreateEvent = () => {
+    setState({
+      ...state,
+      event_modal: false
     })
   }
 
   //render() {
     return (
       <>
-      {state.event_modal && <Event_new />}
+      {state.event_modal && <Event_new closeCreateEvent={closeCreateEvent} sDate={state.s_date}/>}
       <div className="App">
         <Calendar selectable
           localizer={localizer}
