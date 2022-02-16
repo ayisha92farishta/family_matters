@@ -14,7 +14,7 @@ module.exports = (db) => {
 
     const accountId = req.query.accountId;
 
-    db.query(`SELECT DISTINCT lists.id as id, lists.name as name
+    db.query(`SELECT DISTINCT lists.id as id, lists.name as name      
               FROM lists
               JOIN user_lists ON lists.id = user_lists.list_id 
               WHERE user_lists.account_id = $1 AND lists.is_private = false OR user_lists.user_id = $2 AND lists.is_private = true ;`, [ accountId, userId ])
@@ -37,15 +37,13 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     console.log(req.body);
     const listName = req.body.newList;
-    // const item = req.body.item; 
     const userId = req.query.userId; 
     const accountId = req.query.accountId;
     db.query(`INSERT INTO lists (name) VALUES ($1) RETURNING *;`, [ listName ] )
       .then(data => {
         const listId = data.rows[0].id;
         console.log(listId)
-        db.query(`INSERT INTO user_lists (user_id, list_id, account_id) VALUES ($1, $2, $3) RETURNING *;`, [ userId, listId, accountId])
-          
+        db.query(`INSERT INTO user_lists (user_id, list_id, account_id) VALUES ($1, $2, $3) RETURNING *;`, [ userId, listId, accountId])          
       })
       .catch(err => {
         res
@@ -119,9 +117,32 @@ module.exports = (db) => {
   });
 
 
-  //Create a new list
+  //Create a new list item
 
-  //need a route for that
+  router.post("/items", (req, res) => {
+    console.log("SERVER REC.BODY", req.body);
+    //const { item_name, list_id, user_id } = req.body
+    const itemName = req.body.item_name;
+    const listId = req.body.list_id;
+    const userId = req.body.user_id; 
+    //const accountId = req.query.accountId;
+    db.query(`INSERT INTO list_items (item_name , list_id, user_id) VALUES ($1, $2, $3) RETURNING *;`, [ itemName, listId, userId ] )
+    .then(data => {
+      console.log('data = ', data.rows[0]);
+      const newItem = {
+        item_name : data.rows[0].item_name,
+        list_id : data.rows[0].list_id,
+        user_id : data.rows[0].user_id        
+      }
+      res.json( {newItem} );
+    })
+      .catch(err => {
+        console.log(err)
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    });
 
     //Update an item inside a list
 

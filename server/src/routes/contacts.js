@@ -32,6 +32,7 @@ module.exports = (db) => {
       });
   });
   //Create a new contact for a user
+  
   router.post("/", (req, res) => {
     console.log(req.body);
     const { name, phone_number, email, address } = req.body;

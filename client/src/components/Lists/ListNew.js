@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function ListNew() {
+
+      const navigate = useNavigate();
      //useState
      
      const [newList, setNewList] = useState("");
      //console.log(description);
       
-      //getting account and userid from local storage
+      //getting account and user id from local storage
       const userId = localStorage.getItem('user_id');
       const accountId = localStorage.getItem('account_id');
 
@@ -22,6 +25,7 @@ function ListNew() {
        axios.post(`/api/lists/?userId=${userId}&accountId=${accountId}`, body)
        .then(res => {
          console.log('newlists------------',res);
+         navigate('/')
        });   
      };
   return (
