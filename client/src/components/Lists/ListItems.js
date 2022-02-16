@@ -2,11 +2,10 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 
 function ListItems() {
-
-  //getting account and userid from local storage
+  
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
-  const listId = 1
+  const listId = 3
   // console.log('userid------>', userId, 'Account id', accountId)
 
   const [itemNames, setItemNames] = useState([])
@@ -36,7 +35,7 @@ function ListItems() {
 //console.log("item names----------------------",itemNames);
   return (
     <>     
-    <table className="table  my-5">
+    <table className="table list-table my-5">
       <thead className="thead-dark">
         <tr>
           <th scope="col">Description</th>

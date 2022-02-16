@@ -9,11 +9,10 @@ function ListsNames() {
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
 
-  // console.log('userid------>', userId, 'Account id', accountId)
 
 //function to delete a list
-  const deleteList = (id) => {
-   const deleteListName = axios.delete(`/api/lists/${id}`)
+  const deleteListName = (id) => {
+   const deleteList = axios.delete(`/api/lists/${id}`)
    setListNames(listNames.filter(list => list.id !== id))    
   }
 
@@ -36,7 +35,7 @@ function ListsNames() {
     
     <>
     <h1>Lists that already exists</h1>
-      <table className="table  my-5">
+      <table className="table list-table  my-5">
         <thead className="thead-dark">
           <tr>
             <th scope="col">Description</th>
@@ -54,7 +53,7 @@ function ListsNames() {
             <td>
               <button 
               className='btn btn-danger'
-              onClick={() => deleteList(list.id)}
+              onClick={() => {deleteListName(list.id)}}
               >Delete</button>
             </td>
           </tr>
