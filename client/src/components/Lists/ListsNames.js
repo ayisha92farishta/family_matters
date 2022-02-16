@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import ListEdit from './ListEdit';
 
-function ListsNames() {
+function ListsNames(props) {
   const [listNames, setListNames] = useState([])
+  console.log(props)
 
 //getting account and userid from local storage
   const userId = localStorage.getItem('user_id');

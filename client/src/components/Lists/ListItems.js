@@ -1,7 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 
-function ListItems() {
+function ListItems(props) {
+  console.log("props------", props.listType)
   
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');

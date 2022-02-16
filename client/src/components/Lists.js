@@ -8,20 +8,25 @@ import './Lists.css';
 
 
 function Lists() {
+
+  const [listType, setListType] = useState('Hello');
+ 
  
   return (
   
   <>
   <div className='list-container  my-5'>
-    <div>
-      
-    <ListNew />
-    <ListsNames />
-      
+    <div>      
+      <ListNew />
+      <ListsNames 
+      listType={listType}
+      />      
     </div>
     <div className='new-list'> 
       <ListsItemInput />
-      <ListItems />
+      <ListItems 
+      listType={listType}
+      />
      
     </div>
     
