@@ -101,6 +101,7 @@ module.exports = (db) => {
   router.get("/items", (req, res) => {
     const userId = req.query.userId;  
     const listId = req.query.listId;
+
     db.query(`SELECT list_items.id as id, lists.name as name, item_name as item
               FROM list_items
               JOIN lists ON list_id = lists.id
@@ -150,7 +151,7 @@ module.exports = (db) => {
       const itemId = req.params.id;
       const { name, listId } = req.body;
       const userId = 1; //How to get userId ? 
-      db.query(`UPDATE list_items SET item_name = $1 WHERE list_id = $2 AND user_id = $3 AND id = $4;`, [ name, listId, userId, itemId ] )
+      db.query(`UPDATE list_items SET item_name = $1 WHERE list_id = $2 AND user_id = $3 AND id = $4 RETURNING *;`, [ name, listId, userId, itemId ] )
       .then(data => {
         const newItemName = data.rows[0].item_name;
         res.json( {newItemName} );

@@ -5,7 +5,7 @@ function ListItems() {
   
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
-  const listId = 3
+  const listId = 2
   // console.log('userid------>', userId, 'Account id', accountId)
 
   const [itemNames, setItemNames] = useState([])

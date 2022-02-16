@@ -34,6 +34,7 @@ CREATE TABLE list_items (
   item_name VARCHAR(255) NOT NULL,
   list_id INTEGER NOT NULL REFERENCES lists(id) on DELETE CASCADE,
   user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
+  
 );
 
 DROP TABLE IF EXISTS user_lists CASCADE;
