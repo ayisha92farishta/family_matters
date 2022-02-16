@@ -3,13 +3,15 @@ import React, {useState} from 'react';
 
 function ListsItemInput () {
   const userId = localStorage.getItem('user_id');
+  const accountId = localStorage.getItem('account_id')
   const [itemName, setItemName] = useState("");
   const onSubmitForm = (e) => {
     e.preventDefault();    
     const body = {
       item_name : itemName,
-      list_id : '3',
-      user_id : userId
+      list_id : '2',
+      user_id : userId,
+      account_id : accountId
     };
     //post request to insert new item in List_items table    
     axios.post(`/api/lists/items`, body)

@@ -101,16 +101,18 @@ module.exports = (db) => {
   router.get("/items", (req, res) => {
     const userId = req.query.userId;  
     const listId = req.query.listId;
+    const accountId = req.query.accountId;
 
     db.query(`SELECT list_items.id as id, lists.name as name, item_name as item
               FROM list_items
-              JOIN lists ON list_id = lists.id
-              WHERE user_id = $1 AND list_id = $2;`, [ userId, listId ])
+              JOIN lists ON list_id = lists.id              
+              WHERE list_id = $1 AND account_id= $2;`, [ listId, accountId ])
       .then(data => {
         const lists = data.rows;
         res.json({ lists });
       })
       .catch(err => {
+        console.log(err)
         res
           .status(500)
           .json({ error: err.message });
@@ -124,14 +126,16 @@ module.exports = (db) => {
     console.log("SERVER REC.BODY", req.body);
     const itemName = req.body.item_name;
     const listId = req.body.list_id;
-    const userId = req.body.user_id;     
-    db.query(`INSERT INTO list_items (item_name , list_id, user_id) VALUES ($1, $2, $3) RETURNING *;`, [ itemName, listId, userId ] )
+    const userId = req.body.user_id;  
+    const accountId = req.body.account_id;   
+    db.query(`INSERT INTO list_items (item_name , list_id, user_id, account_id ) VALUES ($1, $2, $3, $4) RETURNING *;`, [ itemName, listId, userId, accountId ] )
     .then(data => {
       console.log('data = ', data.rows[0]);
       const newItem = {
         item_name : data.rows[0].item_name,
         list_id : data.rows[0].list_id,
-        user_id : data.rows[0].user_id        
+        user_id : data.rows[0].user_id,
+        account_id : data.rows[0].account_id        
       }
       res.json( {newItem} );
     })

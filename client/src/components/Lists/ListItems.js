@@ -6,14 +6,14 @@ function ListItems() {
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
   const listId = 2
-  // console.log('userid------>', userId, 'Account id', accountId)
+ 
 
   const [itemNames, setItemNames] = useState([])
 
 //function to get items
   const getItemNames = () => {    
     console.log("making api call to get list item")
-    axios.get(`/api/lists/items/?userId=${userId}&listId=${listId}`)
+    axios.get(`/api/lists/items/?accountId=${accountId}&listId=${listId}`)
     .then(res => {
        const itemNameArray = res.data.lists;      
        setItemNames(itemNameArray)
