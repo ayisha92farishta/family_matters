@@ -6,7 +6,7 @@ module.exports = (db) => {
   //===============LISTS====================
 
 
-  //Get all lists for a user private and public
+  //Get all lists for a user private and public---works
 
 
   router.get("/", (req, res) => {
@@ -31,7 +31,7 @@ module.exports = (db) => {
 
 
 
-  //Create a new list
+  //Create a new list ---works
 
 
   router.post("/", (req, res) => {
@@ -52,7 +52,7 @@ module.exports = (db) => {
       });
     });
 
-    //Delete a list
+    //Delete a list ---works
 
 
     router.delete("/:id", (req, res) => {
@@ -95,7 +95,7 @@ module.exports = (db) => {
 
 
 
-  //Get specific list and its items for a user
+  //Get specific list and its items for a user ---works
 
 
   router.get("/items", (req, res) => {
@@ -117,15 +117,13 @@ module.exports = (db) => {
   });
 
 
-  //Create a new list item
+  //Create a new list item ---works
 
   router.post("/items", (req, res) => {
     console.log("SERVER REC.BODY", req.body);
-    //const { item_name, list_id, user_id } = req.body
     const itemName = req.body.item_name;
     const listId = req.body.list_id;
-    const userId = req.body.user_id; 
-    //const accountId = req.query.accountId;
+    const userId = req.body.user_id;     
     db.query(`INSERT INTO list_items (item_name , list_id, user_id) VALUES ($1, $2, $3) RETURNING *;`, [ itemName, listId, userId ] )
     .then(data => {
       console.log('data = ', data.rows[0]);
