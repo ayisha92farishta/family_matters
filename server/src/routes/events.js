@@ -37,10 +37,12 @@ module.exports = (db) => {
 
   // });
 
-  // //Save the new event (POST)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-  // router.post('/events', (req, res) => {
-
-  // });                                                                                                                                                                                                                            
+  //Save the new event (POST)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+  router.post('/', (req, res) => {
+    db.query('INSERT INTO events (event_name, event_description, event_date) VALUES ($1, $2, $3) RETURNING *;', [])
+    console.log(req.body);
+    res.send(req.body);
+  });                                                                                                                                                                                                                            
 
   //Remove an event (DELETE)
   router.delete('/:id', (req, res) => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

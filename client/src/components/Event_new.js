@@ -3,9 +3,12 @@ import '../App.css';
 
 
 function Event_new (props) {
-  const {closeCreateEvent, sDate} = props;
-  console.log("hi i'm date",sDate)
-  const [startDate, setStartDate] = useState("");
+  const {saveNewEvent, closeCreateEvent, sDate} = props;
+  //console.log("hi i'm date",sDate)
+  const [startDate, setStartDate] = useState(sDate);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  console.log(startDate, title, description);
   return(
     <>
     <div className="event_modal">
@@ -13,34 +16,38 @@ function Event_new (props) {
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h5 class="modal-title" id="exampleModalLabel">New Event : </h5>
             </div>
             <div class="modal-body">
               <form>
                 <div class="form-group">
                   <label for="title" class="col-form-label">Title:</label>
-                  <input type="text" class="form-control" id="title"/>
+                  <input type="text" class="form-control" id="title" onChange={(event) => setTitle(event.target.value)}/>
                 </div>
                 <div class="form-group">
                   <label for="description" class="col-form-label">Description:</label>
-                  <textarea class="form-control" id="description"></textarea>
+                  <textarea class="form-control" id="description" onChange={(event) => setDescription(event.target.value)}></textarea>
+                </div>
+                <div>
+                  <label class="switch">
+                  <input type="checkbox"/>
+                  <span class="slider round"></span>
+                  All Day
+                  </label>
                 </div>
                 <div class="form-group">
                   <label for="start_time" class="col-form-label">Start time:</label>
-                  <input class="form-control" type="date" id="start_time" value={sDate}/>
+                  <input class="form-control" type="date" id="start_time" value={startDate} onChange={(event) => setStartDate(event.target.value)}/>
                 </div>
                 <div class="form-group">
-                  <label for="end_time" class="col-form-label">Start time:</label>
+                  <label for="end_time" class="col-form-label">End time:</label>
                   <input class="form-control" type="date" id="end_time"/>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick={closeCreateEvent}>Cancel</button>
-              <button type="button" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-primary" onClick={() => saveNewEvent(startDate, title, description)}>Save</button>
             </div>
           </div>
         </div>
