@@ -21,20 +21,20 @@ function EditContact(props) {
   }
   return (
     <Fragment>
-      <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#id${contact.id}`}>
+      <button type="button" className="btn btn-warning" data-toggle="modal" data-target={`#id${contact.id}`}>
         Update
       </button>
 
-      <div class="modal fade" id={`id${contact.id}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Update Contact</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+      <div className="modal fade" id={`id${contact.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLongTitle">Update Contact</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" >
               <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
             <div>
               <label for="name">Name</label>
               <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)}/>
@@ -53,8 +53,8 @@ function EditContact(props) {
             </div>
             
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal" onClick={event => updateContact(event)}>Save</button>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-success" data-dismiss="modal" onClick={event => updateContact(event)}>Save</button>
             </div>
           </div>
         </div>

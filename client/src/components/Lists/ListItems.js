@@ -2,63 +2,63 @@ import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 
 function ListItems() {
+  
+  const userId = localStorage.getItem('user_id');
+  const accountId = localStorage.getItem('account_id');
+  const listId = 2
+ 
+
   const [itemNames, setItemNames] = useState([])
 
-  const getItemNames = () => {
-    const id = 1
-    axios.get('/api/lists/:id')
+//function to get items
+  const getItemNames = () => {    
+    console.log("making api call to get list item")
+    axios.get(`/api/lists/items/?accountId=${accountId}&listId=${listId}`)
     .then(res => {
-      const itemNameArray = res;
-      
-      setItemNames(itemNameArray)
-      console.log(res);
-    });
-
-    
+       const itemNameArray = res.data.lists;      
+       setItemNames(itemNameArray)
+      //console.log("item res---------", itemNameArray);
+    });    
   };
 
-  // useEffect(() => {
-  //   getItemNames();
-  // }, [])
+  useEffect(() => {
+    getItemNames();
+  }, [])
+
+
+  //function to delete a list
+  const deleteItem = (id) => {
+    const deleteitem = axios.delete(`/api/lists/items/${id}`)
+    setItemNames(itemNames.filter(item => item.id !== id))    
+   }
   
 //console.log("item names----------------------",itemNames);
   return (
-    <> 
-    
-    <table className="table  my-5">
-  <thead className="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Description</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    {/* <tr>
-      <th scope="row">1</th>
-      <td>Bags</td>
-      <td>Bags</td>
-      <td>Dresses</td>
-      <td>Shoes</td>
-    </tr> */}
-    
-    {/* {itemNames.map(item => (
-            <tr key={list.id}>
-            <td>{list.name}</td>
-            <td>Edit</td>
-            <td>
-              <button 
+    <>     
+    <table className="table list-table my-5">
+      <thead className="thead-dark">
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+         {itemNames.map(item => (
+                <tr key={item.id}>
+                <td>{item.item}</td>
+                <td>
+                <button 
               className='btn btn-danger'
-              
+              onClick={() => deleteItem(item.id)}
               >Delete</button>
-            </td>
-          </tr>
-          )) 
-         } */}
-  </tbody>
-</table>
-    </>
+                </td>
+              </tr>
+              )) 
+            }  
+      </tbody>
+    </table>
+  
+  </>
   )
 }
 

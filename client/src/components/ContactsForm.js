@@ -10,6 +10,7 @@ export default function ContactsForm() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const navigate = useNavigate();
+
   const onSubmitForm = (event) => {
     event.preventDefault();
     const body = {
@@ -28,29 +29,29 @@ export default function ContactsForm() {
     <div >
       <h3 className= "text-center ">New Contact</h3>
       
-      <form class="d-flex justify-content-center align-items-center container " onSubmit={onSubmitForm}>
+      <form className="d-flex justify-content-center align-items-center container " onSubmit={onSubmitForm}>
         <div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="name">Name</label>
             <input type="text" className="form-control" value={name} placeholder="Enter name" onChange={e => setName(e.target.value)}/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="number">Phone Number</label>
             <input type="number" className="form-control" value={number} placeholder="Enter contact number" onChange={e => setNumber(e.target.value)}/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="email">Email</label>
             <input type="email" className="form-control" value={email} placeholder="Enter email" onChange={e => setEmail(e.target.value)}/>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="address">Address</label>
             <input type="text" className="form-control" value={address} placeholder="Enter address" onChange={e => setAddress(e.target.value)}/>
           </div>
           <br></br>
-          <div  class="d-grid gap-2 d-md-flex">
-            <button type="button" class="btn btn-primary btn-sm" type="submit" onSubmit={onSubmitForm}>Add Contact</button>
+          <div  className="d-grid gap-2 d-md-flex">
+            <button type="button" className="btn btn-primary btn-sm" type="submit" onSubmit={onSubmitForm}>Add Contact</button>
             <Link to="/contacts">
-              <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
+              <button type="button" className="btn btn-secondary btn-sm">Cancel</button>
             </Link>
           </div>
           </div>

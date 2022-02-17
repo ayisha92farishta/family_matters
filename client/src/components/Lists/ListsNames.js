@@ -4,29 +4,26 @@ import ListEdit from './ListEdit';
 
 function ListsNames() {
   const [listNames, setListNames] = useState([])
-  
+
+//getting account and userid from local storage
   const userId = localStorage.getItem('user_id');
+  const accountId = localStorage.getItem('account_id');
 
-  console.log('userid------>', userId)
 
+//function to delete a list
   const deleteListName = (id) => {
-
-    axios.delete('/api/lists/${id}')
-    .then(res => {
-
-    })
+   const deleteList = axios.delete(`/api/lists/${id}`)
+   setListNames(listNames.filter(list => list.id !== id))    
   }
 
+// function to get list names
   const getListNames = () => {
-    //const body = ({description, listItem});
-
-    axios.get('/api/lists')
+    axios.get(`/api/lists/?userId=${userId}&accountId=${accountId}`)
     .then(res => {
       const listNameArray = res.data.lists;
       //console.log(listNameArray);
       setListNames(listNameArray)
-    });
-    
+    });    
   };
 
   useEffect(() => {
@@ -38,7 +35,7 @@ function ListsNames() {
     
     <>
     <h1>Lists that already exists</h1>
-      <table className="table  my-5">
+      <table className="table list-table  my-5">
         <thead className="thead-dark">
           <tr>
             <th scope="col">Description</th>
