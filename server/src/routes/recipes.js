@@ -7,7 +7,7 @@ module.exports = (db) => {
     const accountId = 1; 
     db.query(`SELECT recipes.* 
               FROM recipes
-              WHERE account_id = $1;`, [ accountId ])
+              ;`)
       .then(data => {
         const recipes = data.rows;
         res.json({ recipes });
