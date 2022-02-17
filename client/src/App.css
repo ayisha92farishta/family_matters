@@ -156,3 +156,26 @@ code {
   width: 15em;
 }
 
+
+.list-container{
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 100px ;
+}
+
+
+.list-form {
+  padding-left: 100px;
+}
+
+.event_modal{
+  position: absolute;
+  background: whitesmoke;
+  height: 33%;
+  width: 33%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
