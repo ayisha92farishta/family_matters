@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ListsInput from './Lists/Lists_input';
+import ListsItemInput from './Lists/ListItemInput';
 import ListItems from './Lists/ListItems';
 import ListsNames from './Lists/ListsNames';
 import ListNew from './Lists/ListNew';
 // import ListEdit from './Lists/ListEdit';
-import '../App.css';
+import './Lists.css';
+
 
 function Lists() {
  
@@ -19,7 +20,7 @@ function Lists() {
       
     </div>
     <div className='new-list'> 
-      <ListsInput />
+      <ListsItemInput />
       <ListItems />
      
     </div>

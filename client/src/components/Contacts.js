@@ -46,11 +46,11 @@ export default function Contacts() {
   console.log('allContacts =', contacts)
   return (
     
-    <div class="container" >
+    <div className="container" >
       <h2 id='title'>My Contacts</h2>
              
-    <table class="table table-bordered" id='contacts' >
-      <thead class="thead-dark">
+    <table className="table table-bordered" id='contacts' >
+      <thead className="thead-dark">
         <tr>
           <th>Name</th>
           <th>Phone Number</th>
@@ -70,7 +70,7 @@ export default function Contacts() {
               <EditContact contact={contact} updateContact={updateContact} />
             </td>
             <td>
-              <button type="button" class="btn btn-danger" 
+              <button type="button" className="btn btn-danger" 
                 onClick={() => deleteContact(contact.id)}>
                   Delete
               </button>
@@ -81,7 +81,7 @@ export default function Contacts() {
     </table>
     <div>
       <Link to="/contactsForm">
-        <button type="button" class="btn btn-info">
+        <button type="button" className="btn btn-info">
           New Contact
         </button>
       </Link>

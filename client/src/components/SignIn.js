@@ -37,17 +37,17 @@ export default function SignInSide() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
     const body = {
       email: data.get('email'),
       password: data.get('password'),
     }
     axios.post('/api/auth/login', body)
       .then(res => {
-        console.log("RESULT______>", res);
+        // console.log("RESULT______>", res);
         localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('account_id', res.data.account_id);
         localStorage.setItem('first_name', res.data.first_name);
