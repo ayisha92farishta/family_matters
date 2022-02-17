@@ -47,38 +47,50 @@ function Recipe() {
   console.log('recipeeeee = ', recipes);
   return (
     <Fragment>
-      <div id="recipes">
+      <div><h3>Delight in every bite !!!&#128523;</h3></div>
+      <div class="container" id="recipes">
         {
           recipes.map(recipe => (
-            <div class="col-sm-9" key={recipe.id}>
-              <h3>{recipe.name}</h3>
-              <h5><span class="btn btn-secondary"> Post by {"username"}</span></h5>
-              <br/>
-              <h5><span class="btn btn-warning">Preparation Time</span>
-                <span class="label label-warning">:  {recipe.preparation_time}</span>
-              </h5>
-              <br/>
-              <h5><span class="btn btn-info">Cooking Time</span>
+            <div class="card" key={recipe.id}>
+              <div text-align="center">
+                <h3>{recipe.name}</h3>
+                <h5><span class="btn btn-secondary"> Post by {"username"}</span></h5>
+              </div>
+              <div >
+              <div class="card__header">
+                <img src="https://source.unsplash.com/600x400/?recipes" alt="card__image" class="card__image" width="600" />
+              </div>
+              <div class="card-body">
+                  <div >
+                    <h4><span class="tag tag-brown">Ingredients   </span></h4>
+          
+                    <p>{recipe.ingredients}</p>
+                    
+                  </div>
+                  <div >
+                    <h4><span class="tag tag-blue">Instructions   </span></h4>
+          
+                    <p>{recipe.instructions}</p>
+                  </div>
+              </div>
+                <div >
+                  <br/>
+                  <h5><span class="tag tag-orange">Preparation Time</span>
+                  <span class="label label-warning">:  {recipe.preparation_time}</span>
+                  </h5>
+                <br/>
+                <h5><span class="tag tag-green">Cooking Time</span>
               
-              <span class="label label-primary">:  {recipe.cooking_time}</span>
-              </h5>
-              <br></br>
-          
-              <div>
-              <h4><span class="btn btn-success">Ingredients   </span>
-          
-              <span>
-                :    {recipe.ingredients}
-              </span></h4>
+                  <span class="label label-primary">:  {recipe.cooking_time}</span>
+                </h5>
+                 <br></br>
+                
+                </div>
+                
+
               </div>
-              <div>
-              <h4><span class="btn btn-success">Instructions   </span>
-          
-              <span>
-                :   {recipe.instructions}
-              </span></h4>
-              </div>
-              <div>
+              
+              <div id="card__footer" >
               <h5><EditRecipe recipe={recipe} updateRecipe={updateRecipe} />
                 <button class="btn btn-danger" onClick={() => deleteRecipe(recipe.id)}>Delete</button>
               </h5>
@@ -87,17 +99,17 @@ function Recipe() {
             </div>
           ))
         }
-        
-        <div>
+      </div>
+      <div class="newRecipe">
         <Link to="/newRecipe">
         <button type="button" class="btn btn-info">
           Add New Recipe
         </button>
       </Link>
         </div>
-      </div>
       
     </Fragment>
+    
       
  
   )
