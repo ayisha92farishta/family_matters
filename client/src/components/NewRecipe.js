@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function NewRecipe() {
 
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [prepTime, setPrepTime] = useState("");
   const [cookTime, setCookTime] = useState("");
   const [serving, setServing] = useState("");
@@ -19,6 +20,7 @@ export default function NewRecipe() {
     event.preventDefault();
     const body = {
       name : name,
+      thumbnail_photo_url : image,
       preparation_time: prepTime,
       cooking_time : cookTime,
       serving : serving,
@@ -46,6 +48,13 @@ export default function NewRecipe() {
                   <input type="text" className="form-control" id="recipe-name" value={name} placeholder="Enter recipe name" onChange={e => setName(e.target.value)}/>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="recipe-image" class="col-lg-2 control-label"> Image</label>
+                  <div >
+                  <input type="text" className="form-control" id="recipe-image" value={image} placeholder="Enter image address" onChange={e => setImage(e.target.value)}/>
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <label for="prepTime" class=" control-label">Preparation Time</label>
                   <div >

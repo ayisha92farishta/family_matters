@@ -21,6 +21,7 @@ function Recipe() {
   }
   
   const updateRecipe = (body) => {
+    console.log('before hitting the put route = ', body)
     return axios.put(`/api/recipes/?userId=${userId}&recipeId=${body.id}`, body, {
       headers: {
       'Content-Type': 'application/json'
@@ -61,7 +62,7 @@ function Recipe() {
               </div>
               <div >
               <div class="card__header">
-                <img src="https://source.unsplash.com/600x400/?recipes" alt="card__image" class="card__image" width="600" />
+                <img src={recipe.thumbnail_photo_url} alt="recipe" class="card__image" width="600" />
               </div>
               <div >
                   <br/>
