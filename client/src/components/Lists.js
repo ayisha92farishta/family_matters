@@ -9,7 +9,7 @@ import './Lists.css';
 
 function Lists() {
 
-  const [listNames, setListNames] = useState([]);
+  const [lists, setLists] = useState([]);
 
     //getting account and userid from local storage
     const userId = localStorage.getItem('user_id');
@@ -19,7 +19,7 @@ function Lists() {
     //function to delete a list
     const deleteListName = (id) => {
     const deleteList = axios.delete(`/api/lists/${id}`)
-    setListNames(listNames.filter(list => list.id !== id))    
+    setLists(lists.filter(list => list.id !== id))    
     }
 
     // function to get list names
@@ -28,7 +28,7 @@ function Lists() {
       .then(res => {
         const listNameArray = res.data.lists;
         //console.log(listNameArray);
-        setListNames(listNameArray)
+        setLists(listNameArray)
       });    
     };
 
@@ -54,7 +54,7 @@ function Lists() {
           </tr>
         </thead>
         <tbody>          
-         {listNames.map(list => (
+         {lists.map(list => (
             <tr key={list.id}>
             <td>{list.name}</td>
             <td>
@@ -77,7 +77,7 @@ function Lists() {
     <div className='new-list'> 
       
       <ListItems 
-      listNames={listNames}
+      lists={lists}
       />
      
     </div>

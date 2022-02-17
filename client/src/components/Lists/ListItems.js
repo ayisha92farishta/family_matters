@@ -3,14 +3,20 @@ import axios from 'axios';
 import ListsItemInput from './ListItemInput';
 
 function ListItems(props) {
-  console.log("props------", props.listType)
+  
   
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
-  const listId = 2
+  const lists = props.lists
+
  
 
+  console.log("props------", lists)
+
   const [itemNames, setItemNames] = useState([])
+
+  const [listId, setListId] = useState(null)
+  
 
 //function to get items
   const getItemNames = () => {    
@@ -25,7 +31,7 @@ function ListItems(props) {
 
   useEffect(() => {
     getItemNames();
-  }, [])
+  }, [listId])
 
 
   //function to delete a list
@@ -33,17 +39,34 @@ function ListItems(props) {
     const deleteitem = axios.delete(`/api/lists/items/${id}`)
     setItemNames(itemNames.filter(item => item.id !== id))    
    }
+
+   //add new item function
+   const addNewItem = (item) => {
+     setItemNames([...itemNames,item])
+   }
+   const func = (e) => {
+     setListId(e.target.value)
+   }
   
-//console.log("item names----------------------",itemNames);
+console.log("item names----------------------",itemNames);
   return (
     <>     
-    <ListsItemInput />
+    <ListsItemInput
+     listId = {listId}
+     
+     addNewItem = {addNewItem}
+    />
     <div>
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <select 
+      className="form-select form-select-lg mb-3" 
+      aria-label=".form-select-lg example"
+      onChange={(e) => setListId(e.target.value)}
+      >
+      <option value>Open this select menu</option>
+      {lists.map(list => (              
+      <option value={list.id}>{list.name}</option>
+      ))        
+      }            
       </select>
     </div>
     <table className="table list-table my-5">

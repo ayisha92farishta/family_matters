@@ -135,7 +135,8 @@ module.exports = (db) => {
         item_name : data.rows[0].item_name,
         list_id : data.rows[0].list_id,
         user_id : data.rows[0].user_id,
-        account_id : data.rows[0].account_id        
+        account_id : data.rows[0].account_id,
+        id : data.rows[0].id        
       }
       res.json( {newItem} );
     })
