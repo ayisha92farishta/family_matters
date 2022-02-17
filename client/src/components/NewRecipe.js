@@ -15,7 +15,7 @@ export default function NewRecipe() {
   const navigate = useNavigate();
 
   const onSubmitForm = (event) => {
-    console.log('Innnnn')
+    
     event.preventDefault();
     const body = {
       name : name,
@@ -25,8 +25,12 @@ export default function NewRecipe() {
       ingredients : ingredients,
       instructions : instructions
     };
+
+    const userId = localStorage.getItem('user_id');
+    const accountId = localStorage.getItem('account_id');
+    
     console.log('body ===== ', body)
-    axios.post('/api/recipes', body)
+    axios.post(`/api/recipes/?userId=${userId}&accountId=${accountId}`, body)
     .then(response => {
       console.log(response.data);
       navigate('/recipes');
@@ -83,33 +87,6 @@ export default function NewRecipe() {
                 </div>
         
                 </form>
-  
-        {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          Add New Recipe
-        </button>
-
-
-        <div class="modal fade" id="myModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-      
-        
-              <div class="modal-header">
-                <h4 class="modal-title">New Recipe</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-        
-        
-              <div class="modal-body">
-                
-            
-              </div>
-        
-        
-              
-            </div>
-          </div>
-        </div> */}
   
       </div>
 
