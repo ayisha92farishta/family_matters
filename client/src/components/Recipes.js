@@ -7,10 +7,13 @@ import "./Recipes.css";
 
 
 function Recipe() {
-  const [recipes, setRecipes] = useState([])
+  const [recipes, setRecipes] = useState([]);
+  const userId = localStorage.getItem('user_id');
+  const accountId = localStorage.getItem('account_id');
+  console.log('========= ', userId, accountId);
   const navigate = useNavigate();
   const getRecipes = () => {
-    return axios.get('/api/recipes')
+    return axios.get(`/api/recipes/?userId=${userId}&accountId=${accountId}`)
       .then(response => {
         console.log('after get = ', response.data.recipes);
         setRecipes(response.data.recipes);
@@ -18,7 +21,7 @@ function Recipe() {
   }
   
   const updateRecipe = (body) => {
-    return axios.put(`/api/recipes/${body.id}`, body, {
+    return axios.put(`/api/recipes/?userId=${userId}&recipeId=${body.id}`, body, {
       headers: {
       'Content-Type': 'application/json'
       }})
@@ -60,6 +63,24 @@ function Recipe() {
               <div class="card__header">
                 <img src="https://source.unsplash.com/600x400/?recipes" alt="card__image" class="card__image" width="600" />
               </div>
+              <div >
+                  <br/>
+                  <p><span class="tag tag-green">Preparation Time</span>
+                  <span class="label label-warning">:  {recipe.preparation_time}</span>
+                  </p>
+                <br/>
+                <p><span class="tag tag-orange">Cooking Time</span>
+              
+                  <span class="label label-green">:  {recipe.cooking_time}</span>
+                </p>
+                 <br></br>
+                 
+                <p><span class="tag tag-green">Serves</span>
+              
+                  <span class="label label-primary">:  {recipe.serving}</span>
+                </p>
+                
+                </div>
               <div class="card-body">
                   <div >
                     <h4><span class="tag tag-brown">Ingredients   </span></h4>
@@ -73,19 +94,7 @@ function Recipe() {
                     <p>{recipe.instructions}</p>
                   </div>
               </div>
-                <div >
-                  <br/>
-                  <h5><span class="tag tag-orange">Preparation Time</span>
-                  <span class="label label-warning">:  {recipe.preparation_time}</span>
-                  </h5>
-                <br/>
-                <h5><span class="tag tag-green">Cooking Time</span>
-              
-                  <span class="label label-primary">:  {recipe.cooking_time}</span>
-                </h5>
-                 <br></br>
                 
-                </div>
                 
 
               </div>
