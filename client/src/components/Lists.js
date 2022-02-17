@@ -9,7 +9,7 @@ import './Lists.css';
 
 function Lists() {
 
-  const [listType, setListType] = useState('Hello');
+  const [listId, setListId] = useState('');
  
  
   return (
@@ -19,13 +19,12 @@ function Lists() {
     <div>      
       <ListNew />
       <ListsNames 
-      listType={listType}
       />      
     </div>
     <div className='new-list'> 
-      <ListsItemInput />
+      
       <ListItems 
-      listType={listType}
+      listTId={listId}
       />
      
     </div>

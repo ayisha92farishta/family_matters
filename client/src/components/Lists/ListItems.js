@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import ListsItemInput from './ListItemInput';
 
 function ListItems(props) {
   console.log("props------", props.listType)
@@ -36,6 +37,7 @@ function ListItems(props) {
 //console.log("item names----------------------",itemNames);
   return (
     <>     
+    <ListsItemInput />
     <div>
       <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
         <option selected>Open this select menu</option>
