@@ -16,7 +16,7 @@ function Nav() {
       <ul className='nav-links'>  
         <li ><a href="/signup">Family members</a></li>
         <li ><a href="/signup">Add a member</a></li>
-        <li ><a href="/signup">Sign out</a></li>
+        <li ><a href="/">Sign out</a></li>
       </ul>       
     </nav>     
   );
