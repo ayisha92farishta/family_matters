@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import ListEdit from './ListEdit';
 
-function ListsNames(props) {
+function ListsNames() {
   const [listNames, setListNames] = useState([])
-  console.log(props)
+  
 
 //getting account and userid from local storage
   const userId = localStorage.getItem('user_id');
@@ -34,7 +34,7 @@ function ListsNames(props) {
 //console.log("List names----------------------",listNames);
   return (
     
-    <>
+    <div>
     <h1>Lists that already exists</h1>
       <table className="table list-table  my-5">
         <thead className="thead-dark">
@@ -63,7 +63,7 @@ function ListsNames(props) {
 
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 
