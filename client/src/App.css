@@ -170,7 +170,7 @@ code {
 
 .event_modal{
   position: absolute;
-  background: white;
+  background: whitesmoke;
   height: 33%;
   width: 33%;
   z-index: 10000;
