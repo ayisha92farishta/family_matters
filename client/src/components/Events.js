@@ -9,49 +9,57 @@ import { useNavigate } from 'react-router-dom';
 
 const localizer = momentLocalizer(moment);
 
-var myEventsList = [
-  {
-    start: moment().toDate(),
-    end: moment().add(1, "days").toDate(),
-    title: "my event",
-    description: "great"
-  }
-
-];
-
-
-//My state holds an array of events and the selected day clicked by the user
 const Events = () => {
-  const [events, setEvents] = useState({
-    events_list: [{}],
-    selected_date: ""//?
-  });
 
+  const [events, setEvents] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
   const navigate = useNavigate();
   const getEvents = () => {
-    return axios.get('/api/events')
-      .then(response => {
-        console.log(response.data.events);
-        setEvents(response.data.events)
-      })
-  }
-
-  const createEvent = (e) => {
-    let startDate = moment(e.start.toLocaleString())._i;
-    //let startDate = moment(e.start.toLocaleString()).format("YYYY-MM-DD");
-    console.log(startDate);
-    setEvents({
-      ...events,
-      selected_date: startDate
+    const body = {
+      user_id : localStorage.getItem('user_id'),
+      account_id : localStorage.getItem('account_id')
+      
+    };
+    console.log("Where is the body",body);
+    return axios.get('/api/events',{
+      params: body
     })
+      .then(response => {
+        console.log("Events from server : ",response.data);
+        setEvents(response.data.map((event)=> transformEvent(event)));
+      })
+  };
+
+  const transformEvent = (event)=> {
+    const startTime = moment(event.event_date, 'YYYY-MM-DD');
+    return {
+      ...event,
+      start: startTime.toDate(),
+      title: event.event_name,
+      description: event.event_description,
+      //start: moment().toDate(),
+      end: startTime.add(1, "days").toDate()
+     }
+  
+    return {
+      ...event,
+      start: moment().toDate(),
+      end: moment().add(1, "days").toDate(),
+      title: "my event",
+      description: "great"
+    }
+
+  }
+  const createEvent = (e) => {
+    let startDate = moment(e.start.toLocaleString())._i;    
+    setSelectedDate(startDate);
+    console.log("I am the chosen one", startDate);
+    navigate('/EventForm');
   }
 
-  // const closeCreateEvent = () => {
-  //   setState({
-  //     ...state,
-  //     event_modal: false
-  //   })
-  // }
+  const handleSelected = (e) => {
+    console.log("These are the event details: ",e);
+  }
 
   const saveEvent = (startDate, title, description) => {
     console.log(startDate, title, description);
@@ -64,8 +72,12 @@ const Events = () => {
       .then(res => {
         console.log("I'm back", res);
       });
-    //closeCreateEvent();
   }
+
+  useEffect(() => {
+    getEvents();
+  }, [])
+  console.log('allEvents =', events)
 
   return (
     <>
@@ -76,9 +88,10 @@ const Events = () => {
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
-        events={myEventsList}
+        events={events}
         //events={events.events_list}
         onSelectSlot={createEvent}
+        onSelectEvent={handleSelected}
         style={{ height: 750, marginLeft: 310, marginRight: 15 }} // need to move to css file
       />
       </div>

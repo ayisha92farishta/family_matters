@@ -9,8 +9,8 @@ module.exports = (db) => {
   const event_it_to_del = 1;
 //Get all events (GET) for user (public events and the user's events)
   router.get('/', (req, res) => {
-    //This is hardcoded we should get user_id and account_id from req.body
-    
+    const user_id = req.query.user_id;
+    const account = req.query.account_id;
 
     // db.query(`SELECT account_id FROM users
     //            WHERE users.id = $1`, [user_id])
