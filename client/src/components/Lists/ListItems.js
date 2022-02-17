@@ -17,6 +17,7 @@ function ListItems(props) {
 
   const [listId, setListId] = useState(null)
   
+  const [listName, setListName] = useState('')
 
 //function to get items
   const getItemNames = () => {    
@@ -44,8 +45,12 @@ function ListItems(props) {
    const addNewItem = (item) => {
      setItemNames([...itemNames,item])
    }
-   const func = (e) => {
-     setListId(e.target.value)
+   //function for adding name and id to state
+
+   const listNameAndId = (e) => {
+     setListId(e.target.value);
+     setListName(e.target.options[e.target.selectedIndex].text)
+     
    }
   
 console.log("item names----------------------",itemNames);
@@ -53,16 +58,16 @@ console.log("item names----------------------",itemNames);
     <>     
     <ListsItemInput
      listId = {listId}
-     
+     listName = {listName}
      addNewItem = {addNewItem}
     />
     <div>
       <select 
       className="form-select form-select-lg mb-3" 
       aria-label=".form-select-lg example"
-      onChange={(e) => setListId(e.target.value)}
+      onChange={listNameAndId}
       >
-      <option value>Open this select menu</option>
+      <option >Choose a list</option>
       {lists.map(list => (              
       <option value={list.id}>{list.name}</option>
       ))        

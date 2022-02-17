@@ -17,17 +17,17 @@ function ListsItemInput (props) {
     //post request to insert new item in List_items table    
     axios.post(`/api/lists/items`, body)
     .then(response => {
-      console.log("ITEM RESPONSE",response.data);
+      //console.log("ITEM RESPONSE",response.data);
       props.addNewItem({
         id : response.data.id,
-        name : "Chores",
+        name : props.listName,
         item : itemName
       })
     })
   };  
   return (      
     <div className='list'>
-      <h1 className='text-center'>Shopping </h1>
+      <h1 className='text-center'>{props.listName} </h1>
       <form className='list-form d-flex my-5' >   
         <input           
         type="text" 
