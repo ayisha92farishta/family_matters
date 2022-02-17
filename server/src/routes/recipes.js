@@ -35,15 +35,16 @@ module.exports = (db) => {
   });
   //Create a new recipe for a user
   router.post("/", (req, res) => {
-    console.log(req.body);
-    const { name, preparation_time, cooking_time, serving, ingredients, instructions } = req.body;
+    console.log('post req.body = ', req.body);
+    const { name, thumbnail_photo_url, preparation_time, cooking_time, serving, ingredients, instructions } = req.body;
     const userId = req.query.userId;
     const account_id = req.query.accountId;
-    db.query(`INSERT INTO recipes (name , preparation_time, cooking_time, serving, ingredients, instructions, account_id, user_id ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [ name, preparation_time, cooking_time, serving, ingredients, instructions, account_id, userId ])
+    db.query(`INSERT INTO recipes (name , thumbnail_photo_url,  preparation_time, cooking_time, serving, ingredients, instructions, account_id, user_id ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`, [ name, thumbnail_photo_url, preparation_time, cooking_time, serving, ingredients, instructions, account_id, userId ])
       .then(data => {
         console.log(data.rows[0]);
         const newRecipe = {
           name : data.rows[0].name,
+          thumbnail_photo_url : data.rows[0].thumbnail_photo_url,
           preparation_time : data.rows[0].preparation_time,
           cooking_time : data.rows[0].cooking_time,
           serving : data.rows[0].serving,
@@ -60,18 +61,20 @@ module.exports = (db) => {
   }) 
   //Update an existing recipe for a user
   router.put("/", (req, res) => {
-    console.log('req.body = ', req.body);
+    console.log('edit req.body = ', req.body);
     const recipe_id = req.query.recipeId;
     const userId = req.query.userId;
-    const { name, preparation_time, cooking_time, serving, ingredients, instructions } = req.body;
-    console.log(req.body)
-    const values = [name, preparation_time, cooking_time, serving, ingredients, instructions, recipe_id, userId];
-    db.query(`UPDATE recipes SET name = $1, preparation_time = $2, cooking_time = $3, serving = $4, ingredients = $5, instructions = $6 WHERE id = $7 AND user_id = $8 RETURNING *;`, values)
+    const { name, thumbnail_photo_url, preparation_time, cooking_time, serving, ingredients, instructions } = req.body;
+    //console.log(req.body)
+    const values = [name, thumbnail_photo_url, preparation_time, cooking_time, serving, ingredients, instructions, recipe_id, userId];
+    console.log('values = ', values)
+    db.query(`UPDATE recipes SET name = $1, thumbnail_photo_url = $2, preparation_time = $3, cooking_time = $4, serving = $5, ingredients = $6, instructions = $7 WHERE id = $8 AND user_id = $9 RETURNING *;`, values)
       .then(data => {
-        console.log(data.rows[0]);
+        console.log('after update = ', data.rows[0]);
         const updatedRecipe = {
           id: data.rows[0].id,
           name : data.rows[0].name,
+          thumbnail_photo_url : data.rows[0].thumbnail_photo_url,
           preparation_time : data.rows[0].preparation_time,
           cooking_time : data.rows[0].cooking_time,
           serving : data.rows[0].serving,
