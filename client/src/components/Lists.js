@@ -1,9 +1,35 @@
-import React from 'react';
-import '../App.css';
+import React, { useEffect, useState } from 'react';
+import ListsItemInput from './Lists/ListItemInput';
+import ListItems from './Lists/ListItems';
+import ListsNames from './Lists/ListsNames';
+import ListNew from './Lists/ListNew';
+// import ListEdit from './Lists/ListEdit';
+import './Lists.css';
+
 
 function Lists() {
-  return (    
-    <h1>This is the List page</h1> 
+ 
+  return (
+  
+  <>
+  <div className='list-container  my-5'>
+    <div>
+      
+    <ListNew />
+    <ListsNames />
+      
+    </div>
+    <div className='new-list'> 
+      <ListsItemInput />
+      <ListItems />
+     
+    </div>
+    
+    
+  </div>
+  
+  </>
+    
   );
 }
 
