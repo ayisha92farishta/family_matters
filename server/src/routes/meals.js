@@ -6,7 +6,6 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     console.log('req.query = ', req.query)
     const accountId = req.query.accountId;
-    // const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       db.query(`SELECT * FROM meals WHERE account_id = $1;`, [ accountId ])
       .then((data => {
         const mealsForWeek = data.rows;
@@ -55,16 +54,42 @@ module.exports = (db) => {
   //Create a new meal
   router.post("/", (req, res) => {
     console.log('post = ', req.body);
-    const { day, meal_type, description } = req.body;
-    const accountId = 1;
-    db.query(`INSERT INTO meals (day, meal_type, description, account_id) VALUES ($1, $2, $3, $4) RETURNING *;`, [ day, meal_type, description, accountId])
+    const day = req.body.day;
+    const breakfast = req.body.breakfast;
+    const lunch = req.body.lunch;
+    const snack = req.body.snack;
+    const dinner = req.body.dinner;
+    let dayId = 1;
+    switch(day) {
+      case "Sunday":
+        dayId = 1;
+        break;
+      case "Monday":
+        dayId = 2;
+        break;
+      case "Tuesday":
+       dayId = 3;
+        break;
+      case "Wednesday":
+        dayId = 4;
+        break;
+      case "Thursday":
+        dayId = 5;
+        break;
+      case "Friday":
+       dayId = 6;
+        break;
+      case "Saturday":
+        dayId = 7;
+        break;
+      default:
+        dayId = 1;
+    }
+    const accountId = req.query.accountId;
+    db.query(`INSERT INTO meals (breakfast, lunch, snack, dinner, day_id, account_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`, [ breakfast, lunch, snack, dinner, dayId, accountId])
       .then(data => {
         console.log(data.rows[0]);
-        const newMeal = {
-          day : data.rows[0].day,
-          meal_type : data.rows[0].meal_type,
-          description : data.rows[0].decsription
-        }
+        const newMeal = data.rows;
         res.json({ newMeal} )
       })
       .catch(err => {
