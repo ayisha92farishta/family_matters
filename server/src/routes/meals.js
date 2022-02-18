@@ -4,13 +4,13 @@ const router  = express.Router();
 module.exports = (db) => {
   //Get all public meals for one whole week
   router.get("/", (req, res) => {
-    const accountId = 1;
-    const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    days.forEach(day => {
-      console.log('day = ', day);
-      db.query(`SELECT * FROM meals WHERE account_id = $1 AND day = $2;`, [ accountId, day])
+    console.log('req.query = ', req.query)
+    const accountId = req.query.accountId;
+    // const days = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      db.query(`SELECT * FROM meals WHERE account_id = $1;`, [ accountId ])
       .then((data => {
         const mealsForWeek = data.rows;
+        //console.log('meals = ', mealsForWeek)
         return res.json({ mealsForWeek });
       }))
       .catch(err => {
@@ -19,7 +19,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
 
-    })
+    
   });
   //Get all meals for a specific day
   router.get("/day", (req, res) => {
@@ -54,10 +54,10 @@ module.exports = (db) => {
   });
   //Create a new meal
   router.post("/", (req, res) => {
-    console.log(req.body);
+    console.log('post = ', req.body);
     const { day, meal_type, description } = req.body;
     const accountId = 1;
-    db.query(`INSERT INTO meal (day, meal_type, description, account_id) VALUES ($1, $2, $3, $4)`, [ day, meal_type, description, accountId])
+    db.query(`INSERT INTO meals (day, meal_type, description, account_id) VALUES ($1, $2, $3, $4) RETURNING *;`, [ day, meal_type, description, accountId])
       .then(data => {
         console.log(data.rows[0]);
         const newMeal = {
