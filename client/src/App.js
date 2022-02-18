@@ -13,17 +13,33 @@ import Contacts from './components/Contacts';
 import ContactsForm from './components/ContactsForm';
 import Meals from './components/Meals';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
 
 
 function App() {
+ 
+ const [isLoggedIn, setIsLoggedIn] = useState('')
+ 
+ const logInCheck = () => {
+   if (localStorage.length === 0){
+    setIsLoggedIn(false);
+   } else {
+    setIsLoggedIn(true);
+   }
+ }
+
+ useEffect(() => {
+  logInCheck();
+}, [])
+ 
+
+ console.log("USER IS LOGGED IN", isLoggedIn)
+
   return (    
-    // <div>
-    //   <Sidebar />
-    // </div>
+   
     <Router>    
       <div className='App'>
-         <Nav />
-         <Sidebar />
+         { isLoggedIn ? <Nav /> : <SignIn/>  } 
          <Routes>
          <Route path='/about' element={<About />} />
          <Route path='/home' element={<Home />} />

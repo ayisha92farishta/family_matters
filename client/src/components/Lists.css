@@ -3,14 +3,14 @@
   display: flex;
   justify-content: space-evenly;
   /* padding-left: 100px ;  */
-  margin-left: 100px;
+  /* margin-left: 100px; */
 
 }
 
 
 .list-form {
   /* padding-left: 100px; */
-  margin-left: 100px;
+  margin-left: 10em;
 }
 
 .list-table{
