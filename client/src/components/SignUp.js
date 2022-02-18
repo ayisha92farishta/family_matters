@@ -51,6 +51,9 @@ export default function SignUp() {
     axios.post('/api/auth/register', body)
       .then(res => {
         console.log(res);
+        localStorage.setItem('user_id', res.data.user_id);
+        localStorage.setItem('account_id', res.data.account_id);
+        localStorage.setItem('first_name', res.data.first_name);
         navigate('/home');
       });
   };

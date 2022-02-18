@@ -9,9 +9,11 @@ import Events from './components/Events';
 import Lists from './components/Lists';
 import Sidebar from './components/Sidebar';
 import Recipes from './components/Recipes';
+import NewRecipe from './components/NewRecipe';
 import Contacts from './components/Contacts';
 import ContactsForm from './components/ContactsForm';
 import Meals from './components/Meals';
+import EventForm from './components/EventForm';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import React, { useState, useEffect} from 'react';
 
@@ -44,9 +46,11 @@ function App() {
          <Route path='/about' element={<About />} />
          <Route path='/home' element={<Home />} />
          <Route path='/events' element={<Events />} />
+         <Route path='/eventForm' element={<EventForm />} />
          <Route path='/lists' element={<Lists />} />
          <Route path='/meals' element={<Meals />} />
          <Route path='/recipes' element={<Recipes />} />
+         <Route path='/newRecipe' element={<NewRecipe />} />
          <Route path='/contacts' element={<Contacts />} />
          <Route path='/contactsForm' element={<ContactsForm />} />
          <Route path='/' element={<SignIn />} />
