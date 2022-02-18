@@ -51,7 +51,7 @@ function Recipe() {
   console.log('recipeeeee = ', recipes);
   return (
     <Fragment>
-      <div><h3>Delight in every bite !!!&#128523;</h3></div>
+      <div id="all-recipes"><h3>Delight in every bite !!!&#128523;</h3></div>
       <div class="container" id="recipes">
         {
           recipes.map(recipe => (
