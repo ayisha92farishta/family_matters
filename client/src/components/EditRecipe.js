@@ -3,9 +3,10 @@ import React, { Fragment, useState} from 'react';
 function EditRecipe(props) {
   const recipe = props.recipe;
   const [name, setName] = useState(recipe.name);
+  const [image, setImage] = useState(recipe.thumbnail_photo_url);
   const [prepTime, setPrepTime] = useState(recipe.preparation_time);
   const [cookTime, setCookTime] = useState(recipe.cooking_time);
-  const [serving, setServing] = useState(recipe.servings);
+  const [serving, setServing] = useState(recipe.serving);
   const [ingredients, setIngredients] = useState(recipe.ingredients);
   const [instructions, setInstructions] = useState(recipe.instructions);
 
@@ -14,13 +15,14 @@ function EditRecipe(props) {
     const body = {
       id: recipe.id,
       name : name,
+      thumbnail_photo_url : image,
       preparation_time : prepTime,
       cooking_time : cookTime,
       serving : serving,
       ingredients : ingredients,
       instructions : instructions
     };
-
+    console.log('body before reaching update function = ', body);
     props.updateRecipe(body);
   }
   return (
@@ -44,22 +46,26 @@ function EditRecipe(props) {
               <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)}/>
             </div>
             <div>
-              <label for="number">Preparation Time</label>
+              <label for="image">Image</label>
+              <input type="text" className="form-control" value={image} onChange={e => setImage(e.target.value)}/>
+            </div>
+            <div>
+              <label for="prepTime">Preparation Time</label>
               <input type="number" className="form-control" value={prepTime} onChange={e => setPrepTime(e.target.value)}/>
             </div>
             <div>
-              <label for="email">Cooking Time</label>
-              <input type="email" className="form-control" value={cookTime} onChange={e => setCookTime(e.target.value)}/>
+              <label for="prepTime">Cooking Time</label>
+              <input type="number" className="form-control" value={cookTime} onChange={e => setCookTime(e.target.value)}/>
             </div>
             <div>
-              <label for="address">Serving</label>
-              <input type="text" className="form-control" value={serving} onChange={e => setServing(e.target.value)}/>
+              <label for="serving">Serving</label>
+              <input type="number" className="form-control" value={serving} onChange={e => setServing(e.target.value)}/>
             </div>
             <div>
-              <label for="address">Ingredients</label>
+              <label for="ingredients">Ingredients</label>
               <input type="text" className="form-control" value={ingredients} onChange={e => setIngredients(e.target.value)}/>
             </div><div>
-              <label for="address">Instructions</label>
+              <label for="instructions">Instructions</label>
               <input type="text" className="form-control" value={instructions} onChange={e => setInstructions(e.target.value)}/>
             </div>
             </div>

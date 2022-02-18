@@ -97,6 +97,7 @@ DROP TABLE IF EXISTS recipes CASCADE;
 CREATE TABLE recipes (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
+  thumbnail_photo_url VARCHAR(255) NOT NULL, 
   preparation_time INTEGER,
   cooking_time INTEGER,
   serving INTEGER,
