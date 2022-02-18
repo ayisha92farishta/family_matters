@@ -3,6 +3,7 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import { user } from 'pg/lib/defaults';
 import Sidebar from './Sidebar';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function Nav() {
 

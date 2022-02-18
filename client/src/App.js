@@ -18,7 +18,7 @@ import React, { useState, useEffect} from 'react';
 
 function App() {
  
- const [isLoggedIn, setIsLoggedIn] = useState('')
+ const [isLoggedIn, setIsLoggedIn] = useState(false)
  
  const logInCheck = () => {
    if (localStorage.length === 0){
@@ -30,7 +30,7 @@ function App() {
 
  useEffect(() => {
   logInCheck();
-}, [])
+}, [isLoggedIn])
  
 
  console.log("USER IS LOGGED IN", isLoggedIn)
@@ -53,8 +53,7 @@ function App() {
          <Route path='/signup' element={<SignUp />} />
          </Routes>
       </div>
-
-        
+   
     </Router>
      
   );
