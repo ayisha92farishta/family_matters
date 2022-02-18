@@ -20,6 +20,10 @@ h3 {
   padding-top: 40px;
 }
 
+  #all-recipes {
+    padding-left : 160px;
+  }
+
  #recipes{
   display: flex;
   flex-wrap: wrap;
@@ -34,6 +38,7 @@ img {
   max-width: 100%;
   display: block;
   object-fit: cover;
+  height: auto;
 }
 
 .card {
@@ -110,8 +115,9 @@ background: linear-gradient(to bottom, #f3cc98c7, #f5c659);
 }
 
 .newRecipe {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
+  padding-left : 110px;
 }
 /* .user {
   display: flex;
