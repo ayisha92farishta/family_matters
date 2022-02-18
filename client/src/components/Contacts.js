@@ -8,8 +8,10 @@ import "./Contacts.css";
 export default function Contacts() {
   const [contacts, setContact] = useState([])
   const navigate = useNavigate();
+  const userId = localStorage.getItem('user_id');
+  const accountId = localStorage.getItem('account_id');
   const getContacts = () => {
-    return axios.get('/api/contacts')
+    return axios.get(`/api/contacts/?userId=${userId}&accountId=${accountId}`)
       .then(response => {
         console.log(response.data.contacts);
         setContact(response.data.contacts)
@@ -17,7 +19,7 @@ export default function Contacts() {
   }
   
   const updateContact = (body) => {
-    return axios.put(`/api/contacts/${body.id}`, body, {
+    return axios.put(`/api/contacts/?userId=${userId}&contactId=${body.id}`, body, {
       headers: {
       'Content-Type': 'application/json'
       }})

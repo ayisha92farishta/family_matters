@@ -19,7 +19,9 @@ export default function ContactsForm() {
       email : email,
       address : address
     };
-    axios.post('/api/contacts', body)
+    const userId = localStorage.getItem('user_id');
+    const accountId = localStorage.getItem('account_id');
+    axios.post(`/api/contacts/?userId=${userId}&accountId=${accountId}`, body)
     .then(response => {
       console.log(response.data);
       navigate('/contacts');
