@@ -13,6 +13,7 @@ export default function NewRecipe() {
   const [serving, setServing] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [posted_by, setPosted_by] = useState("");
   const navigate = useNavigate();
 
   const onSubmitForm = (event) => {
@@ -25,7 +26,8 @@ export default function NewRecipe() {
       cooking_time : cookTime,
       serving : serving,
       ingredients : ingredients,
-      instructions : instructions
+      instructions : instructions,
+      posted_by : posted_by
     };
 
     const userId = localStorage.getItem('user_id');
@@ -87,6 +89,12 @@ export default function NewRecipe() {
                   <label for="instructions" class=" control-label">Instructions</label>
                   <div> <textarea name="textarea" className="form-control" rows="5" cols="40" id="instructions" value={instructions} onChange={e => setInstructions(e.target.value)}>Enter the instructions...</textarea></div>
                  
+                </div>
+                <div class="form-group">
+                  <label for="recipe-posted_by" class="col-lg-2 control-label"> Post by</label>
+                  <div >
+                  <input type="text" className="form-control" id="recipe-posted_by" value={posted_by} placeholder="Enter your name" onChange={e => setPosted_by(e.target.value)}/>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-success" data-dismiss="modal" onSubmit={onSubmitForm}>Save</button>
