@@ -35,7 +35,7 @@ function Lists() {
     useEffect(() => {
       getListNames();
     }, [])
- 
+ console.log("LIne 38 lists.js")
  
   return (
   
@@ -58,7 +58,9 @@ function Lists() {
             <tr key={list.id}>
             <td>{list.name}</td>
             <td>
-              <ListEdit />
+              <ListEdit 
+              list={list}
+               />
             </td>
             <td>
               <button 

@@ -1,15 +1,17 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-function ListEdit() {
+function ListEdit({list}) {
+  console.log( "LIST EDIT __________",list);
+  const [newName ,setNewName] = useState(list.name)
   return (
     <>
         <button 
         type="button" 
-        className="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+        className="btn btn-warning" data-toggle="modal" data-target={`#id${list.id}`}>
           Edit
         </button>
 
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={`id${list.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
@@ -19,7 +21,10 @@ function ListEdit() {
                 </button>
               </div>
               <div className="modal-body">
-                <input type="text" className="form-control" > </input>
+                <input type="text" 
+                className="form-control" 
+                value={newName}
+                /> 
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

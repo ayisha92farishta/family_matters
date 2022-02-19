@@ -11,7 +11,7 @@ function ListItems(props) {
 
  
 
-  console.log("props------", lists)
+  //console.log("props------", lists)
 
   const [itemNames, setItemNames] = useState([])
 
@@ -21,7 +21,7 @@ function ListItems(props) {
 
 //function to get items
   const getItemNames = () => {    
-    console.log("making api call to get list item")
+   // console.log("making api call to get list item")
     axios.get(`/api/lists/items/?accountId=${accountId}&listId=${listId}`)
     .then(res => {
        const itemNameArray = res.data.lists;      
@@ -53,7 +53,7 @@ function ListItems(props) {
      
    }
   
-console.log("item names----------------------",itemNames);
+//console.log("item names----------------------",itemNames);
   return (
     <>     
     <ListsItemInput
@@ -69,7 +69,7 @@ console.log("item names----------------------",itemNames);
       >
       <option >Choose a list</option>
       {lists.map(list => (              
-      <option value={list.id}>{list.name}</option>
+      <option key={list.id} value={list.id}>{list.name}</option>
       ))        
       }            
       </select>

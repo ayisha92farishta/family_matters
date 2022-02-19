@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 
 function ListsItemInput (props) {
-  console.log("Props ID______________", props.listId)
+  //console.log("Props ID______________", props.listId)
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id')
   const [itemName, setItemName] = useState("");
