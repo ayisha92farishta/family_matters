@@ -13,42 +13,8 @@
   margin-left: 10em;
 }
 
-.list-table{
-  width: 800px;
-  border-collapse: collapse;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.list-table tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-.list-table tbody td {
-  position: relative;
-}
-.list-table tbody td:hover:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -9999px;
-  bottom: -9999px;
-  background-color: rgba(255, 255, 255, 0.2);
-  z-index: -1;
-}
 
 
 
-.event_modal{
-  position: absolute;
-  background: rgba(0, 0, 0, 0.726);
-  height: 33%;
-  width: 33%;
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
 
 

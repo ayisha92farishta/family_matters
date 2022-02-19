@@ -34,8 +34,9 @@ export default function NewMeal() {
       navigate('/meals');
     })
   }
-  return (
+  return (    
     <div>
+      
       <div class="container">
       <form onSubmit={onSubmitForm}>
                 <div class="form-group">

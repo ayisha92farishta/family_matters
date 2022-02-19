@@ -3,6 +3,7 @@ import axios from 'axios';
 import ListItems from './Lists/ListItems';
 import ListNew from './Lists/ListNew';
 import ListEdit from './Lists/ListEdit';
+import Nav from './Nav';
 // import ListEdit from './Lists/ListEdit';
 import './Lists.css';
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import EditRecipe from './EditRecipe';
+import Nav from './Nav';
 import "./Recipes.css";
 
 

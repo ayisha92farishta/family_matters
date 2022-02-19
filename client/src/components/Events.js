@@ -1,11 +1,13 @@
 import React, { Component, useState, useEffect }from 'react';
 import '../App.css';
+import Nav from './Nav';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 
 const localizer = momentLocalizer(moment);
 
@@ -81,6 +83,7 @@ const Events = () => {
 
   return (
     <>
+    
       {/* {state.event_modal && <EventForm closeCreateEvent={closeCreateEvent} saveNewEvent={saveEvent} sDate={state.s_date}/>} */}
       <div className="App">
       <Calendar 

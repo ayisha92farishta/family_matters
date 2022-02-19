@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import Nav from './Nav';
 
 function Home() {
   return (    
+    
     <> 
+
     <h1>Welcome Home</h1> 
     <div className='home-icons'>
         <Link to='/lists'> 
