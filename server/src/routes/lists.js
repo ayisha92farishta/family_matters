@@ -59,7 +59,7 @@ module.exports = (db) => {
       const list_id = req.params.id
       db.query(`DELETE FROM lists WHERE id = $1`, [list_id])
         .then(data => {
-          console.log("SERVER line 65",data.rows[0]);
+          console.log(data.rows[0]);
         })
         .catch(err => {
           res
@@ -70,14 +70,13 @@ module.exports = (db) => {
 
 
     //Update a list
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     router.put("/:id", (req, res) => {
       console.log(req.body);
-      const listId = req.params.id;
-      const { name } = req.body;
-      const is_private = false;
-      db.query(`UPDATE lists SET name = $1, is_private = $2 WHERE id = $3 ;`, [ name, is_private, listId ] )
+      const listId = req.params.id
+      const name = req.body.newName;
+      db.query(`UPDATE lists SET name = $1 WHERE id = $2 RETURNING *;`, [ name, listId ] )
       .then(data => {
         const newListName = data.rows[0].name;
         res.json( {newListName} );
@@ -88,7 +87,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
     })
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
     //================LIST ITEMS==================

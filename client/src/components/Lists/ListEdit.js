@@ -1,8 +1,22 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function ListEdit({list}) {
   console.log( "LIST EDIT __________",list);
-  const [newName ,setNewName] = useState(list.name)
+  const [newName ,setNewName] = useState(list.name);
+
+  const updateName = (e) => {
+    e.preventDefault();
+    const body = ({newName});
+    axios.put(`/api/lists/${list.id}`, body)
+      .then(res => {
+        console.log = res;      
+        window.location = "/lists";
+      }); 
+  }
+
+  
+
   return (
     <>
         <button 
@@ -24,11 +38,22 @@ function ListEdit({list}) {
                 <input type="text" 
                 className="form-control" 
                 value={newName}
+                onChange={ e => setNewName(e.target.value)}
                 /> 
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Edit</button>
+                <button 
+                type="button" 
+                className="btn btn-secondary" data-dismiss="modal"
+                onClick={updateName} >
+  
+                  Save Changes
+                </button>
+                <button 
+                type="button" 
+                className="btn btn-primary"
+                >close
+                </button>
               </div>
             </div>
           </div>

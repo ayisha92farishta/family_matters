@@ -13,7 +13,8 @@ function ListNew() {
     //post request to insert new item in Lists and user_lists table
     axios.post(`/api/lists/?userId=${userId}&accountId=${accountId}`, body)
     .then(res => {
-    //console.log('newlists------------',res);    
+    console.log('newlists------------',res); 
+    window.location = "/lists";   
     });   
   };
   return (
