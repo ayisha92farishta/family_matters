@@ -147,18 +147,6 @@ code {
 }
 
 
-/* 
-.list-container{
-  display: flex;
-  justify-content: space-evenly;
-  padding-left: 100px ;
-}
-
-
-.list-form {
-  padding-left: 100px;
-} */
-
 .event_modal{
   position: absolute;
   background: whitesmoke;

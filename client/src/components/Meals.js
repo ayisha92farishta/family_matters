@@ -76,7 +76,7 @@ function Meal() {
             }
             key={meal.id}
           >
-            <div id="day">
+            <div >
               <div className="card" id="meal">
                 <h5 className="btn btn-success btn-sm">{meal.day}</h5>
                 <div className="card__header">
@@ -89,16 +89,16 @@ function Meal() {
                 </div>
                 <br />
 
-                <h6>
+                <h6 id="day">
                   Breakfast<span> : {meal.breakfast}</span>
                 </h6>
-                <h6>
+                <h6 id="day">
                   Lunch<span> : {meal.lunch}</span>
                 </h6>
-                <h6>
+                <h6 id="day">
                   Snack<span> : {meal.snack}</span>
                 </h6>
-                <h6>
+                <h6 id="day">
                   Dinner<span> : {meal.dinner}</span>
                 </h6>
                 <div id="card__footer">

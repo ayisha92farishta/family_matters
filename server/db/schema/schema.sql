@@ -105,6 +105,7 @@ CREATE TABLE recipes (
   serving INTEGER,
   ingredients TEXT NOT NULL,
   instructions TEXT NOT NULL,
+  posted_by VARCHAR(255) NOT NULL,
   account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
   user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );
