@@ -15,7 +15,7 @@ function ListItems(props) {
 
   const [itemNames, setItemNames] = useState([])
 
-  const [listId, setListId] = useState(null)
+  const [listId, setListId] = useState(3)
   
   const [listName, setListName] = useState('')
 

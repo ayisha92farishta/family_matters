@@ -68,7 +68,7 @@ const Events = () => {
       title,
       description
     }
-    axios.post('http://localhost:8001/api/events', eventObj)
+    axios.post('http://localhost:4000/api/events', eventObj)
       .then(res => {
         console.log("I'm back", res);
       });
@@ -107,4 +107,4 @@ const Events = () => {
 }
 
 export default Events;
-//axios.post('http://localhost:8001/api/events'
+//axios.post('http://localhost:4000/api/events'

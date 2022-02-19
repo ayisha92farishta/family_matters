@@ -10,6 +10,7 @@ function Nav() {
 
   const username = localStorage.getItem("first_name");
   const navigate = useNavigate();
+  
   const signOut = () => {
     localStorage.clear();
     navigate('/');

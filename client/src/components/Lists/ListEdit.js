@@ -19,7 +19,7 @@ function ListEdit() {
                 </button>
               </div>
               <div className="modal-body">
-                ...
+                <input type="text" className="form-control" > </input>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
