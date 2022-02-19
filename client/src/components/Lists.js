@@ -8,6 +8,7 @@ import Nav from './Nav';
 import './Lists.css';
 
 
+
 function Lists() {
 
   const [lists, setLists] = useState([]);
@@ -41,12 +42,15 @@ function Lists() {
   return (
   
   <>
-  <div className='list-container  my-5'>
-    <div>      
-      <ListNew />
+ 
+  <div className='list-container shadow-lg p-3 mb-5 rounded'>
+    
+    <div >      
 
+      <ListNew />
+ 
     <h1>Lists that already exists</h1>
-      <table className="table list-table  my-5">
+      <table className="table list-table   my-5">
         <thead className="thead-dark">
           <tr>
             <th scope="col">Description</th>
@@ -77,16 +81,17 @@ function Lists() {
       </table>
 
     </div>
-    <div className='new-list'> 
-      
+    <div className='list-items'>       
       <ListItems 
       lists={lists}
-      />
-     
+      />     
     </div>
-    
+  
+ 
     
   </div>
+
+  
   
   </>
     

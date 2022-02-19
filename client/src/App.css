@@ -26,7 +26,7 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-left: 100px;
+  padding-left: 120px;
   min-height: 10vh;
   background-color: #13161fb6;
   color: white;
@@ -156,7 +156,7 @@ code {
   width: 15em;
 }
 
-
+/* 
 .list-container{
   display: flex;
   justify-content: space-evenly;
@@ -166,7 +166,7 @@ code {
 
 .list-form {
   padding-left: 100px;
-}
+} */
 
 .event_modal{
   position: absolute;

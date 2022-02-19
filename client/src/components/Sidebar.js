@@ -1,11 +1,12 @@
 import React from 'react';
+
 import '../App.css';
 
 function Sidebar() {
   return (
     <header className="header" role="banner">
   <h1 className="logo">
-    <a href="#">Family <span>Matters</span></a>
+    <a href="/home">Family <span>Matters</span></a>
   </h1>
   <div className="nav-wrap">
     <nav className="main-nav" role="navigation">

@@ -21,28 +21,29 @@ import ProtectedRoutes from './ProtectedRoutes';
 
 function App() {
  
-//  const [isLoggedIn, setIsLoggedIn] = useState(false)
+ const [isLoggedIn, setIsLoggedIn] = useState(false)
  
-//  const logInCheck = () => {
-//    if (localStorage.length === 0){
-//     setIsLoggedIn(false);
-//    } else {
-//     setIsLoggedIn(true);
-//    }
-//  }
+ const logInCheck = () => {
+   if (localStorage.length === 0){
+    setIsLoggedIn(false);
+   } else {
+    setIsLoggedIn(true);
+   }
+ }
 
-//  useEffect(() => {
-//   logInCheck();
-// }, [isLoggedIn])
+ useEffect(() => {
+  logInCheck();
+}, [isLoggedIn])
  
 
-//  console.log("USER IS LOGGED IN", isLoggedIn)
+ console.log("USER IS LOGGED IN", isLoggedIn)
 
   return (    
    
     <Router>    
       <div className='App'>
-         {/* { isLoggedIn ? <Nav /> : <SignIn/>  }  */}
+        
+         { isLoggedIn && <Nav /> } 
          <Routes>          
          <Route path='/' element={<SignIn />} />
          <Route element={<ProtectedRoutes />} >
