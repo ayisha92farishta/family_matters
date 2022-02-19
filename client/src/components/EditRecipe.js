@@ -2,6 +2,7 @@ import React, { Fragment, useState} from 'react';
 
 function EditRecipe(props) {
   const recipe = props.recipe;
+  console.log('======', recipe)
   const [name, setName] = useState(recipe.name);
   const [image, setImage] = useState(recipe.thumbnail_photo_url);
   const [prepTime, setPrepTime] = useState(recipe.preparation_time);
@@ -9,6 +10,7 @@ function EditRecipe(props) {
   const [serving, setServing] = useState(recipe.serving);
   const [ingredients, setIngredients] = useState(recipe.ingredients);
   const [instructions, setInstructions] = useState(recipe.instructions);
+  const [posted_by, setPosted_by] = useState(recipe.posted_by);
 
   const updateRecipe = (event) => {
     event.preventDefault();
@@ -20,7 +22,8 @@ function EditRecipe(props) {
       cooking_time : cookTime,
       serving : serving,
       ingredients : ingredients,
-      instructions : instructions
+      instructions : instructions,
+      posted_by : posted_by
     };
     console.log('body before reaching update function = ', body);
     props.updateRecipe(body);
@@ -68,6 +71,10 @@ function EditRecipe(props) {
               <label for="instructions">Instructions</label>
               <input type="text" className="form-control" value={instructions} onChange={e => setInstructions(e.target.value)}/>
             </div>
+            </div>
+            <div>
+              <label for="posted_by">Post by</label>
+              <input type="text" className="form-control" value={posted_by} onChange={e => setPosted_by(e.target.value)}/>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-dismiss="modal" onClick={event => updateRecipe(event)}>Save</button>

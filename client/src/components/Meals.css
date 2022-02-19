@@ -37,6 +37,12 @@ img {
   grid-row: 2;
 }
 
+#day {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
 .newMeal {
   padding-left : 290px;
   padding-top: 20px;
