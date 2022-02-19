@@ -146,15 +146,6 @@ code {
   left: 0;
 }
 
-.home-icons {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.home-icons img{
-  height: 15em;
-  width: 15em;
-}
 
 /* 
 .list-container{

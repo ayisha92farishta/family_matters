@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import './Home.css';
 import Nav from './Nav';
 
 function Home() {
   return (    
     
-    <> 
+    <div className='home-container'> 
 
     <h1>Welcome Home</h1> 
     <div className='home-icons'>
@@ -44,7 +44,7 @@ function Home() {
         </Link>
           
     </div>
-    </>
+    </div>
   );
 }
 
