@@ -14,7 +14,6 @@ function Family() {
       axios.get(`/api/family/?accountId=${accountId}`)
       .then(res => {
         const familyMembersArray = res.data.familyMembers;
-        console.log(res.data.familyMembers[0].family_name);
         setMembers(familyMembersArray);
         setFamilyName(res.data.familyMembers[0].family_name)
       });    
@@ -24,14 +23,14 @@ function Family() {
       getMemberNames();
     }, [])
  
-console.log("FAMILY NAME", familyName)
- console.log("MEMBER STATE", members )
+// console.log("FAMILY NAME", familyName)
+//  console.log("MEMBER STATE", members )
 
   return (  
  <>
       <div className='family-container'>
 
-        <h2> The {familyName} Family </h2>
+        <h2 id="family-name"> The {familyName} Family </h2>
         
       <div class="card-group">
         {

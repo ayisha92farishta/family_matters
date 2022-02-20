@@ -24,7 +24,6 @@ function Nav() {
     <h1>Welcome back {username}!</h1>
       <ul className='nav-links'>  
         <li ><a href="/family">My Family</a></li>
-        <li ><a href="/newMember">Add a member</a></li>
         <li ><a href="/" onClick={signOut}>Sign out</a></li>
       </ul>       
       <Sidebar/> 

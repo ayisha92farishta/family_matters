@@ -1,4 +1,4 @@
-h2 {
+#title {
   text-align: center;
   font-family: arial, sans-serif;
   border:4px;
@@ -23,7 +23,7 @@ h2 {
   
 }
 
-#contatcs td, #contacts th {
+#contacts td, #contacts th {
   border: 1px solid #ddd;
   padding: 8px;
 }
