@@ -18,7 +18,7 @@ function Nav() {
     <h3>Welcome Back {username} !</h3>
       <ul className='nav-links'>  
         <li ><a href="/signup">Family members</a></li>
-        <li ><a href="/signup">Add a member</a></li>
+        <li ><a href="/newMember">Add a member</a></li>
         <li ><a href="/" onClick={signOut}>Sign out</a></li>
       </ul>       
     </nav>     

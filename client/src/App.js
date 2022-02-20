@@ -15,6 +15,7 @@ import ContactsForm from './components/ContactsForm';
 import Meals from './components/Meals';
 import EventForm from './components/EventForm';
 import NewMeal from './components/NewMeal';
+import NewMember from './components/NewMember';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 
@@ -39,6 +40,7 @@ function App() {
          <Route path='/newRecipe' element={<NewRecipe />} />
          <Route path='/contacts' element={<Contacts />} />
          <Route path='/contactsForm' element={<ContactsForm />} />
+         <Route path='/newMember' element={<NewMember />} />
          <Route path='/' element={<SignIn />} />
          <Route path='/signup' element={<SignUp />} />
          </Routes>
