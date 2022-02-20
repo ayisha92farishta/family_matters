@@ -59,13 +59,9 @@ function App() {
          <Route path='/recipes' element={<Recipes />} />
          <Route path='/newRecipe' element={<NewRecipe />} />
          <Route path='/contacts' element={<Contacts />} />
-<<<<<<< HEAD
-         <Route path='/contactsForm' element={<ContactsForm />} />         
-=======
          <Route path='/contactsForm' element={<ContactsForm />} />
          <Route path='/newMember' element={<NewMember />} />
          <Route path='/' element={<SignIn />} />
->>>>>>> 76919abe873becc3701387a37acf2247fb1af583
          <Route path='/signup' element={<SignUp />} />
 
          </Route>
