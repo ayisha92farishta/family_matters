@@ -1,9 +1,16 @@
 .family-container{
-  padding-left: 240px;
+  padding-left: 300px;
   padding-right: 20px;
   padding-top: 50px;
+  background-color: aliceblue;
+ 
 }
 
 #family-table {
+  text-align: center;
   border: 2px;
+}
+
+.card {
+  height: 400px;
 }

@@ -115,7 +115,7 @@ function Recipe() {
                   
                   
                     <h4>
-                      <span class="tag tag-blue">Instructions </span>
+                      <span className="tag tag-blue">Instructions </span>
                     </h4>
 
                     <p class="main_recipe_content">{recipe.instructions}</p>

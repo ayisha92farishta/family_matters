@@ -6,18 +6,19 @@ module.exports = (db) => {
   //===============LISTS====================
 
 
-  //Get all lists for a user private and public---works
+  //Get all members for a particular account
 
 
   router.get("/", (req, res) => {
-    const userId = req.query.userId; 
+   // const userId = req.query.userId; 
     const accountId = req.query.accountId;
-
-    db.query(`SELECT DISTINCT user.id as id, account.name as account      
+    console.log(accountId)
+    db.query(`SELECT DISTINCT users.first_name as first_name,users.last_name as last_name, users.email as email, accounts.name as family_name      
               FROM users
               JOIN accounts ON accounts.id = account_id
-              WHERE user_lists.account_id = $1 AND lists.is_private = false OR user_lists.user_id = $2 AND lists.is_private = true ;`, [ accountId, userId ])
+              WHERE users.account_id = $1 ;`,  [accountId] )
       .then(data => {
+        console.log(data)
         const familyMembers = data.rows;
         res.json({ familyMembers });
       })

@@ -37,7 +37,7 @@ function Lists() {
     useEffect(() => {
       getListNames();
     }, [])
- console.log("LIne 38 lists.js")
+ //console.log("LIne 38 lists.js")
  
   return (
   

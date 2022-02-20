@@ -22,7 +22,7 @@ function ProtectedRoutes () {
    logInCheck();
  }, [isLoggedIn])
 
- console.log("USER IS LOGGED IN", isLoggedIn)
+ //console.log("USER IS LOGGED IN", isLoggedIn)
 
   return isLoggedIn ? <Outlet/> : <SignIn /> ;   
   
