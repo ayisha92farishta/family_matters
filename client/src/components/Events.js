@@ -119,11 +119,6 @@ const Events = () => {
 
   return (
     <>
-<<<<<<< HEAD
-    
-      {/* {state.event_modal && <EventForm closeCreateEvent={closeCreateEvent} saveNewEvent={saveEvent} sDate={state.s_date}/>} */}
-=======
->>>>>>> 76919abe873becc3701387a37acf2247fb1af583
       <div className="App">
       <Calendar 
         selectable
@@ -185,9 +180,4 @@ const Events = () => {
   );
 }
 
-<<<<<<< HEAD
 export default Events;
-//axios.post('http://localhost:4000/api/events'
-=======
-export default Events;
->>>>>>> 76919abe873becc3701387a37acf2247fb1af583
