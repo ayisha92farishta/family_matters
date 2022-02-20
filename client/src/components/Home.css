@@ -1,9 +1,6 @@
-.home-container{
-  padding-left: 100px;
-}
 
 .home-icons {
-  display: flex;
+  display:flex;
   justify-content: space-evenly;
 }
 

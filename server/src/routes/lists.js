@@ -167,7 +167,7 @@ module.exports = (db) => {
       });
     })
     
-    //Delete an item from the list
+    //Delete an item from the list ---works
 
 
     router.delete("/items/:id", (req, res) => {
@@ -184,30 +184,3 @@ module.exports = (db) => {
     })
   return router;
 };
-
-
-//Taken out from lists post request
-
-        // .then(data => {
-          //   console.log(data.rows[0]);
-          //     db.query(`INSERT INTO list_items (item_name, list_id, user_id) VALUES ($1, $2, $3) RETURNING *;`, [ item, listId, userId ])
-          //       .then(data => {
-          //         console.log(data.rows[0]);
-          //         const listId = data.rows[0].list_id;
-          //         const newList = {
-          //           list : listId, //how to get list name instead ?
-          //           item : data.rows[0].item 
-          //         }
-          //         res.json( {newList} );
-          //       })
-          //       .catch(err => {
-          //         res
-          //           .status(500)
-          //           .json({ error: err.message });
-          //       });
-          // })
-          // .catch(err => {
-          //   res
-          //     .status(500)
-          //     .json({ error: err.message });
-          // });
