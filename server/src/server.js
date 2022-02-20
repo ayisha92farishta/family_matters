@@ -31,6 +31,7 @@ const recipeRoutes = require("./routes/recipes");
 const contactRoutes = require("./routes/contacts");
 const listRoutes = require("./routes/lists");
 const eventsRoutes = require("./routes/events");
+const familyRoutes = require("./routes/family");
 
 // Mount all resource routes
 //app.use("/", usersRoutes(db));
@@ -42,6 +43,7 @@ app.use("/api/contacts", contactRoutes(db));
 app.use("/api/lists", listRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use("/api/events", eventsRoutes(db));
+app.use("/api/family", familyRoutes(db));
 
 // Home page
 app.get("/", (req, res) => {

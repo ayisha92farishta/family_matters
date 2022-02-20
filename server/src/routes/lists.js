@@ -11,7 +11,6 @@ module.exports = (db) => {
 
   router.get("/", (req, res) => {
     const userId = req.query.userId; 
-
     const accountId = req.query.accountId;
 
     db.query(`SELECT DISTINCT lists.id as id, lists.name as name      
