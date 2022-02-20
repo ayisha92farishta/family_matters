@@ -58,7 +58,8 @@ module.exports = (db) => {
             console.log(data.rows[0]);
             const newUser = {
               firstName: data.rows[0].first_name,
-              lastName: data.rows[0].last_name
+              user_id : data.rows[0].id, 
+              account_id : data.rows[0].account_id
             }
             res.json( newUser );
           })

@@ -7,6 +7,13 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Modal, Button, Stack, Form } from 'react-bootstrap';
+
+/*
+  What needs to be completed : view events - needs date handeling - doesn't show date
+  Might be nice to take out the view form out of events
+  Remove or change the looks of the add new event button
+*/
 
 
 const localizer = momentLocalizer(moment);
@@ -14,7 +21,19 @@ const localizer = momentLocalizer(moment);
 const Events = () => {
 
   const [events, setEvents] = useState([]);
+  const [currentEvent, setCurrentEvent] = useState({});
   const [selectedDate, setSelectedDate] = useState("");
+  const [show, setShow] = useState(false);
+
+
+
+
+  const handleClose = () => {
+    setShow(false);
+    navigate('/events');
+  }
+  const handleShow = () => setShow(true);
+
   const navigate = useNavigate();
   const getEvents = () => {
     const body = {
@@ -22,7 +41,6 @@ const Events = () => {
       account_id : localStorage.getItem('account_id')
       
     };
-    console.log("Where is the body",body);
     return axios.get('/api/events',{
       params: body
     })
@@ -34,13 +52,17 @@ const Events = () => {
 
   const transformEvent = (event)=> {
     const startTime = moment(event.event_date, 'YYYY-MM-DD');
+    console.log("start time after formatting is: ", startTime);
     return {
       ...event,
-      start: startTime.toDate(),
+      start: startTime.toDate(),//?
       title: event.event_name,
       description: event.event_description,
+      location: event.event_address,
+      eventId: event.id,
       //start: moment().toDate(),
       end: startTime.add(1, "days").toDate()
+
      }
   
     return {
@@ -61,6 +83,10 @@ const Events = () => {
 
   const handleSelected = (e) => {
     console.log("These are the event details: ",e);
+    setCurrentEvent(e);
+    handleShow();
+    //$("#event_model").modal()
+    
   }
 
   const saveEvent = (startDate, title, description) => {
@@ -76,6 +102,16 @@ const Events = () => {
       });
   }
 
+  const deleteEvent = () => {
+    const eventToDelete = currentEvent.eventId;
+    console.log(eventToDelete);
+    axios.delete(`/api/events/${eventToDelete}`)
+      .then(res => {
+        console.log("back from delete on the server")
+      })
+    setEvents(events.filter(e => e.id !== eventToDelete));
+  }
+
   useEffect(() => {
     getEvents();
   }, [])
@@ -83,8 +119,6 @@ const Events = () => {
 
   return (
     <>
-    
-      {/* {state.event_modal && <EventForm closeCreateEvent={closeCreateEvent} saveNewEvent={saveEvent} sDate={state.s_date}/>} */}
       <div className="App">
       <Calendar 
         selectable
@@ -92,7 +126,6 @@ const Events = () => {
         defaultDate={new Date()}
         defaultView="month"
         events={events}
-        //events={events.events_list}
         onSelectSlot={createEvent}
         onSelectEvent={handleSelected}
         style={{ height: 750, marginLeft: 310, marginRight: 15 }} // need to move to css file
@@ -105,9 +138,46 @@ const Events = () => {
         </button>
       </Link>
     </div>
+    <Modal className='modalEvents' show={show} onHide={handleClose} style={ {top:'20%'}}>
+        <Modal.Header closeButton>
+          <Modal.Title>{currentEvent.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="eventDetailsForm.description">
+              <Form.Label>Description</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder={currentEvent.description} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="eventDetailsForm.date">
+              <Form.Label>Event's date</Form.Label>
+              <Form.Control type="date" placeholder={currentEvent.startDate}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="eventDetailsForm.location">
+              <Form.Label>Location</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder={currentEvent.location} />
+            </Form.Group>
+            {/* <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Example textarea</Form.Label>
+              <Form.Control as="textarea" rows={3} />
+            </Form.Group> */}
+          </Form> 
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={deleteEvent}>
+            Delete
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Link to="/eventUpdate" testValue="test">
+            <Button variant="primary" onClick={handleClose} >
+              Update
+            </Button>        
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
 
 export default Events;
-//axios.post('http://localhost:4000/api/events'
