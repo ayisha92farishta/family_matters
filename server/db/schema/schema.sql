@@ -87,8 +87,10 @@ DROP TABLE IF EXISTS meals CASCADE;
 CREATE TABLE meals (
   id SERIAL PRIMARY KEY NOT NULL,
   day VARCHAR(255) NOT NULL,
-  meal_type VARCHAR(255),
-  description TEXT,
+  breakfast VARCHAR(255),
+  lunch VARCHAR(255),
+  snack VARCHAR(255),
+  dinner VARCHAR(255),
   account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE
 );
 
@@ -103,6 +105,7 @@ CREATE TABLE recipes (
   serving INTEGER,
   ingredients TEXT NOT NULL,
   instructions TEXT NOT NULL,
+  posted_by VARCHAR(255) NOT NULL,
   account_id INTEGER NOT NULL REFERENCES accounts(id) on DELETE CASCADE,
   user_id INTEGER NOT NULL REFERENCES users(id) on DELETE CASCADE
 );

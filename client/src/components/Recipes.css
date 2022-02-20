@@ -1,12 +1,10 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"); */
-
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
+} */
 
 /* body {
   font-family: "Quicksand", sans-serif;
@@ -20,18 +18,21 @@ h3 {
   padding-top: 40px;
 }
 
-  #all-recipes {
-    padding-left : 160px;
-  }
+#all-recipes {
+  padding-left: 250px;
+}
 
- #recipes{
+#recipe_title {
+  padding-left: 10px;
+}
+
+#recipes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1200px;
-  margin-block: 4rem;
   gap: 2rem;
-  margin-left: 50px;
+  margin-left: 130px;
 }
 
 img {
@@ -42,65 +43,77 @@ img {
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  width: clamp(20rem, calc(20rem + 2vw), 22rem);
-  /* width: 800px;
-  height: 800px; */
-  overflow: hidden;
-  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
-  background: #ECE9E6;
-  /* background: linear-gradient(to right, #FFFFFF, #ECE9E6); */
+  padding: 1px;
+  text-align: center;
+  background-color: #eff1f5;
+  max-width: 350px;
+  
 }
 
-
-
-.card__body {
+#card_contents {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 30px;
+  
 }
 
 
-.tag {
+/* .tag {
   justify-content: flex-start;
-  padding: .25em .75em;
+  padding: 0.25em 0.75em;
   border-radius: 1em;
-  /* font-size: .75rem; */
+  font-size: .75rem;
   font-size: 18px;
 }
 
 .tag + .tag {
-  margin-left: .5em;
+  margin-left: 0.5em;
+} */
+
+.label {
+  font-size : 17px;
 }
 
-.tag-blue {
-  background: #56CCF2;
-background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+
+/* .tag-blue {
+  background: #56ccf2;
+  background: linear-gradient(to bottom, #2f80ed, #56ccf2);
   color: #fafafa;
-}
+} */
 
-.tag-brown {
-  background: #D1913C;
-background: linear-gradient(to bottom, #FFD194, #D1913C);
+/* .tag-brown {
+  background: #d1913c;
+  background: linear-gradient(to bottom, #ffd194, #d1913c);
   color: #fafafa;
 }
 
 .tag-green {
   background: #2dcb7c;
-background: linear-gradient(to bottom, #b2e4b8, #6be76b);
-  color: #fafafa;
+  background: linear-gradient(to bottom, #b2e4b8, #95db95);
+  color: #ffffff;
   font-size: 15px;
 }
 
-.tag-orange {
+.tag-red {
   background: #cb942d;
-background: linear-gradient(to bottom, #f3cc98c7, #f5c659);
-  color: #fafafa;
+  background: linear-gradient(to bottom, #eeb8b6c7, #eea284);
+  color: #ffffff;
   font-size: 15px;
 }
+
+.tag-teal {
+  background: #cb942d;
+  background: linear-gradient(to bottom, #9dcff1c7, #7cbaec);
+  color: #ffffff;
+  font-size: 15px;
+} */
 
 .card__body h4 {
   font-size: 1.5rem;
@@ -115,19 +128,6 @@ background: linear-gradient(to bottom, #f3cc98c7, #f5c659);
 }
 
 .newRecipe {
-  /* display: flex;
-  justify-content: center; */
-  padding-left : 110px;
+  padding-left: 250px;
+  padding-top: 20px;
 }
-/* .user {
-  display: flex;
-  gap: .5rem;
-}
-
-.user__image {
-  border-radius: 50%;
-}
-
-.user__info > small {
-  color: #666;
-} */

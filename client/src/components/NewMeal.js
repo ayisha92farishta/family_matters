@@ -45,12 +45,6 @@ export default function NewMeal() {
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="photo" class="col-lg-2 control-label">Image</label>
-                  <div >
-                  <img src="" />
-                  </div>
-                </div>
-                <div class="form-group">
                   <label for="breakfast" class=" control-label">Breakfast</label>
                   <div >
                     <input type="text" className="form-control" id="breakfast" value={breakfast} placeholder="For Breakfast" onChange={e => setBreakfast(e.target.value)}/>
