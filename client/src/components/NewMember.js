@@ -66,7 +66,7 @@ export default function NewMember() {
                 
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-success" data-dismiss="modal" onSubmit={onSubmitForm}>Add Member</button>
-                  <Link to="/home">
+                  <Link to="/family">
                     <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
                   </Link>
                 </div>
