@@ -53,7 +53,7 @@ export default function SignUp() {
         console.log(res);
         localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('account_id', res.data.account_id);
-        localStorage.setItem('first_name', res.data.first_name);
+        localStorage.setItem('first_name', res.data.firstName);
         navigate('/home');
       });
   };
