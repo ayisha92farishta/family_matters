@@ -164,18 +164,18 @@ const Events = () => {
     handleShow();
   }
 
-  const saveEvent = (startDate, title, description) => {
-    console.log(startDate, title, description);
-    let eventObj = {
-      startDate,
-      title,
-      description
-    }
-    axios.post('http://localhost:4000/api/events', eventObj)
-      .then(res => {
-        console.log("I'm back", res);
-      });
-  }
+  // const saveEvent = (startDate, title, description) => {
+  //   console.log(startDate, title, description);
+  //   let eventObj = {
+  //     startDate,
+  //     title,
+  //     description
+  //   }
+  //   axios.post('http://localhost:4000/api/events', eventObj)
+  //     .then(res => {
+  //       console.log("I'm back", res);
+  //     });
+  // }
 
   const setCurrentitle = (e) => {
     const title = e.target.value;
