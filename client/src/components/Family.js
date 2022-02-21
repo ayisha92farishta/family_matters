@@ -48,7 +48,7 @@ function Family() {
 
 
       </div>
-       <Link to="/contactsForm">
+       <Link to="/newMember">
         <button type="button" className="family-button btn btn-success">
            Add new member
         </button>
