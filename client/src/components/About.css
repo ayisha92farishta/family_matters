@@ -2,31 +2,13 @@
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 9999;
   margin-left: 20px;
   margin-right: 20px;
   padding-left: 300px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   
 }
-.background-image{
-  /* background-image: url("https://images.unsplash.com/photo-1617464629425-6c3247056a6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"); */
-  position: fixed;
-  /* left: 0;
-  right: 0; */
-  z-index: 1;
-  display: block;
-  background-image: url('https://media.istockphoto.com/vectors/family-typeface-with-blue-background-vector-id1202629438');
-  width: 1600px;
-  height: 600px;
-  background-size: 1200px 600px;
-  margin-left: 270px;
-  -webkit-filter: blur(6px);
-  -moz-filter: blur(6px);
-  -o-filter: blur(6px);
-  -ms-filter: blur(6px);
-  filter: blur(6px);
-}
+
 #app_title{
   font-size: 25px;
   text-align: center;
