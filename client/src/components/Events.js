@@ -62,20 +62,6 @@ const Events = () => {
       })
   };
 
-  // const saveEvent = (startDate, title, description) => {
-  //   console.log(startDate, title, description);
-  //   let eventObj = {
-  //     startDate,
-  //     title,
-  //     description
-  //   }
-  //   console.log("Save this event:", eventObj);
-  //   axios.post('http://localhost:8001/api/events', eventObj)
-  //     .then(res => {
-  //       console.log("I'm back", res);
-  //     });
-  // }
-
   const saveEvent = (startDate, title, description) => {
     console.log(startDate, title, description);
     let eventObj = {
@@ -106,22 +92,8 @@ const Events = () => {
     .then(res => {
       console.log("put response", res.data)
       getEvents();
+      handleClose();
     })
-    handleClose();
-
-    // .then(res => {
-    //   console.log('response = ', res.data);
-    //   const newContacts = contacts.map(contact => {
-    //     if (contact.id === res.data.updatedContact.id) {
-    //       return { ...res.data.updatedContact }
-    //     } else {
-    //       return { ...contact }
-    //     }
-    //   })
-    //   setContact([...newContacts])
-    //   navigate('/contacts');
-    // })
-  
   }
 
 //---------------------------------------------------------------------------------
@@ -162,24 +134,6 @@ const Events = () => {
     setCurrentEvent(selectedEvent);
     setSelectedDate(date);
     handleShow();
-  }
-
-  // const saveEvent = (startDate, title, description) => {
-  //   console.log(startDate, title, description);
-  //   let eventObj = {
-  //     startDate,
-  //     title,
-  //     description
-  //   }
-  //   axios.post('http://localhost:4000/api/events', eventObj)
-  //     .then(res => {
-  //       console.log("I'm back", res);
-  //     });
-  // }
-
-  const setCurrentitle = (e) => {
-    const title = e.target.value;
-    setCurrentEvent((prev) => ({ ...prev, title}))
   }
 
   useEffect(() => {
