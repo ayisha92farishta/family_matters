@@ -8,7 +8,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Stack, Form } from 'react-bootstrap';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { color } from '@mui/system';
+import { blue } from '@mui/material/colors';
 /*
   What needs to be completed : view events - needs date handeling - doesn't show date
   Might be nice to take out the view form out of events
@@ -20,13 +23,21 @@ const localizer = momentLocalizer(moment);
 
 const Events = () => {
 
-  const [events, setEvents] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState({});
-  const [selectedDate, setSelectedDate] = useState("");
-  const [show, setShow] = useState(false);
+  const [events, setEvents] = useState([]);//holds all events for a user
+  const [currentEvent, setCurrentEvent] = useState({
+    eventId: 0,
+    title: "",
+    description: "",
+    date: new Date(),
+    location: ""
+  });//the event I'm viewing 
+  const [selectedDate, setSelectedDate] = useState(new Date());//?
+  const [show, setShow] = useState(false);//used for showing/hiding modal pop up form
 
+  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");//event_name
 
-
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setShow(false);
@@ -34,7 +45,8 @@ const Events = () => {
   }
   const handleShow = () => setShow(true);
 
-  const navigate = useNavigate();
+  
+//server functions
   const getEvents = () => {
     const body = {
       user_id : localStorage.getItem('user_id'),
@@ -50,6 +62,69 @@ const Events = () => {
       })
   };
 
+  // const saveEvent = (startDate, title, description) => {
+  //   console.log(startDate, title, description);
+  //   let eventObj = {
+  //     startDate,
+  //     title,
+  //     description
+  //   }
+  //   console.log("Save this event:", eventObj);
+  //   axios.post('http://localhost:8001/api/events', eventObj)
+  //     .then(res => {
+  //       console.log("I'm back", res);
+  //     });
+  // }
+
+  const saveEvent = (startDate, title, description) => {
+    console.log(startDate, title, description);
+    let eventObj = {
+      startDate,
+      title,
+      description
+    }
+    axios.post('http://localhost:4000/api/events', eventObj)
+      .then(res => {
+        console.log("I'm back", res);
+      });
+  }
+  const deleteEvent = () => {
+    const eventToDelete = currentEvent.eventId;
+    console.log(eventToDelete);
+    axios.delete(`/api/events/${eventToDelete}`)
+      .then(res => {
+        console.log("back from delete on the server")
+      })
+    setEvents(events.filter(e => e.id !== eventToDelete));
+    handleClose();
+  }
+
+  const updateEvent = () => {
+    const user = localStorage.getItem('user_id');
+    console.log("my user is ",user);
+    return axios.put(`/api/events/?userId=${user}&eventId=${currentEvent.eventId}`,currentEvent)
+    .then(res => {
+      console.log("put response", res.data)
+      getEvents();
+    })
+    handleClose();
+
+    // .then(res => {
+    //   console.log('response = ', res.data);
+    //   const newContacts = contacts.map(contact => {
+    //     if (contact.id === res.data.updatedContact.id) {
+    //       return { ...res.data.updatedContact }
+    //     } else {
+    //       return { ...contact }
+    //     }
+    //   })
+    //   setContact([...newContacts])
+    //   navigate('/contacts');
+    // })
+  
+  }
+
+//---------------------------------------------------------------------------------
   const transformEvent = (event)=> {
     const startTime = moment(event.event_date, 'YYYY-MM-DD');
     console.log("start time after formatting is: ", startTime);
@@ -64,29 +139,29 @@ const Events = () => {
       end: startTime.add(1, "days").toDate()
 
      }
-  
-    return {
-      ...event,
-      start: moment().toDate(),
-      end: moment().add(1, "days").toDate(),
-      title: "my event",
-      description: "great"
-    }
 
   }
-  const createEvent = (e) => {
-    let startDate = moment(e.start.toLocaleString())._i;    
+  const createEvent = (e) => {    
+    let startDate = moment(e.start).format('YYYY-MM-DD');
     setSelectedDate(startDate);
-    console.log("I am the chosen one", startDate);
+    localStorage.setItem('selectedDateByUser', startDate);
     navigate('/EventForm');
   }
 
   const handleSelected = (e) => {
     console.log("These are the event details: ",e);
-    setCurrentEvent(e);
+    const eventDate = moment(e.event_date, 'YYYY-MM-DD');
+    const date = moment(e.event_date).toDate();
+    let selectedEvent = {
+      eventId: e.eventId,
+      title: e.title,
+      description: e.description,
+      date: eventDate,
+      location: e.location
+    }
+    setCurrentEvent(selectedEvent);
+    setSelectedDate(date);
     handleShow();
-    //$("#event_model").modal()
-    
   }
 
   const saveEvent = (startDate, title, description) => {
@@ -102,14 +177,9 @@ const Events = () => {
       });
   }
 
-  const deleteEvent = () => {
-    const eventToDelete = currentEvent.eventId;
-    console.log(eventToDelete);
-    axios.delete(`/api/events/${eventToDelete}`)
-      .then(res => {
-        console.log("back from delete on the server")
-      })
-    setEvents(events.filter(e => e.id !== eventToDelete));
+  const setCurrentitle = (e) => {
+    const title = e.target.value;
+    setCurrentEvent((prev) => ({ ...prev, title}))
   }
 
   useEffect(() => {
@@ -133,33 +203,35 @@ const Events = () => {
       </div>
       <div>
       <Link to="/eventForm">
-        <button type="button" class="btn btn-info">
-          Add New Event
+        <button type="button" class="btn btn-info" variant="primary" style={{ position: 'absolute',
+                left: 310
+                }}>
+          Add a New Event
         </button>
       </Link>
     </div>
     <Modal className='modalEvents' show={show} onHide={handleClose} style={ {top:'20%'}}>
         <Modal.Header closeButton>
-          <Modal.Title>{currentEvent.title}</Modal.Title>
+          <Modal.Title> My Event</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
+          <Form.Group className="mb-3" controlId="eventDetailsForm.title">
+              <Form.Label>Title</Form.Label>
+              <Form.Control as="textarea" rows={1} value={currentEvent.title} onChange={(event) => setCurrentEvent((prev) => ({ ...prev, title: event.target.value}))} />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="eventDetailsForm.description">
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder={currentEvent.description} />
+              <Form.Control as="textarea" rows={3} value={currentEvent.description} onChange={(event) => setCurrentEvent((prev) => ({ ...prev, description: event.target.value}))} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="eventDetailsForm.date">
               <Form.Label>Event's date</Form.Label>
-              <Form.Control type="date" placeholder={currentEvent.startDate}/>
+              <DatePicker selected={selectedDate} onChange={(event) => setCurrentEvent((prev) => ({ ...prev, date: event.target.value}))} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="eventDetailsForm.location">
               <Form.Label>Location</Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder={currentEvent.location} />
+              <Form.Control as="textarea" rows={1} value={currentEvent.location} onChange={(event) => setCurrentEvent((prev) => ({ ...prev, location: event.target.value}))}/>
             </Form.Group>
-            {/* <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group> */}
           </Form> 
         </Modal.Body>
         <Modal.Footer>
@@ -169,8 +241,8 @@ const Events = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Link to="/eventUpdate" testValue="test">
-            <Button variant="primary" onClick={handleClose} >
+          <Link to="/events" testValue="test">
+            <Button variant="primary" onClick={updateEvent}>
               Update
             </Button>        
           </Link>

@@ -5,7 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button, InputGroup, FormControl, Stack } from 'react-bootstrap';
 import Form from "react-bootstrap/Form";
-import TimePicker from 'react-bootstrap-time-picker';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 /*
   What needs to be completed : handeling start and end time, a label for start time,
@@ -84,7 +85,10 @@ function EventForm (props) {
               <InputGroup.Text>Description</InputGroup.Text>
               <FormControl as="textarea" aria-label="With textarea" onChange={e => {setDescription(e.target.value)}}/>
             </InputGroup>
-            <Form.Control type="date" name='StartDate' onChange={e => {setStartDate(e.target.value)}}/>
+            <InputGroup>
+              <DatePicker  value={localStorage.getItem('selectedDateByUser')} onChange={(date) => setStartDate(date)} />
+            </InputGroup>
+            {/* <DatePicker selected={startDate} onChange={e => {setStartDate(e.target.value)}} /> */}
             <Form>
               <Form.Check 
                 type="switch"
