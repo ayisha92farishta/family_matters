@@ -46,6 +46,7 @@ module.exports = (db) => {
     const user_id = req.body.user_id;
     const account_id = req.body.account_id;
     values = [title, description, startDate, location];
+    console.log("This is from the client:", values);
     db.query(`INSERT INTO events (event_name, event_description, event_date, event_address) VALUES ($1, $2, $3, $4) RETURNING *;`,values)
       .then((data) => {
         console.log(data.rows[0]);
@@ -89,9 +90,40 @@ module.exports = (db) => {
   });
 
   // //Modify an existing event (PUT)
-  // router.put('/events', (req, res) => {
+  router.put('/', (req, res) => {
+    console.log("I'm here",req.body);
+    console.log("I'm params",req.query);
+    const event_id = req.query.eventId;
+    const event_name = req.body.title;
+    const event_description = req.body.description;
+    const event_date = req.body.date;
+    const all_day = "";
+    const start_time = "";
+    const end_time = "";
+    const is_private = "";
+    const event_address = req.body.location;
+    const user_id = req.body.id;
+    //const event_reminder;
+    const values = [event_name, event_description, event_date, event_address, event_id];
+    db.query(`UPDATE events SET event_name = $1, event_description = $2, event_date = $3, event_address = $4 WHERE id = $5 RETURNING *;`, values)
+      .then(data => {
+        console.log(data.rows[0]);
+        const updatedEvent = {
+          event_id: data.rows[0].event_id,
+          event_name: data.rows[0].event_name,
+          event_description : data.rows[0].event_description,
+          event_date : data.rows[0].event_date,
+          event_address : data.rows[0].event_address
+        }
+        res.json({ updatedEvent} )
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
-  // });
 
    //view a specific event info (GET)
   router.get('/:id', (req, res) => {
