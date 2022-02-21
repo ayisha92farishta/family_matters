@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { CardMedia } from '@mui/material';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -60,13 +61,14 @@ export default function SignInSide() {
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
+       
         <Grid
           item
           xs={false}
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/6MT4_Ut8a3Y)',
+            backgroundImage: 'url(https://thumbs.dreamstime.com/b/parents-cuddle-small-kids-watching-cartoon-laptop-happy-family-four-sit-together-couch-watching-cartoons-laptop-125627129.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -84,6 +86,9 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
+            <Typography component="h1" variant="h4">
+              Welcome to family matters
+            </Typography>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
