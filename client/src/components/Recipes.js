@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import EditRecipe from "./EditRecipe";
+import NewRecipe from './NewRecipe';
 import "./Recipes.css";
+import NewMember from "./NewMember";
 
 function Recipe() {
   const [recipes, setRecipes] = useState([]);
@@ -139,11 +141,12 @@ function Recipe() {
         ))}
       </div>
       <div class="newRecipe">
-        <Link to="/newRecipe">
+        {/* <Link to="/newRecipe">
           <button type="button" class="btn btn-info">
             Add New Recipe
           </button>
-        </Link>
+        </Link> */}
+        <NewRecipe />
       </div>
     </Fragment>
   );
