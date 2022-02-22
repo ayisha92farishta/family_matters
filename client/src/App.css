@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(90deg, #bfe9f0 0%, #506aaf85 100%);
+  background-image: linear-gradient(90deg, #f4f6f8 50%, #bfd7ee 100%);
   
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
