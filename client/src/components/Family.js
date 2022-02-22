@@ -2,8 +2,11 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Family.css'
+import moment from 'moment'
+
 
 function Family() {
+
   const [members, setMembers] = useState([]);
   const [familyName, setFamilyName] = useState('')
   
@@ -40,7 +43,7 @@ function Family() {
                  <img class="card-img-top" src="blank-profile-picture.png" alt="Card image cap"/>
                 <h3 class="card-title">{member.first_name} </h3>
                 <p class="card-text">{member.email}</p>
-                <p class="card-text"><small class="text-muted">Joined in {member.joined_on}</small></p>
+                <p class="card-text"><small class="text-muted">Joined in {moment(member.joined_on).format('YYYY-MM-DD')}</small></p>
              </div>          
         </div>
           ))
