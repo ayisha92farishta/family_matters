@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EditContact from './EditContact';
 import "./Contacts.css";
+import ContactsForm from './ContactsForm';
 
 export default function Contacts() {
   const [contacts, setContact] = useState([])
@@ -82,11 +83,7 @@ export default function Contacts() {
       </tbody>
     </table>
     <div>
-      <Link to="/contactsForm">
-        <button type="button" className="btn btn-info">
-          New Contact
-        </button>
-      </Link>
+      <ContactsForm/>
     </div>
     </div>
 );
