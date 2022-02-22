@@ -49,7 +49,7 @@ function Lists() {
 
       <ListNew />
  
-    <h1>Lists that already exists</h1>
+    <h1>My Lists</h1>
       <table className="table list-table   my-5">
         <thead className="thead-dark">
           <tr>
