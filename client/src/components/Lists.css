@@ -2,7 +2,7 @@
 .list-container{
   display: flex;
   justify-content: space-evenly;
-  background-color: rgb(220, 228, 245);
+  /* background-color: rgb(220, 228, 245); */
 }
 
 
