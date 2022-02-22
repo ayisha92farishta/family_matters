@@ -1,9 +1,9 @@
 #title {
   text-align: center;
   font-family: arial, sans-serif;
-  border:4px;
+  border:3px;
   border-style:solid; 
-  border-color:rgb(151, 176, 231);
+  border-color:rgb(123, 175, 192);
 }
 .container {
   padding-left: 240px;
@@ -36,6 +36,6 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: rgb(151, 176, 231);
+  background-color: rgb(130, 174, 192);
   color: white;
 }
