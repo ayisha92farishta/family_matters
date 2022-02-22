@@ -10,7 +10,6 @@ import Lists from './components/Lists';
 import Recipes from './components/Recipes';
 import NewRecipe from './components/NewRecipe';
 import Contacts from './components/Contacts';
-import ContactsForm from './components/ContactsForm';
 import Meals from './components/Meals';
 import EventForm from './components/EventForm';
 import NewMeal from './components/NewMeal';
@@ -61,7 +60,6 @@ function App() {
          <Route path='/recipes' element={<Recipes />} />
          <Route path='/newRecipe' element={<NewRecipe />} />
          <Route path='/contacts' element={<Contacts />} />
-         <Route path='/contactsForm' element={<ContactsForm />} />
          <Route path='/newMember' element={<NewMember />} />
          <Route path='/' element={<SignIn />} />
          <Route path='/signup' element={<SignUp />} />
