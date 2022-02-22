@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import EditMeal from "./EditMeal";
+import NewMeal from './NewMeal';
 import "./Meals.css";
 
 function Meal() {
@@ -118,11 +119,12 @@ function Meal() {
         ))}
       </div>
       <div className="newMeal">
-        <Link to="/newMeal">
+        {/* <Link to="/newMeal">
           <button type="button" class="btn btn-info">
             Add New Plan
           </button>
-        </Link>
+        </Link> */}
+        <NewMeal />
       </div>
     </Fragment>
   );
