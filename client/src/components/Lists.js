@@ -43,7 +43,7 @@ function Lists() {
   
   <>
  
-  <div className='list-container shadow-lg p-3 mb-5 rounded'>
+  <div className='list-container  p-3 mb-5 rounded'>
     
     <div >      
 

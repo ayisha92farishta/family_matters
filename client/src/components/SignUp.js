@@ -70,6 +70,9 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
+          <Typography component="h1" variant="h4">
+            Welcome to family matters
+          </Typography>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
