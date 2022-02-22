@@ -50,7 +50,7 @@ export default function Contacts() {
   return (
     
     <div className="container" >
-      <h2 id='title'>My Contacts</h2>
+      <h2 id='title'>Family Contacts</h2>
              
     <table className="table table-bordered" id='contacts' >
       <thead className="thead-dark">
