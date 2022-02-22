@@ -13,9 +13,8 @@ import "react-datepicker/dist/react-datepicker.css";
   a bit of styling and/or spacing (gap)?
 */
 
-function EventForm (props) {
-  const {sDate} = props;
-  const [startDate, setStartDate] = useState(sDate);//event_date
+function EventForm () {
+  const [startDate, setStartDate] = useState(localStorage.getItem('selectedDateByUser'));//event_date
   const [title, setTitle] = useState("");//event_name
   const [description, setDescription] = useState("");//event_description
   const [location, setLocation] = useState("");//location
@@ -70,47 +69,46 @@ function EventForm (props) {
     })
   }
   return(
-    <>
-    <Stack gap={3}>
+    
       <Modal className='modalEvents' show={show} onHide={handleClose} style={ {top:'20%'}}>
           <Modal.Header closeButton>
             <Modal.Title>New Event</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <InputGroup>
-              <InputGroup.Text >Title</InputGroup.Text>
-              <FormControl type="text" aria-label="With textarea" onChange={e => {setTitle(e.target.value)}}/>
-            </InputGroup>
-            <InputGroup>
-              <InputGroup.Text>Description</InputGroup.Text>
-              <FormControl as="textarea" aria-label="With textarea" onChange={e => {setDescription(e.target.value)}}/>
-            </InputGroup>
-            <InputGroup>
-              <DatePicker  value={localStorage.getItem('selectedDateByUser')} onChange={(date) => setStartDate(date)} />
-            </InputGroup>
-            {/* <DatePicker selected={startDate} onChange={e => {setStartDate(e.target.value)}} /> */}
-            <Form>
-              <Form.Check 
+          <Form>
+            <Form.Group className="mb-3" controlId="newEventForm.title">
+              <Form.Label>Title</Form.Label>
+              <FormControl as="textarea" rows={1} onChange={e => {setTitle(e.target.value)}}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="newEventForm.description">
+              <Form.Label>Description</Form.Label>
+              <FormControl as="textarea" rows={3} onChange={e => {setDescription(e.target.value)}}/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="newEventForm.date">
+              <Form.Label>Event's date</Form.Label>
+              <DatePicker  value={startDate} onChange={e => {setStartDate(e.target.value)}} />
+            </Form.Group>
+            <Form.Check 
                 type="switch"
                 id="allDay-switch"
                 label="All day"
                 onChange={e => {setAllDay_bool(e.target.value)}}
-              />
+            />
             {/* </Form>
             { <TimePicker start="07:00" end="23:99" step={30} onChange={e => {setStartTime(e.target.value)}}/>
             <TimePicker start="07:00" end="23:99" step={30} onChange={e => {setEndTime(e.target.value)}}/> }
             <Form> */}
-              <Form.Check 
+            <Form.Check 
                 type="switch"
                 id="isPrivate-switch"
                 label="Private"
                 onChange={e => {setIsPrivate(e.target.value)}}
-              />
-            </Form>
-            <InputGroup>
-              <InputGroup.Text>Location</InputGroup.Text>
+            />
+            <Form.Group className="mb-3" controlId="newEventForm.location">
+              <Form.Label>Location</Form.Label>
               <FormControl type="text" aria-label="With textarea" onChange={e => {setLocation(e.target.value)}}/>
-            </InputGroup>
+            </Form.Group>
+            </Form> 
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -121,44 +119,9 @@ function EventForm (props) {
             </Button>
           </Modal.Footer>
         </Modal>
-      </Stack>
-      {/* <div >
-        <h3 className= "text-center ">New Event</h3>
-        
-        <form class="d-flex justify-content-center align-items-center container " onSubmit={onSubmitForm}>
-          <div>
-            <div class="form-group">
-              <label for="name">Title</label>
-              <input type="text" className="form-control" value={title} placeholder="Enter event title" onChange={e => setTitle(e.target.value)}/>
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <input type="text" className="form-control" value={description} placeholder="Enter event description" onChange={e => setDescription(e.target.value)}/>
-            </div>
-            <div class="form-group">
-              <label for="date">Date</label>
-              <input type="date" className="form-control" value={startDate} placeholder={startDate} onChange={e => setStartDate(e.target.value)}/>
-            </div>
-            <div class="form-group">
-              <label for="address">Location</label>
-              <input type="text" className="form-control" value={location} placeholder="Enter address" onChange={e => setLocation(e.target.value)}/>
-            </div>
-            <br></br>
-            <div  class="d-grid gap-2 d-md-flex">
-              <button type="button" class="btn btn-primary btn-sm" type="submit" onSubmit={onSubmitForm}>Add Event</button>
-              <Link to="/events">
-                <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
-              </Link>
-            </div>
-            </div>
-          
-        </form>
-      </div> */}
-    </>
 
   )
 }
-
 
 export default EventForm;
 
