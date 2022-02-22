@@ -1,9 +1,9 @@
 .meal {
-  padding-left: 300px;
+  padding-left: 350px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  max-width: 1fr;
+  grid-template-columns: repeat(5, 1.25fr);
+  gap: 5px;
+  max-width: 1.25fr;
   align-items: flex-end;
 }
 
@@ -11,10 +11,10 @@
 /* Style the counter cards */
  #meal {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 12px;
+  padding: 20px;
   text-align: center;
   background-color: #eff1f5;
-  max-width: 195px;
+  max-width: 260px;
 }
 
 img {
@@ -30,10 +30,12 @@ img {
 
 .top_meals {
   grid-row: 1;
-  margin-top: 200px !important;
+  /* margin-top: 200px !important; */
+  padding-left: 20px;
 }
 
 .day_container {
+  padding-top: 20px;
   grid-row: 2;
 }
 
@@ -44,6 +46,6 @@ img {
 }
 
 .newMeal {
-  padding-left : 290px;
+  padding-left : 300px;
   padding-top: 20px;
 }
