@@ -68,7 +68,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://thumbs.dreamstime.com/b/parents-cuddle-small-kids-watching-cartoon-laptop-happy-family-four-sit-together-couch-watching-cartoons-laptop-125627129.jpg)',
+            backgroundImage: 'url(https://media.discordapp.net/attachments/920410019474833488/945696980292755516/png_20220222_100203_0000.png?width=726&height=1027)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -86,9 +86,9 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <Typography component="h1" variant="h4">
+            {/* <Typography component="h1" variant="h4">
               Welcome to family matters
-            </Typography>
+            </Typography> */}
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
