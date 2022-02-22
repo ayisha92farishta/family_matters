@@ -31,13 +31,14 @@ export default function NewMeal() {
     axios.post(`/api/meals/?userId=${userId}&accountId=${accountId}`, body)
     .then(response => {
       console.log(response.data);
+      window.location.reload(false);
       navigate('/meals');
     })
   }
   return (    
     <div>
       
-      <div class="container">
+      {/* <div class="container">
       <form onSubmit={onSubmitForm}>
                 <div class="form-group">
                   <label for="day" class="col-lg-2 control-label">Day</label>
@@ -85,6 +86,80 @@ export default function NewMeal() {
         
                 </form>
   
+      </div> */}
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#myModal"
+      >
+        New Meal Plan
+      </button>
+
+      <div class="modal" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">New Menu</h4>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <div class="modal-body">
+            <div class="form-group">
+                  <label for="day" class="col-lg-2 control-label">Day</label>
+                  <div >
+                  <input type="text" className="form-control" id="day" value={day} placeholder="Enter the day" onChange={e => setDay(e.target.value)}/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="breakfast" class=" control-label">Breakfast</label>
+                  <div >
+                    <input type="text" className="form-control" id="breakfast" value={breakfast} placeholder="For Breakfast" onChange={e => setBreakfast(e.target.value)}/>
+                  </div>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="lunch" class=" control-label">Lunch</label>
+                  <div >
+                  <input type="text" className="form-control" id="lunch" value={lunch} placeholder="For Lunch" onChange={e => setLunch(e.target.value)}/>
+                  </div>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="snack" class="control-label">Snack</label>
+                  <div >
+                  <input type="text" className="form-control" id="snack" value={snack} placeholder="For snack" onChange={e => setSnack(e.target.value)}/>
+                  </div>
+                 
+                </div>
+                <div class="form-group">
+                  <label for="dinner" class=" control-label">Dinner</label>
+                  
+                  <div >
+                  <input type="text" className="form-control" id="dinner" value={dinner} placeholder="For dinner" onChange={e => setDinner(e.target.value)}/>
+                  </div>
+
+                  
+                </div>
+                
+              
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                type="submit"
+                data-dismiss="modal"
+                onClick={(event) => onSubmitForm(event)}
+              >
+                Add New Plan
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
 

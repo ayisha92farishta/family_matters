@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Family.css'
+import NewMember from './NewMember';
 import moment from 'moment'
 
 
@@ -51,12 +52,13 @@ function Family() {
 
 
       </div>
-       <Link to="/contactsForm">
+       {/* <Link to="/contactsForm">
         <button type="button" className="family-button btn btn-success">
            Add new member
         </button>
       </Link>
-     
+      */}
+      <NewMember />
     </div>
     </>
   )
