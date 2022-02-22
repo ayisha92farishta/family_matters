@@ -12,17 +12,15 @@ function About() {
           challenging. But it is equally important to give time for your family
           and see that everything is in place, because…<b><i>family matters!</i></b>
         </p>
-          
         <p id="intro"> We care and love our family. Keep your family at the heart of what you
           do and what you plan...Here is small effort to help you keep your
           plans organized.
         </p>
         <div class="features">
           <p>
-            <i>
+            <span><i>
               <b>Family matters</b>
-            </i>
-            allows a primary user to register and add other family members to
+            </i></span>   allows a primary user to register and add other family members to
             the same account. Every member of the family can see and access
             content created by other members of the family, unless marked
             private.
