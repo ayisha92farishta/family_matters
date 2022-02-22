@@ -10,15 +10,10 @@ function About() {
           <b>Family first</b> seems to be the motto for many. Keeping your tasks
           and ideas organized amidst all your busy schedules can be quite
           challenging. But it is equally important to give time for your family
-          and see that everything is in place, because…{" "}
-          <span id="app_title">
-            <br></br>
-            <b>
-              <i>family matters</i>
-            </b>
-            .<br></br>
-          </span>{" "}
-          We care and love our family. Keep your family at the heart of what you
+          and see that everything is in place, because…<b><i>family matters!</i></b>
+        </p>
+          
+        <p id="intro"> We care and love our family. Keep your family at the heart of what you
           do and what you plan...Here is small effort to help you keep your
           plans organized.
         </p>
@@ -26,7 +21,7 @@ function About() {
           <p>
             <i>
               <b>Family matters</b>
-            </i>{" "}
+            </i>
             allows a primary user to register and add other family members to
             the same account. Every member of the family can see and access
             content created by other members of the family, unless marked
