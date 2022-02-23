@@ -14,9 +14,7 @@ function ListItems(props) {
   //console.log("props------", lists)
 
   const [itemNames, setItemNames] = useState([])
-
-  const [listId, setListId] = useState(null)
-  
+  const [listId, setListId] = useState(null)  
   const [listName, setListName] = useState('')
 
 //function to get items

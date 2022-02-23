@@ -18,6 +18,7 @@ function ListsItemInput (props) {
     axios.post(`/api/lists/items`, body)
     .then(response => {
       //console.log("ITEM RESPONSE",response.data);
+      setItemName('')
       props.addNewItem({
         id : response.data.id,
         name : props.listName,

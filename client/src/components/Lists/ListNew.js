@@ -4,20 +4,24 @@ import axios from 'axios';
 
 function ListNew() {
    
-  const [newList, setNewList] = useState("");  
+  const [newList, setNewList] = useState('');  
   const userId = localStorage.getItem('user_id');
   const accountId = localStorage.getItem('account_id');
+
+
+
   const onSubmitForm = (e) => {
     e.preventDefault();
     const body = ({newList});
     //post request to insert new item in Lists and user_lists table
     axios.post(`/api/lists/?userId=${userId}&accountId=${accountId}`, body)
     .then(res => {
-    console.log('newlists------------',res); 
-  
-    // window.location.reload(true);   
+   // console.log('newlists------------',res); 
+      
     });   
+    setNewList("") 
   };
+
   return (
   <>
     <div className='list'>
@@ -25,6 +29,7 @@ function ListNew() {
       <form className='list-input d-flex my-5' >   
       <input           
         type="text" 
+        name='new_list'
         placeholder='Add a new list' 
         className="form-control" 
         value={newList}
