@@ -1,4 +1,8 @@
 INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Alice', 'Amenzel', 'amenzel@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', true, 1);
+INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Alex', 'Amenzel', 'alexamenzel@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', true, 1);
+INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Andrew', 'Amenzel', 'andrewamenzel@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', true, 1);
+INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Anna', 'Amenzel', 'annaamenzel@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', true, 1);
+
 INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Kira', 'Singh', 'kirachankasingh@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', true, 2);
 INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Jane', 'Jacob', 'janejacob@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', false, 3);
 INSERT INTO users (first_name, last_name, email, password, is_primary, account_id) VALUES ('Leon', 'Jacob', 'leonjacob@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', false, 3);

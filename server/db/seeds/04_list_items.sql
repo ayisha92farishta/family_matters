@@ -10,6 +10,20 @@ INSERT INTO list_items (item_name, list_id, user_id, account_id
 ) VALUES ('Cooking Oil', 1, 1,1);
 
 INSERT INTO list_items (item_name, list_id, user_id, account_id
+) VALUES ('Car Wash', 2, 2,1);
+INSERT INTO list_items (item_name, list_id, user_id, account_id
+) VALUES ('Clean Driveway ', 2, 2,1);
+INSERT INTO list_items (item_name, list_id, user_id, account_id
+) VALUES ('Clean Vacuum Filters', 2, 2,1);
+
+INSERT INTO list_items (item_name, list_id, user_id, account_id
+) VALUES ('Travel Bag', 3, 3,1);
+INSERT INTO list_items (item_name, list_id, user_id, account_id
+) VALUES ('Water Bottles', 3, 3,1);
+INSERT INTO list_items (item_name, list_id, user_id, account_id
+) VALUES ('Shoes', 3, 3,1);
+
+INSERT INTO list_items (item_name, list_id, user_id, account_id
 ) VALUES ('Milk', 1, 2,2);
 INSERT INTO list_items (item_name, list_id, user_id, account_id
 ) VALUES ('Cottage Cheese', 1, 2,2);
