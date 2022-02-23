@@ -1,9 +1,8 @@
 import React from 'react';
 import '../App.css';
-import { Link } from 'react-router-dom';
-import { user } from 'pg/lib/defaults';
+
 import Sidebar from './Sidebar';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
 
 function Nav() {
@@ -28,8 +27,9 @@ function Nav() {
       </ul>       
       <Sidebar/> 
     </nav>    
+   
     
-  );
+  )
 }
 
 export default Nav;
