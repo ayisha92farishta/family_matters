@@ -32,7 +32,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export default function SignInSide({setIsLoggedIn}) {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,6 +52,7 @@ export default function SignInSide() {
         localStorage.setItem('user_id', res.data.user_id);
         localStorage.setItem('account_id', res.data.account_id);
         localStorage.setItem('first_name', res.data.first_name);
+        setIsLoggedIn(true)
         navigate('/home');
         //return <Navigate to='/home'/>
       });

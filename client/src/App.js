@@ -30,35 +30,36 @@ function App() {
  }
 
  useEffect(() => {
+   console.log("use effect")
   logInCheck();
-}, [isLoggedIn])
+}, [])
  
 
- //console.log("USER IS LOGGED IN", isLoggedIn)
+ console.log("USER IS LOGGED IN", isLoggedIn)
 
   return (    
    
     <Router>    
       <div className='App'>
         
-         { isLoggedIn && <Nav /> } 
          <Routes>          
-         <Route path='/' element={<SignIn />} />
-         <Route element={<ProtectedRoutes />} >
-         <Route path='/nav' element={<Nav />} />
-         <Route path='/about' element={<About />} />
-         <Route path='/home' element={<Home />} />
-         <Route path='/family' element={<Family />} />
-         <Route path='/events' element={<Events />} />
-         <Route path='/eventForm' element={<EventForm />} />
-         <Route path='/lists' element={<Lists />} />
-         <Route path='/meals' element={<Meals />} />
-         <Route path='/recipes' element={<Recipes />} />
-         <Route path='/contacts' element={<Contacts />} />
-         <Route path='/' element={<SignIn />} />
+         <Route path='/' element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
          <Route path='/signup' element={<SignUp />} />
+        
+          <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn} />} >
 
-         </Route>
+            <Route path='/about' element={<About />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/family' element={<Family />} />
+            <Route path='/events' element={<Events />} />
+            <Route path='/eventForm' element={<EventForm />} />
+            <Route path='/lists' element={<Lists />} />
+            <Route path='/meals' element={<Meals />} />
+            <Route path='/recipes' element={<Recipes />} />
+            <Route path='/contacts' element={<Contacts />} />
+                   
+
+          </Route>
 
          </Routes>
       </div>
