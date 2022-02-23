@@ -50,7 +50,7 @@ function Lists() {
       <ListNew />
  
     <h1>My Lists</h1>
-      <table className="table list-table   my-5">
+      <table className="table my-5" id='list-table'>
         <thead className="thead-dark">
           <tr>
             <th scope="col">Description</th>

@@ -11,7 +11,6 @@ function Sidebar() {
   <div className="nav-wrap">
     <nav className="main-nav" role="navigation">
       <ul className="unstyled list-hover-slide">
-        <li><a href="/about">About</a></li>
         <li><a href="/home">Home</a></li>
         <li><a href="/events">Events</a></li>
         <li><a href="/lists">Lists</a></li>

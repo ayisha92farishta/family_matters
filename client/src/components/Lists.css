@@ -4,27 +4,30 @@
   justify-content: space-evenly;
   margin-left: 100px;
   /* background-color: rgb(220, 228, 245); */
+  
+ 
 }
 
 
 .list-input {
   width: 600px;
+  
 }
-/* 
-.list-table{
-  width: 800px;
+
+#list-table{
+  width: 600px;
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-
-.list-table tbody tr:hover {
+ 
+#list-table tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-.list-table tbody td {
+#list-table tbody td {
   position: relative;
 }
-.list-table tbody td:hover:before {
+#list-table tbody td:hover:before {
   content: "";
   position: absolute;
   left: 0;
@@ -33,7 +36,7 @@
   bottom: -9999px;
   background-color: rgba(255, 255, 255, 0.2);
   z-index: -1;
-} */
+}  
 
 
 

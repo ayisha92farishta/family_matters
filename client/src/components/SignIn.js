@@ -68,11 +68,12 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
+            backgroundColor: 'black',
             backgroundImage: 'url(https://media.discordapp.net/attachments/920410019474833488/945696980292755516/png_20220222_100203_0000.png?width=726&height=1027)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
+            backgroundSize: 'fit',
             backgroundPosition: 'center',
           }}
         />

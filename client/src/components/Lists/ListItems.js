@@ -74,7 +74,7 @@ function ListItems(props) {
       }            
       </select>
     </div>
-    <table className="table list-table my-5">
+    <table className="table my-5" id='list-table'>
       <thead className="thead-dark">
         <tr>
           <th scope="col">Description</th>
