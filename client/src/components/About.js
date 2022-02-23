@@ -19,7 +19,7 @@ function About() {
         <div class="features">
           <p>
             <span><i>
-              <b>Family matters</b>
+              <b>family matters</b>
             </i></span>   allows a primary user to register and add other family members to
             the same account. Every member of the family can see and access
             content created by other members of the family, unless marked
@@ -48,6 +48,9 @@ function About() {
           </p>
         </div>
       </div>
+      {/* <div className="footer-image">
+        <img src="icons/time-clipart.png.jpeg"/>
+      </div> */}
     </div>
   );
 }

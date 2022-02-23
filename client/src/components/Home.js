@@ -7,8 +7,6 @@ function Home() {
   return (    
     
     <div id='home-container' class="bgimg" > 
-    {/* <div className="bgimg"></div> */}
-    {/* <h1>Welcome Home</h1>  */}
     
     <div className='home-icons' id="row1">
         <Link to='/events'> 
@@ -30,7 +28,7 @@ function Home() {
           src="icons/contact.png"
           />
         </Link>
-        <Link to='/meals'> 
+        {/* <Link to='/meals'> 
           <h5>Meal Planner</h5>
           <img
           src="icons/meal.png"
@@ -41,7 +39,7 @@ function Home() {
           <img
           src="icons/recipe.png"
           />
-        </Link>
+        </Link> */}
           
     </div>
     
@@ -57,7 +55,7 @@ function Home() {
     </div> */}
     <br></br>
     <div className='home-icons' id="row2">
-        {/* <Link to='/meals'> 
+        <Link to='/meals'> 
           <h5>Meal Planner</h5>
           <img
           src="icons/meal.png"
@@ -69,7 +67,7 @@ function Home() {
           src="icons/recipe.png"
           />
         </Link>
-           */}
+          
     </div>
     </div>
   );

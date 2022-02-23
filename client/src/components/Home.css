@@ -2,32 +2,33 @@
 .home-icons {
   display:flex;
   justify-content: space-evenly;
-  padding-top: 20px;
+  padding-top: 100px;
 }
 
 .home-icons img{
-  height: 8em;
-  width: 8em;
+  height: 9em;
+  width: 9em;
 }
 #home-container{
   padding-left: 0px;
 }
 .bgimg{
   /* padding-left: 200px; */
-  background-image: url('https://static2.abc.es/media/familia/2021/05/11/familiamanos-kTRF--1200x630@abc.jpg');
+  /* background-image: url('https://static2.abc.es/media/familia/2021/05/11/familiamanos-kTRF--1200x630@abc.jpg'); */
   /* background-image: url("img_girl.jpg"); */
   /* padding-left: 600px; */
   /* Full height */
   /* height: 100%;  */
+  background-image: url('https://fox2now.com/wp-content/uploads/sites/14/2022/02/GettyImages-1271460667.jpg?w=2560&h=1440&crop=1');
   width: 2200px;
-  height: 900px;
+  height: 930px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   /* width: 100%;
   height: auto; */
 
-  /* background-size: 1400px 600px; */
+  /* background-size: 2600px 600px; */
 
   /* Center and scale the image nicely */
   
@@ -55,17 +56,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 15px;
-  padding-left: 350px;
+  gap: 40px;
+  padding-left: 450px;
+  
 }
 
-/* #row2{
+#row2{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+  gap: 40px;
   padding-left: 0px;
-  padding-top: 70px;
-} */
+  padding-top: 170px;
+}
 
 .home-icons{
   position: fixed;
