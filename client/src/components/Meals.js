@@ -54,6 +54,8 @@ function Meal() {
   console.log("mealssss = ", meals);
   return (
     <Fragment>
+
+       <h1 id='heading'>Meals</h1>
       <div className="meal">
         <div className="meal_title">
           <h3>If You've Got The Time, We've Got The Meal!!!&#128523;</h3>

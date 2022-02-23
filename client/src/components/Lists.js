@@ -42,7 +42,7 @@ function Lists() {
   return (
   
   <>
-  <h1 id='list-heading'>Lists</h1>
+  <h1 id='heading'>Lists</h1>
   <div className='list-container  p-3 mb-5 rounded'>
     
     
@@ -50,7 +50,7 @@ function Lists() {
 
       <ListNew />
  
-    <h1>My Lists</h1>
+    <h3>My Lists</h3>
       <table className="table my-5" id='list-table'>
         <thead className="thead-dark">
           <tr>
@@ -83,7 +83,7 @@ function Lists() {
 
     </div>
     <div className='list-items'>    
-     <h1>Add new Item</h1>   
+     <h3>Add new Item</h3>   
       <ListItems 
       lists={lists}
       />     

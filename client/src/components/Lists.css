@@ -2,22 +2,10 @@
 .list-container{
   display: flex;
   justify-content: space-evenly;
-  margin-top: 50px;
-  margin-left: 150px;
-  /* background-color: rgb(220, 228, 245); */
-  
- 
+  margin-left: 100px; 
 }
-#list-heading{
-  color: #073236; 
-  font-size: 65px; 
-  line-height: 160px; 
-  font-weight: normal; 
-  margin-bottom: 0px; 
-  margin-top: 40px; 
-  text-align: center; 
-  text-shadow: 0 3px 3px rgb(30, 35, 37);
-}
+
+
 
 .list-input {
   width: 600px;

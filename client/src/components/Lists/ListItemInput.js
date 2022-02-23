@@ -27,7 +27,7 @@ function ListsItemInput (props) {
   };  
   return (      
     <div className='list'>
-      <h1 className='text-center'>{props.listName} </h1>
+      <h4 className='text-center'>{props.listName} </h4>
       <form className='list-input d-flex my-5' >   
         <input           
         type="text" 

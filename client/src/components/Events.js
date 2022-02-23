@@ -143,6 +143,7 @@ const Events = () => {
 
   return (
     <>
+    <h1 id='heading'>Events</h1>
       <div className="App">
       <Calendar 
         selectable

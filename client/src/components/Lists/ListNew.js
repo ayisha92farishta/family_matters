@@ -21,7 +21,7 @@ function ListNew() {
   return (
   <>
     <div className='list'>
-      <h1 className='text-center'>Add a new list</h1>
+      <h3 className='text-center'>Add a new list</h3>
       <form className='list-input d-flex my-5' >   
       <input           
         type="text" 

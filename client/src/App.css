@@ -41,6 +41,18 @@ code {
   font-size: 20px;
 }
 
+/* heading for all pages */
+
+#heading{
+  color: #073236; 
+  font-size: 65px; 
+  line-height: 100px; 
+  font-weight: normal; 
+  margin-bottom: 0px; 
+  margin-top: 40px; 
+  text-align: center; 
+  text-shadow: 0 3px 3px rgb(30, 35, 37);
+}
 
 /* sidebar styling */
 
