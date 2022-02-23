@@ -56,7 +56,7 @@ function Recipe() {
   return (
     <Fragment>
 
-      <h1 id='heading'>Recipes</h1>
+      
       <div id="all-recipes">
         <h3 id="recipe_title">Delight in every bite !!!&#128523;</h3>
         <div className="card__header" id="recipe_image">

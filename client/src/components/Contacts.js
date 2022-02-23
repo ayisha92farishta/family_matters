@@ -51,9 +51,9 @@ export default function Contacts() {
     
     <div className="container" >
 
-  <h1 id='heading'>Family Contacts</h1>
-      {/* <h2 id='title'>Family Contacts</h2>
-              */}
+  
+      <h2 id='title'>Family Contacts</h2>
+              
     <table className="table table-bordered" id='contacts' >
       <thead className="thead-dark">
         <tr>
