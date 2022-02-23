@@ -14,7 +14,8 @@ function ListNew() {
     axios.post(`/api/lists/?userId=${userId}&accountId=${accountId}`, body)
     .then(res => {
     console.log('newlists------------',res); 
-    window.location = "/lists";   
+  
+    // window.location.reload(true);   
     });   
   };
   return (

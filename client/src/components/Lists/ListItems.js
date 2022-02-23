@@ -26,6 +26,7 @@ function ListItems(props) {
     .then(res => {
        const itemNameArray = res.data.lists;      
        setItemNames(itemNameArray)
+       
       //console.log("item res---------", itemNameArray);
     });    
   };

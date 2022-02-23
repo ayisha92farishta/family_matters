@@ -30,7 +30,7 @@ function Lists() {
       .then(res => {
         const listNameArray = res.data.lists;
         //console.log(listNameArray);
-        setLists(listNameArray)
+        setLists(listNameArray);
       });    
     };
 
