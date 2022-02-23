@@ -81,7 +81,8 @@ function Lists() {
       </table>
 
     </div>
-    <div className='list-items'>       
+    <div className='list-items'>    
+     <h1>Add new Item</h1>   
       <ListItems 
       lists={lists}
       />     
