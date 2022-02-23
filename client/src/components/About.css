@@ -6,7 +6,6 @@
   margin-right: 20px;
   padding-left: 300px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
 }
 
 #app_title{
@@ -29,4 +28,14 @@
 .about-container {
   height : 800px;
   padding-top: 0;
+}
+
+.footer-image{
+  padding-top: 500px;
+  padding-left: 200px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:baseline;
+  max-width: 30%;
+  height: 30px;
 }
