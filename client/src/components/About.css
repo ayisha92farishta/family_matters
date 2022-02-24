@@ -37,17 +37,17 @@
 
 .footer-image{
   padding-top: 600px;
-  padding-left: 200px;
+  /* padding-left: 600px; */
   /* display:flex;
   justify-content:flex-end;
   align-items:baseline; */
   padding-left: 400px;
   max-width: 90%;
   height: 200px;
-  position: absolute;
+  /* position: absolute; */
   top: 8px;
-  right: 16px;
-  font-size: 50px;
+  right: 20px;
+  font-size: 30px;
   /* filter: blur(1px);
   -webkit-filter: blur(1px); */
 
@@ -55,7 +55,7 @@
   height: 100%; 
 
   /* Center and scale the image nicely */
-  background-position: center;
+  /* background-position: ; */
   background-repeat: no-repeat;
   background-size: cover;
 }
