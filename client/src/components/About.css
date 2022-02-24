@@ -9,18 +9,18 @@
 }
 
 #app_title{
-  font-size: 25px;
+  font-size: 23px;
   text-align: center;
 }
 
 #intro {
   padding-top: 20px;
-  font-size: 20px;
+  font-size: 23px;
   text-align: left;
 }
 
 .features{
-  font-size:20px;
+  font-size:23px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: left;
 }
@@ -30,12 +30,32 @@
   padding-top: 0;
 }
 
+.footer-image img{
+  height: 10em;
+  width: 10em;
+}
+
 .footer-image{
-  padding-top: 500px;
+  padding-top: 600px;
   padding-left: 200px;
-  display:flex;
+  /* display:flex;
   justify-content:flex-end;
-  align-items:baseline;
-  max-width: 30%;
-  height: 30px;
+  align-items:baseline; */
+  padding-left: 400px;
+  max-width: 90%;
+  height: 200px;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 50px;
+  /* filter: blur(1px);
+  -webkit-filter: blur(1px); */
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

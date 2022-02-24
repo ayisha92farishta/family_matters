@@ -48,9 +48,9 @@ function About() {
           </p>
         </div>
       </div>
-      {/* <div className="footer-image">
-        <img src="icons/time-clipart.png.jpeg"/>
-      </div> */}
+      <div className="footer-image">
+        <img src="icons/familywithballons.png"/>
+      </div>
     </div>
   );
 }
