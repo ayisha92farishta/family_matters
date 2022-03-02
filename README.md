@@ -4,6 +4,10 @@ Our team of three created this family organising application for our finals proj
 This is a simple :electron:  React application created using the PERN stack. 
 In other words ProsgreSQL(for database), Express(for routes), React(front end) and Node js(backend).
 
+#### A little about the application
+
+It is a simple family orgnization application to help families to stay organized and in-sync. An user can open an account and then add as many family members as possible under that account. These accounts shall sharre all the public informations amongst themselves. For example if one user adds an event, all the other users gets the update on their events calender. Same goes for lists , contacts , recipes etc. 
+
 #### How to get it started 
 
 - To begin fork and clone the repo in your machine. 
