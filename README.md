@@ -11,14 +11,20 @@ It is a simple family orgnization application to help families to stay organized
 #### How to get it started 
 
 - To begin fork and clone the repo in your machine. 
-- Then from the terminal, cd into family_matters (or the folder you chose to put this in). 
-- From there we have to fire up both the servers, react and express . 
+- Then from the terminal, cd into family_matters (or the folder you chose to put this in) and rin the commmand to download all the dependencies: 
+ 
+```
+ npm install
+ ```
+- We also have to install all the dependencies from inside the client and server folder. Instructions has been included below. 
+- From here we have to fire up both the servers, react and express . Please make sure you are running node version 14 or above in order to successfully start both the servers.
 
 #### React server 
-- To get the react server started from the root directory, run the following two commands  :
+- To get the react server started from the root directory, run the following commands  :
 
 ``` 
  cd client
+ npm install
  npm start
 ```
 - It should start the react server on your localhost 3000
@@ -29,6 +35,7 @@ It is a simple family orgnization application to help families to stay organized
  
 ```
  cd server
+ npm install
  npm run local
  
 ```
